@@ -1,6 +1,53 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+    $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
+    compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss']
+  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', 'nuxt-security'],
+    shadcn: {
+        /**
+         * Prefix for all the imported component
+         */
+        prefix: '',
+        /**
+         * Directory that the component lives in.
+         * @default "./components/ui"
+         */
+        componentDir: './components/ui'
+    },
+    security: {
+      corsHandler: {
+          origin: '*',
+      },
+        headers: {
+          contentSecurityPolicy: {
+              'img-src': [
+                  "'self'",
+                  "data:",
+                  'https://raw.githubusercontent.com/'
+              ]
+          }
+        }
+    },
+    app: {
+      head: {
+        script: [
+            {
+                src: '/js/all.js',
+                type: 'text/javascript',
+                defer: true
+            }
+        ],
+          link: [
+              { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+              { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: "" },
+              { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap' },
+              { rel: 'stylesheet', href: 'https://use.fontawesome.com/releases/v6.4.2/css/all.css' }
+          ],
+          htmlAttrs: {
+            lang: 'en'
+          }
+      }
+    },
+    plugins: ['~/plugins/BodyClass.ts']
 })
