@@ -24,7 +24,8 @@ export default defineNuxtConfig({
               'img-src': [
                   "'self'",
                   "data:",
-                  'https://raw.githubusercontent.com/'
+                  'https://raw.githubusercontent.com/',
+                  'https://api.rss2json.com'
               ]
           }
         }
