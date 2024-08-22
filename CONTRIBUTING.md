@@ -1,4 +1,4 @@
-Introduction
+# Introduction
 
 Welcome to our portfolio website project! We're glad you're interested in contributing. Our project aims to showcase various projects and skills using Nuxt.js for the frontend and Go for the backend. Contributions are welcome and encouraged!
 Code of Conduct
@@ -12,13 +12,13 @@ There are several ways to contribute to this project:
     Suggesting Features: Have an idea for a new feature? Open an issue to discuss it.
     Contributing Code: Want to fix a bug or implement a feature? Fork the repository, make your changes, and submit a pull request.
 
-Getting Started
+## Getting Started
 
-To get started with development:
+### To get started with development:
 
     Fork the repository.
-    Clone your fork: git clone https://github.com/<your_username>/portfolio-website.git
-    Navigate to the project directory: cd portfolio-website
+    Clone your fork: git clone https://github.com/sinhaparth5/portfolio.git
+    Navigate to the project directory: cd portfolio
     Install dependencies for Nuxt.js: npm install
     Run the Nuxt.js development server: npm run dev
     For Go backend, ensure Go is installed and run go build to compile the server.
@@ -42,7 +42,7 @@ When submitting pull requests:
     Reference the issue(s) your PR addresses.
     Follow the template provided in the pull request description.
 
-License
+## License
 
 This project is licensed under the GPL-3.0 License. By contributing, you agree that your contributions will be licensed under the GPL-3.0 License.
 Contact
