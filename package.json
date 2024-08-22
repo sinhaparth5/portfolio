@@ -8,7 +8,10 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "start": "node .output/server/index.mjs"
+    "start": "node .output/server/index.mjs",
+    "dev:turbo": "turbo run dev",
+    "build:turbo": "turbo run build",
+    "generate:turbo": "turbo run generate"
   },
   "dependencies": {
     "@primevue/themes": "^4.0.4",
@@ -26,6 +29,8 @@
     "@nuxtjs/tailwindcss": "^6.12.1",
     "@primevue/nuxt-module": "^4.0.4",
     "nuxt-security": "^2.0.0-rc.9",
-    "shadcn-nuxt": "^0.10.4"
-  }
+    "shadcn-nuxt": "^0.10.4",
+    "turbo": "^2.0.14"
+  },
+  "packageManager": "npm@10.2.3"
 }
