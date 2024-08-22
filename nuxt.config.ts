@@ -20,13 +20,15 @@ export default defineNuxtConfig({
           origin: '*',
       },
         headers: {
+          xXSSProtection: '1; mode=block',
           contentSecurityPolicy: {
-              'img-src': [
-                  "'self'",
-                  "data:",
-                  'https://raw.githubusercontent.com/',
-                  'https://api.rss2json.com'
-              ]
+            'default-src': ["'self'"],
+            'img-src': [
+                "'self'",
+                "data:",
+                'https://raw.githubusercontent.com/',
+                'https://api.rss2json.com'
+            ],
           }
         }
     },
