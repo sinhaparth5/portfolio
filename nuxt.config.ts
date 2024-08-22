@@ -20,6 +20,7 @@ export default defineNuxtConfig({
           origin: '*',
       },
         headers: {
+          xFrameOptions: 'DENY',
           xXSSProtection: '1; mode=block',
           contentSecurityPolicy: {
             'default-src': ["'self'"],
@@ -27,6 +28,10 @@ export default defineNuxtConfig({
                 "'self'",
                 "data:",
                 'https://raw.githubusercontent.com/',
+                'https://api.rss2json.com'
+            ],
+            'connect-src': [
+              "'self'",
                 'https://api.rss2json.com'
             ],
           }
