@@ -57,5 +57,8 @@ export default defineNuxtConfig({
           }
       }
     },
-    plugins: ['~/plugins/BodyClass.ts']
+    plugins: [
+      '~/plugins/BodyClass.ts',
+      { src: '~/plugins/gsap.client.ts', mode: 'client' }
+    ],
 })
