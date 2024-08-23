@@ -3,16 +3,31 @@ package rabbitmq
 import (
 	"article-backend/internal/cassandra"
 	"article-backend/internal/services"
+	"github.com/joho/godotenv"
 	"github.com/streadway/amqp"
 	"log"
+	"os"
 )
 
 var conn *amqp.Connection
 var channel *amqp.Channel
 
 func InitRabbitMQ() {
+	if err := godotenv.Load(); err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	// Get RabbitMQ credentials from environment variables
+	rabbitMQUser := os.Getenv("RABBITMQ_USER")
+	rabbitMQPass := os.Getenv("RABBITMQ_PASS")
+	rabbitMQHost := os.Getenv("RABBITMQ_HOST")
+	rabbitMQPort := os.Getenv("RABBITMQ_PORT")
+
+	// Build RabbitMQ connection URL
+	rabbitMQURL := "amqp://" + rabbitMQUser + ":" + rabbitMQPass + "@" + rabbitMQHost + ":" + rabbitMQPort + "/"
+
 	var err error
-	conn, err = amqp.Dial("amqp://rabbitmq:rabbitmq@localhost:5672/")
+	conn, err = amqp.Dial(rabbitMQURL)
 	if err != nil {
 		log.Fatal("Failed to connect to RabbitMQ:", err)
 	}

@@ -36,7 +36,7 @@ export default defineNuxtConfig({
             ],
             'connect-src': [
               "'self'",
-                'https://api.rss2json.com'
+                'http://localhost:8080/articles'
             ],
           }
         }
