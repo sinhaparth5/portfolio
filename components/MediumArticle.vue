@@ -16,19 +16,6 @@
     </div>
   </div>
   </div>
-  <div>
-    <h1>Fetched Data</h1>
-    <div v-if="items && items.length">
-      <div v-for="item in items" :key="item.id" class="item">
-        <h2>{{ item.title }}</h2>
-        <p>{{ item.description }}</p>
-        <a :href="item.link" target="_blank">Read more</a>
-        <p>Published on: {{ formatDate(item.pubDate) }}</p>
-      </div>
-    </div>
-    <p v-else-if="pending">Loading...</p>
-    <p v-else>Error fetching data</p>
-  </div>
 </template>
 
 <script setup lang="ts">
