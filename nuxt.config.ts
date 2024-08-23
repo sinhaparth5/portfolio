@@ -17,7 +17,10 @@ export default defineNuxtConfig({
     },
     security: {
       corsHandler: {
-          origin: '*',
+          origin: 'http://localhost:8080',
+          methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
+          allowedHeaders: ['content-type', 'Authorization'],
+          credentials: true
       },
         headers: {
           xFrameOptions: 'DENY',
@@ -28,7 +31,8 @@ export default defineNuxtConfig({
                 "'self'",
                 "data:",
                 'https://raw.githubusercontent.com/',
-                'https://api.rss2json.com'
+                'https://api.rss2json.com',
+                'https://images.unsplash.com'
             ],
             'connect-src': [
               "'self'",
@@ -57,5 +61,11 @@ export default defineNuxtConfig({
           }
       }
     },
-    plugins: ['~/plugins/BodyClass.ts']
+    plugins: [
+        '~/plugins/BodyClass.ts',
+        '~/plugins/axios.ts'
+    ],
+    axios: {
+        baseURL: 'http://localhost:8080'
+    }
 })
