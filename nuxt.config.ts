@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
     compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', 'nuxt-security', '@primevue/nuxt-module'],
     shadcn: {
         /**
