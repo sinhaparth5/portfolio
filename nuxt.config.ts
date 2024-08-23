@@ -23,14 +23,21 @@ export default defineNuxtConfig({
           credentials: true
       },
         headers: {
+          xFrameOptions: 'DENY',
+          xXSSProtection: '1; mode=block',
           contentSecurityPolicy: {
-              'img-src': [
-                  "'self'",
-                  "data:",
-                  'https://raw.githubusercontent.com/',
-                  'https://api.rss2json.com',
-                  'https://images.unsplash.com'
-              ]
+            'default-src': ["'self'"],
+            'img-src': [
+                "'self'",
+                "data:",
+                'https://raw.githubusercontent.com/',
+                'https://api.rss2json.com',
+                'https://images.unsplash.com'
+            ],
+            'connect-src': [
+              "'self'",
+                'https://api.rss2json.com'
+            ],
           }
         }
     },

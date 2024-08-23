@@ -21,6 +21,7 @@
     "primevue": "^4.0.4",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
+    "tippy.js": "^6.3.7",
     "vue": "latest"
   },
   "devDependencies": {
