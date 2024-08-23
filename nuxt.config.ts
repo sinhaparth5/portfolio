@@ -3,7 +3,7 @@ export default defineNuxtConfig({
     $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
     compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', 'nuxt-security', '@primevue/nuxt-module'],
+  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', 'nuxt-security', '@primevue/nuxt-module', '@vueuse/motion/nuxt'],
     shadcn: {
         /**
          * Prefix for all the imported component
@@ -57,5 +57,25 @@ export default defineNuxtConfig({
           }
       }
     },
-    plugins: ['~/plugins/BodyClass.ts']
+    plugins: ['~/plugins/BodyClass.ts'],
+    runtimeConfig: {
+      public: {
+        motion: {
+          directives: {
+            'pop-bottom': {
+              initial: {
+                scale: 0,
+                opacity: 0,
+                y: 100,
+              },
+              visible: {
+                scale: 1,
+                opacity: 1,
+                y: 0,
+              }
+            }
+          }
+        }
+      }
+    }
 })
