@@ -5,7 +5,7 @@
   </div>
   <div class="sticky top-0 z-50 max-w-[1440px] mx-auto px-4 h-[120px] flex items-center justify-between xl:justify-start">
     <a href="index.html">
-      <img class="h-14" src="/img/parth-logo.png" alt="">
+      <NuxtImg class="h-14" src="/img/parth-logo.png" alt="Portfolio Logo" />
     </a>
     <div class="flex-1 hidden xl:flex justify-center font-semibold">
       <div class="group relative mx-[20px]">
