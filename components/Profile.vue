@@ -8,7 +8,7 @@
           <div class="grid grid-cols-1 gap-[24px]">
             <div class="text-[#686868] font-bold p-[20px] rounded-[30px] border-[1px] border-[#414141] bg-gradient-to-b from-[#262626] to-[rgba(38,38,38,0.1)] grid grid-cols-1 gap-[20px]">
               <NuxtImg class="w-full rounded-[30px]" src="/img/parth-profile.JPG" alt="Portfolio profile picture" />
-              <a href="#" class="text-white text-[20px] leading-[30px]">Parth Sinha</a>
+              <NuxtLink href="/" class="text-white text-[20px] leading-[30px]" target="_blank">Parth Sinha</NuxtLink>
               <div class="flex text-[15px] leading-[24px]">
                 <div class="me-[12px]"><i class="fa-solid fa-briefcase"></i></div>
                 <div class="">Developer</div>
@@ -45,12 +45,12 @@
                 </a>
               </div>
             </div>
-            <a href="#" class="group relative p-[20px] rounded-[20px] border-[1px] border-[#414141] hover:border-white flex items-center justify-between transition-all duration-[.5s]">
+            <a href="mailto:contact@parthsinha.com" class="group relative p-[20px] rounded-[20px] border-[1px] border-[#414141] hover:border-white flex items-center justify-between transition-all duration-[.5s]">
               <div class="font-bold">Hire Me</div>
               <div class="text-[20px] text-[#a0a0a0] group-hover:text-white transition-all duration-[.5s]">
                 <i class="fa-solid fa-circle-arrow-right"></i>
               </div>
-            </a>
+            </a>+
             <a href="#" class="group relative p-[20px] rounded-[20px] border-[1px] border-[#414141] hover:border-white flex items-center justify-between transition-all duration-[.5s]">
               <div class="font-bold">Download Resume</div>
               <div class="text-[20px] text-[#a0a0a0] group-hover:text-white transition-all duration-[.5s]">

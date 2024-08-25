@@ -4,12 +4,12 @@
     <img class="w-full h-full object-cover object-center" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/dark/header-bg.png" alt="">
   </div>
   <div class="sticky top-0 z-50 max-w-[1440px] mx-auto px-4 h-[120px] flex items-center justify-between xl:justify-start">
-    <a href="index.html">
+    <NuxtLink to="/" target="_blank">
       <NuxtImg class="h-14" src="/img/parth-logo.png" alt="Portfolio Logo" />
-    </a>
+    </NuxtLink>
     <div class="flex-1 hidden xl:flex justify-center font-semibold">
       <div class="group relative mx-[20px]">
-        <a href="index.html" class="flex items-center h-[120px] text-[#f70354]">
+        <a href="/" class="flex items-center h-[120px] text-[#f70354]">
           <div class="me-[5px]">Home</div>
           <div class="group-hover:rotate-[180deg] transition-all ease-in-out duration-[.3s]"><i class="fa-solid fa-angle-down"></i></div>
         </a>
@@ -44,9 +44,9 @@
         </div>
       </div>
       <div class="group relative mx-[20px]">
-        <a href="about.html" class="flex items-center h-[120px] hover:text-[#f70354]">
+        <NuxtLink to="/about" class="flex items-center h-[120px] hover:text-[#f70354]">
           <div class="">About Me</div>
-        </a>
+        </NuxtLink>
       </div>
       <div class="group relative mx-[20px]">
         <a href="services.html" class="flex items-center h-[120px] hover:text-[#f70354]">
