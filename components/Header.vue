@@ -115,7 +115,11 @@
       </div>
     </div>
     <div class="flex">
-      <a href="#offcanvas" data-c-toggle="active" class="h-[50px] w-[50px] flex justify-center items-center bg-[#f70354] rounded-[50px]">
+      <a
+          @click.prevent="togglecanvas"
+          href="#offcanvas"
+          class="h-[50px] w-[50px] flex justify-center items-center bg-[#f70354] rounded-[50px] cursor-pointer"
+      >
         <div class="w-[20px] h-[10px] border-t-[2px] border-t-white border-b-[2px] border-b-white"></div>
       </a>
     </div>
@@ -123,4 +127,10 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+const isActive = ref(false);
+const togglecanvas = () => {
+  isActive.value = !isActive.value;
+}
 </script>

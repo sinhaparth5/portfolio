@@ -19,6 +19,7 @@
     "clsx": "^2.1.1",
     "lucide-react": "^0.428.0",
     "nuxt": "^3.12.4",
+    "nuxt-app": "file:",
     "primevue": "^4.0.4",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
