@@ -9,10 +9,10 @@
     </NuxtLink>
     <div class="flex-1 hidden xl:flex justify-center font-semibold">
       <div class="group relative mx-[20px]">
-        <a href="/" class="flex items-center h-[120px] text-[#f70354]">
+        <NuxtLink to="/" class="flex items-center h-[120px] text-[#f70354]">
           <div class="me-[5px]">Home</div>
           <div class="group-hover:rotate-[180deg] transition-all ease-in-out duration-[.3s]"><i class="fa-solid fa-angle-down"></i></div>
-        </a>
+        </NuxtLink>
         <div class="invisible opacity-0 group-hover:opacity-100 group-hover:visible absolute right-0 w-[260px] transition-all duration-[.5s]">
           <div class="absolute z-[2] top-[30px] group-hover:top-0 right-[25px] w-[15px] h-[15px] bg-white rotate-45 transition-all duration-[.5s]"></div>
           <div class="relative top-[30px] group-hover:top-0 bg-white text-[#181818] mt-[5px] py-[10px] rounded-[5px] shadow-[0_0_12px_rgba(0,_0,_0,_0.1)] transition-all duration-[.5s]">
@@ -115,11 +115,7 @@
       </div>
     </div>
     <div class="flex">
-      <a
-          @click.prevent="togglecanvas"
-          href="#offcanvas"
-          class="h-[50px] w-[50px] flex justify-center items-center bg-[#f70354] rounded-[50px] cursor-pointer"
-      >
+      <a href="#offcanvas" data-c-toggle="active" class="h-[50px] w-[50px] flex justify-center items-center bg-[#f70354] rounded-[50px]">
         <div class="w-[20px] h-[10px] border-t-[2px] border-t-white border-b-[2px] border-b-white"></div>
       </a>
     </div>
@@ -127,10 +123,4 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-const isActive = ref(false);
-const togglecanvas = () => {
-  isActive.value = !isActive.value;
-}
 </script>
