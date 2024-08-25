@@ -85,7 +85,7 @@
               {{ char }}
             </span>
                   </div>
-                  <img class="mx-auto" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/banner/shape.png" alt="" />
+                  <NuxtImg class="mx-auto" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/banner/shape.png" alt="Lines" />
                 </div>
                 <div class="ms-[10px] flex">
           <span v-for="(char, index) in secondLinePart2" :key="index" :style="getStyle(index + secondLinePart1.length)" class="opacity-0 translate-x-[70px] transition-all duration-[.8s]">
@@ -198,7 +198,7 @@
             </div>
           </div>
           <div id="tippy1" class="hidden">
-            <img class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/hover-thumb.png" alt="Tooltip Image">
+            <NuxtImg class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/hover-thumb.png" alt="Tooltip Image" />
           </div>
         </div>
         <div data-scroll="[data-scroll-item]" data-tippy="#tippy2" class="">
@@ -229,7 +229,7 @@
             </div>
           </div>
           <div id="tippy2" class="hidden">
-            <img class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/two.png" alt="">
+            <NuxtImg class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/two.png" alt="" />
           </div>
         </div>
         <div data-scroll="[data-scroll-item]" data-tippy="#tippy3" class="">
@@ -260,7 +260,7 @@
             </div>
           </div>
           <div id="tippy3" class="hidden">
-            <img class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/three.png" alt="">
+            <NuxtImg class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/three.png" alt="" />
           </div>
         </div>
         <div data-scroll="[data-scroll-item]" data-tippy="#tippy4" class="">
@@ -291,7 +291,7 @@
             </div>
           </div>
           <div id="tippy4" class="hidden">
-            <img class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/thumb.png" alt="">
+            <NuxtImg class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/thumb.png" alt=""/>
           </div>
         </div>
         <div class="border-t-[#414141] border-t-[1px]"></div>
@@ -433,7 +433,7 @@
             </div>
           </div>
           <div class="relative mb-[40px]">
-            <img class="w-full rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/banner/bn-blog.png" alt="">
+            <NuxtImg class="w-full rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/banner/bn-blog.png" alt="" />
             <div class="absolute right-[30px] bottom-[30px]">
               <a href="#" class="relative w-[48px] h-[48px] flex items-center justify-center">
                 <div class="absolute top-0 right-0 bottom-0 left-0 rounded-[46px] bg-white bg-opacity-[.01] backdrop-blur-[15px] shadow-[10px_10px_5px_0px_rgba(255,255,255,.1)_inset,_0px_-5px_25px_0px_rgba(255,0,77,.35)_inset]"></div>
