@@ -1,11 +1,10 @@
 <template>
-  <div>
-    <NuxtRouteAnnouncer />
-  </div>
-  <NuxtPage />
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
-<style scoped>
+<style>
 .tippy-box[data-theme~=exgrid]{ background: transparent; }
 .tippy-box[data-theme~=exgrid]>.tippy-arrow { opacity: 0; }
 </style>

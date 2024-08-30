@@ -2,8 +2,8 @@
 export default defineNuxtConfig({
     $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
     compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
-  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', 'nuxt-security', '@primevue/nuxt-module'],
+  devtools: { enabled: false },
+  modules: ['@nuxtjs/tailwindcss', 'shadcn-nuxt', 'nuxt-security', '@primevue/nuxt-module', '@nuxt/image'],
     shadcn: {
         /**
          * Prefix for all the imported component
@@ -17,16 +17,27 @@ export default defineNuxtConfig({
     },
     security: {
       corsHandler: {
-          origin: '*',
+          origin: 'http://localhost:8080',
+          methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
+          allowedHeaders: ['content-type', 'Authorization'],
+          credentials: true
       },
         headers: {
+          xFrameOptions: 'DENY',
+          xXSSProtection: '1; mode=block',
           contentSecurityPolicy: {
-              'img-src': [
-                  "'self'",
-                  "data:",
-                  'https://raw.githubusercontent.com/',
-                  'https://api.rss2json.com'
-              ]
+            'default-src': ["'self'"],
+            'img-src': [
+                "'self'",
+                "data:",
+                'https://raw.githubusercontent.com/',
+                'https://api.rss2json.com',
+                'https://images.unsplash.com'
+            ],
+            'connect-src': [
+              "'self'",
+                'http://localhost:8080/articles'
+            ],
           }
         }
     },
@@ -50,5 +61,11 @@ export default defineNuxtConfig({
           }
       }
     },
-    plugins: ['~/plugins/BodyClass.ts']
+    plugins: [
+        '~/plugins/BodyClass.ts',
+        '~/plugins/axios.ts'
+    ],
+    axios: {
+        baseURL: 'http://localhost:8080'
+    }
 })

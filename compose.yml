@@ -1,0 +1,20 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=rabbitmq
+      - RABBITMQ_DEFAULT_PASS=rabbitmq
+
+  cassandra:
+    image: cassandra:latest
+    environment:
+      CASSANDRA_NO_SEEDS: "true"
+    ports:
+      - "9042:9042" # Port for CQL (Cassandra Query Language)
+      - "7000:7000" # Port for inter-node communication
+      - "7001:7001" # Secure inter-node communication port
+    volumes:
+      - ./data:/var/lib/cassandra
