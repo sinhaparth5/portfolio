@@ -1,0 +1,36 @@
+version: 2.1
+
+executors:
+  docker-executor:
+    docker:
+      - image: docker:20.10.24
+    working_directory: ~/repo
+
+jobs:
+  build:
+    executor: docker-executor
+    steps:
+      - checkout
+      - setup_remote_docker:
+          version: 20.10.24
+          docker_layer_caching: true
+
+      - run:
+          name: Install Docker Compose
+          command: |
+            curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            chmod +x /usr/local/bin/docker-compose
+
+      - run:
+          name: Run Docker Compose
+          command: docker compose -f compose.yml up --abort-on-container-exit
+
+      - run:
+          name: Stop Docker Compose
+          command: docker compose -f compose.yml down
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
