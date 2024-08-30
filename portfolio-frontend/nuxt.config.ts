@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     },
     security: {
       corsHandler: {
-          origin: 'http://localhost:8080',
+          origin: 'http://localhost:8001',
           methods: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE'],
           allowedHeaders: ['content-type', 'Authorization'],
           credentials: true
@@ -36,7 +36,7 @@ export default defineNuxtConfig({
             ],
             'connect-src': [
               "'self'",
-                'http://localhost:8080/articles'
+                'http://localhost:8001/articles'
             ],
           }
         }
@@ -66,6 +66,6 @@ export default defineNuxtConfig({
         '~/plugins/axios.ts'
     ],
     axios: {
-        baseURL: 'http://localhost:8080'
+        baseURL: 'http://localhost:8001'
     }
 })

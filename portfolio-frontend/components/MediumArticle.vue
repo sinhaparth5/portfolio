@@ -30,7 +30,7 @@ const error = ref<string | null>(null);
 
 const fetchItems = async () => {
   try {
-    const response = await fetch('http://localhost:8080/articles');
+    const response = await fetch('http://localhost:8001/articles');
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
