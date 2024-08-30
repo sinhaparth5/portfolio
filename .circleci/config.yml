@@ -17,7 +17,7 @@ jobs:
 
       - run:
           name: Build Docker Image
-          command: docker build -f portfolio-frontend/dockerfile test-app .
+          command: docker build -f portfolio-frontend/Dockerfile -t test-app portfolio-frontend
 
 workflows:
   version: 2
