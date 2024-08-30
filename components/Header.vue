@@ -119,8 +119,170 @@
         <div class="w-[20px] h-[10px] border-t-[2px] border-t-white border-b-[2px] border-b-white"></div>
       </a>
     </div>
+    <div id="offcanvas" class="group text-[#181818]">
+      <div class="fixed z-50 top-0 right-0 bottom-0 left-0 bg-[#414141] bg-opacity-[.67] origin-top scale-y-0 group-[[data-t='active']]:scale-y-100 transition-all ease-in-out duration-[.6s] delay-[.6s] group-[[data-t='active']]:delay-0"></div>
+      <div class="fixed z-50 top-0 right-0 bottom-0 left-0 max-w-[400px] bg-[#181818] origin-bottom scale-y-0 group-[[data-t='active']]:scale-y-100 transition-all ease-in-out duration-[.6s] delay-[.3s]">
+        <div class="absolute top-0 right-0 bottom-0 left-0 bg-white origin-bottom scale-y-0 group-[[data-t='active']]:scale-y-100 transition-all ease-in-out duration-[.6s] delay-0 group-[[data-t='active']]:delay-[.6s]"></div>
+        <div class="relative font-medium">
+          <div class="ps-[40px] flex justify-between items-center py-[60px] translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.2s]">
+            <a href="index.html">
+              <img class="" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/logo-light.png" alt="">
+            </a>
+            <a href="#offcanvas" data-c-toggle="active" class="text-[30px] w-[60px] text-center">
+              <i class="fa-solid fa-xmark"></i>
+            </a>
+          </div>
+          <div id="offcanvas-menu" class="group/menu relative">
+            <div class="ps-[40px] h-[60px] border-t-[1px] border-t-[#cecece] border-opacity-[.48] flex justify-between items-center translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.2s]">
+              <a href="index.html">Home</a>
+              <a href="#offcanvas-menu" data-c-toggle="mh" class="border-l-[1px] border-l-[#cecece] border-opacity-[.48] w-[60px] h-[60px] flex items-center justify-center">
+                <i class="fa-solid fa-plus"></i>
+              </a>
+            </div>
+            <div class="hidden group-[[data-t='mh']]/menu:block absolute z-50 top-0 right-0 bottom-0 left-0 bg-white">
+              <div class="ps-[40px] h-[60px] border-t-[1px] border-t-[#cecece] border-opacity-[.48] flex justify-between items-center translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.3s]">
+                <a href="index.html">Home</a>
+                <a href="#offcanvas-menu" data-c-toggle="" class="border-l-[1px] border-l-[#cecece] border-opacity-[.48] w-[60px] h-[60px] flex items-center justify-center">
+                  <i class="fa-solid fa-minus"></i>
+                </a>
+              </div>
+              <div class="ps-[40px] h-[60px] flex items-center border-t-[1px] border-t-[#cecece] border-opacity-[.48]">
+                <a href="index2.html">Creative Designer</a>
+              </div>
+              <div class="ps-[40px] h-[60px] flex items-center border-t-[1px] border-t-[#cecece] border-opacity-[.48]">
+                <a href="index.html">Web Developer</a>
+              </div>
+              <div class="ps-[40px] h-[60px] flex items-center border-t-[1px] border-t-[#cecece] border-opacity-[.48]">
+                <a href="index3.html">Freelancer</a>
+              </div>
+              <div class="ps-[40px] h-[60px] flex items-center border-t-[1px] border-t-[#cecece] border-opacity-[.48]">
+                <a href="index4.html">Digital Marketter</a>
+              </div>
+              <div class="ps-[40px] h-[60px] flex items-center border-t-[1px] border-t-[#cecece] border-opacity-[.48]">
+                <a href="index5.html">Psychiatrist</a>
+              </div>
+            </div>
+            <div class="ps-[40px] h-[60px] border-t-[1px] border-t-[#cecece] border-opacity-[.48] flex justify-between items-center translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.25s]">
+              <a href="about.html">About Me</a>
+            </div>
+            <div class="ps-[40px] h-[60px] border-t-[1px] border-t-[#cecece] border-opacity-[.48] flex justify-between items-center translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.3s]">
+              <a href="services.html">Services</a>
+              <a href="#offcanvas-menu" data-c-toggle="ms" class="border-l-[1px] border-l-[#cecece] border-opacity-[.48] w-[60px] h-[60px] flex items-center justify-center">
+                <i class="fa-solid fa-plus"></i>
+              </a>
+            </div>
+            <div class="hidden group-[[data-t='ms']]/menu:block absolute z-50 top-0 right-0 bottom-0 left-0 bg-white">
+              <div class="ps-[40px] h-[60px] border-t-[1px] border-t-[#cecece] border-opacity-[.48] flex justify-between items-center translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.3s]">
+                <a href="services.html">Services</a>
+                <a href="#offcanvas-menu" data-c-toggle="" class="border-l-[1px] border-l-[#cecece] border-opacity-[.48] w-[60px] h-[60px] flex items-center justify-center">
+                  <i class="fa-solid fa-minus"></i>
+                </a>
+              </div>
+              <div class="ps-[40px] h-[60px] flex items-center border-t-[1px] border-t-[#cecece] border-opacity-[.48]">
+                <a href="services.html">Our Services</a>
+              </div>
+              <div class="ps-[40px] h-[60px] flex items-center border-t-[1px] border-t-[#cecece] border-opacity-[.48]">
+                <a href="service-details.html">Service Details</a>
+              </div>
+            </div>
+            <div class="ps-[40px] h-[60px] border-t-[1px] border-t-[#cecece] border-opacity-[.48] flex justify-between items-center translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.35s]">
+              <a href="case.html">Case Study</a>
+              <a href="#offcanvas-menu" data-c-toggle="mc" class="border-l-[1px] border-l-[#cecece] border-opacity-[.48] w-[60px] h-[60px] flex items-center justify-center">
+                <i class="fa-solid fa-plus"></i>
+              </a>
+            </div>
+            <div class="hidden group-[[data-t='mc']]/menu:block absolute z-50 top-0 right-0 bottom-0 left-0 bg-white">
+              <div class="ps-[40px] h-[60px] border-t-[1px] border-t-[#cecece] border-opacity-[.48] flex justify-between items-center translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.3s]">
+                <a href="case.html">Case Study</a>
+                <a href="#offcanvas-menu" data-c-toggle="" class="border-l-[1px] border-l-[#cecece] border-opacity-[.48] w-[60px] h-[60px] flex items-center justify-center">
+                  <i class="fa-solid fa-minus"></i>
+                </a>
+              </div>
+              <div class="ps-[40px] h-[60px] flex items-center border-t-[1px] border-t-[#cecece] border-opacity-[.48]">
+                <a href="case.html">Our Cases</a>
+              </div>
+              <div class="ps-[40px] h-[60px] flex items-center border-t-[1px] border-t-[#cecece] border-opacity-[.48]">
+                <a href="case-details.html">Case Details</a>
+              </div>
+            </div>
+            <div class="ps-[40px] h-[60px] border-t-[1px] border-t-[#cecece] border-opacity-[.48] flex justify-between items-center translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.4s]">
+              <a href="blog.html">Blog</a>
+              <a href="#offcanvas-menu" data-c-toggle="mb" class="border-l-[1px] border-l-[#cecece] border-opacity-[.48] w-[60px] h-[60px] flex items-center justify-center">
+                <i class="fa-solid fa-plus"></i>
+              </a>
+            </div>
+            <div class="hidden group-[[data-t='mb']]/menu:block absolute z-50 top-0 right-0 bottom-0 left-0 bg-white">
+              <div class="ps-[40px] h-[60px] border-t-[1px] border-t-[#cecece] border-opacity-[.48] flex justify-between items-center translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.3s]">
+                <a href="blog.html">Blog</a>
+                <a href="#offcanvas-menu" data-c-toggle="" class="border-l-[1px] border-l-[#cecece] border-opacity-[.48] w-[60px] h-[60px] flex items-center justify-center">
+                  <i class="fa-solid fa-minus"></i>
+                </a>
+              </div>
+              <div class="ps-[40px] h-[60px] flex items-center border-t-[1px] border-t-[#cecece] border-opacity-[.48]">
+                <a href="blog.html">Our Story</a>
+              </div>
+              <div class="ps-[40px] h-[60px] flex items-center border-t-[1px] border-t-[#cecece] border-opacity-[.48]">
+                <a href="blog-details.html">Blog Details</a>
+              </div>
+            </div>
+            <div class="ps-[40px] h-[60px] border-t-[1px] border-t-[#cecece] border-b-[1px] border-b-[#cecece] border-opacity-[.48] flex justify-between items-center translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.45s]">
+              <a href="contact.html">Contact</a>
+            </div>
+          </div>
+          <div class="mt-[60px] flex justify-center gap-[24px] text-[24px] leading-[24px] translate-y-[30px] opacity-0 group-[[data-t='active']]:opacity-100 group-[[data-t='active']]:translate-y-0 transition-all ease-in-out duration-[.6s] group-[[data-t='active']]:delay-[1.5s]">
+            <a href="#" class="relative w-[46px] h-[46px] flex items-center justify-center">
+              <div class="absolute top-0 right-0 bottom-0 left-0 rounded-[46px] bg-white bg-opacity-[.01] backdrop-blur-[15px] shadow-[10px_10px_5px_0px_rgba(255,255,255,.1)_inset,_0px_-5px_25px_0px_rgba(29,161,242,.35)_inset]"></div>
+              <div class="relative text-transparent bg-clip-text bg-gradient-to-b from-[#1da1f2] from-[0%] to-[#00fafa] to-[100%]">
+                <i class="fa-brands fa-twitter"></i>
+              </div>
+            </a>
+            <a href="#" class="relative w-[46px] h-[46px] flex items-center justify-center">
+              <div class="absolute top-0 right-0 bottom-0 left-0 rounded-[46px] bg-white bg-opacity-[.01] backdrop-blur-[15px] shadow-[10px_10px_5px_0px_rgba(255,255,255,.1)_inset,_0px_-5px_25px_0px_rgba(174,1,255,.35)_inset]"></div>
+              <div class="relative text-transparent bg-clip-text bg-gradient-to-b from-[#ffa800] from-[0%] to-[#ae01ff] to-[100%]">
+                <i class="fa-brands fa-instagram"></i>
+              </div>
+            </a>
+            <a href="#" class="relative w-[46px] h-[46px] flex items-center justify-center">
+              <div class="absolute top-0 right-0 bottom-0 left-0 rounded-[46px] bg-white bg-opacity-[.01] backdrop-blur-[15px] shadow-[10px_10px_5px_0px_rgba(255,255,255,.1)_inset,_0px_-5px_25px_0px_rgba(73,99,237,.45)_inset]"></div>
+              <div class="relative text-transparent bg-clip-text bg-gradient-to-bl from-[#ff676a] from-[0%] via-[#c543d3] via-[42%] to-[#0074fd] to-[100%]">
+                <i class="fa-brands fa-facebook-messenger"></i>
+              </div>
+            </a>
+            <a href="#" class="relative w-[46px] h-[46px] flex items-center justify-center">
+              <div class="absolute top-0 right-0 bottom-0 left-0 rounded-[46px] bg-white bg-opacity-[.01] backdrop-blur-[15px] shadow-[10px_10px_5px_0px_rgba(255,255,255,.1)_inset,_0px_-5px_25px_0px_rgba(255,0,77,.35)_inset]"></div>
+              <div class="relative text-transparent bg-clip-text bg-gradient-to-bl from-[#ff004d] from-[0%] to-[#cf1178] to-[100%]">
+                <i class="fa-brands fa-youtube"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
-<script setup>
+<script>
+export default {
+  mounted() {
+    // Function to attach event listener
+    const s = (el) => {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const t = document.querySelector(this.hash);
+        const n = this.getAttribute('data-c-toggle');
+
+        t.setAttribute(
+            'data-t',
+            t.getAttribute('data-t') === n && !t.getAttribute('data-twice') ? '' : n
+        );
+
+        return false;
+      });
+    };
+
+    // Select all elements with the `data-c-toggle` attribute and attach the event listener
+    document.querySelectorAll('[data-c-toggle]').forEach(s);
+  }
+};
 </script>
