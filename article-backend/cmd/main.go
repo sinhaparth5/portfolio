@@ -32,7 +32,7 @@ func main() {
 
 	go func() {
 		defer wg.Done()
-		if err := r.Run(":8080"); err != nil {
+		if err := r.Run(":8001"); err != nil {
 			log.Fatal(err)
 		}
 	}()

@@ -2,11 +2,10 @@ package rabbitmq
 
 import (
 	"article-backend/internal/cassandra"
-	"article-backend/internal/services"
-	"github.com/joho/godotenv"
-	"github.com/streadway/amqp"
 	"log"
 	"os"
+	"github.com/joho/godotenv"
+	"github.com/streadway/amqp"
 )
 
 var conn *amqp.Connection
@@ -83,13 +82,16 @@ func StartConsumer() {
 	go func() {
 		for msg := range msgs {
 			log.Printf("Received a message: %s", msg.Body)
-			articles := services.FetchMediumArticles()
-			for _, article := range articles {
-				if err := cassandra.SaveArticle(article); err != nil {
-					log.Printf("Failed to save article %s: %s", article.Title, err)
-				}
+			articles, err := cassandra.GetAllArticles() // Fetch all articles from Cassandra
+			if err != nil {
+				log.Printf("Failed to get articles: %s", err)
+				continue
 			}
 
+			for _, article := range articles {
+				// Process each article here (e.g., log, send to another service, etc.)
+				log.Printf("Article ID: %s, Title: %s, Link: %s, PubDate: %s", article.ID, article.Title, article.Link, article.PubDate)
+			}
 		}
 	}()
 }

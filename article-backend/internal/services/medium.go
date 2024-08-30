@@ -41,10 +41,9 @@ func FetchMediumArticles() []cassandra.Article {
 	for _, item := range rss.Channel.Item {
 		pubDate, _ := time.Parse(time.RFC1123Z, item.PubDate)
 		articles = append(articles, cassandra.Article{
-			Title:       item.Title,
-			Description: item.Description,
-			Link:        item.Link,
-			PubDate:     pubDate,
+			Title:   item.Title,
+			Link:    item.Link,
+			PubDate: pubDate,
 		})
 	}
 	return articles
