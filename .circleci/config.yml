@@ -15,12 +15,16 @@ jobs:
           docker_layer_caching: true
 
       - run:
-          name: Tag Docker image
+          name: Docker Image tag
           command: |
             TAG=$(git rev-parse --short HEAD)
-            echo "TAG=${TAG}" # Debugging: Output the tag
-            docker build -t $DOCKER_USERNAME/portfolio-fe:$TAG ./portfolio-frontend
-            echo "export IMAGE_TAG=${TAG}" >> $BASH_ENV
+            echo "TAG=${TAG}"
+            export IMAGE_TAG=$TAG
+
+      - run:
+          name: Tag Docker image
+          command: |
+            docker build -t $DOCKER_USERNAME/portfolio-fe:$IMAGE_TAG ./portfolio-frontend
       
       - run:
           name: Validate IMAGE_TAG
