@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Pull Docker image
           command: |
-            ssh -o StrictHostKeyChecking=no -i $CIVO_KEY civo@$CIVO_IP "docker pull $DOCKER_USERNAME/porfolio-fe:$IMAGE_TAG"
+            ssh -o StrictHostKeyChecking=no -i $CIVO_KEY root@$CIVO_IP "docker pull $DOCKER_USERNAME/porfolio-fe:$IMAGE_TAG"
       
       - run:
           name: Stop Old Docker Container
