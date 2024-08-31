@@ -40,21 +40,36 @@ jobs:
           docker_layer_caching: true
 
       - run:
-          name: Pull Docker image
+          name: Install Civo CLI
           command: |
-            ssh -o StrictHostKeyChecking=no -i $CIVO_KEY root@$CIVO_IP "docker pull $DOCKER_USERNAME/porfolio-fe:$IMAGE_TAG"
+            curl -sL https://github.com/civo/cli/releases/latest/download/civo-linux-amd64 -o /usr/local/bin/civo
+            chmod +x /usr/local/bin/civo
       
       - run:
-          name: Stop Old Docker Container
+          name: Civo CLI Login
           command: |
-            ssh -o StrictHostKeyChecking=no -i $CIVO_KEY civo@$CIVO_IP "docker stop portfolio-container || true"
-            ssh -o StrictHostKeyChecking=no -i $CIVO_KEY civo@$CIVO_IP "docker rm portfolio-container || true"
-      
+            echo $CIVO_API_KEY | civo apikey add circleci --key $CIVO_API_KEY
+
       - run:
-          name: Deploy Docker Container
+          name: Pull Docker Image
           command: |
-            ssh -o StrictHostKeyChecking=no -i $CIVO_KEY civo@$CIVO_IP "docker run -d --name portfolio-container -p 80:3000 $DOCKER_USERNAME/porfolio-fe:$IMAGE_TAG"
-            
+            TAG=$(git rev-parse --short HEAD)
+            civo instance ssh $CIVO_INSTANCE_ID --command "docker pull $DOCKER_USERNAME/portfolio-fe:$TAG"
+
+      # Delete the old Docker image
+      - run:
+          name: Delete Old Docker Image
+          command: |
+          
+            civo instance ssh $CIVO_INSTANCE_ID --command "docker image prune -f"
+
+      # Deploy the new Docker image
+      - run:
+          name: Deploy New Docker Image
+          command: |
+            TAG=$(git rev-parse --short HEAD)
+            civo instance ssh $CIVO_INSTANCE_ID --command "docker run -d --name portfolio-app -p 80:3000 $DOCKER_USERNAME/portfolio-fe:$TAG"
+
 workflows:
   version: 2
   build_and_deploy:
