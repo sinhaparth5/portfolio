@@ -17,6 +17,7 @@ jobs:
       - run:
           name: Build Docker image
           command: |
+            echo "${DOCKER_USERNAME}"
             docker build -t $DOCKER_USERNAME/porfolio-fe:latest ./portfolio-frontend
 
       - run:
