@@ -12,7 +12,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker:
-          version: 20.10.24
           docker_layer_caching: true
 
       - run:
@@ -20,8 +19,51 @@ jobs:
           command: |
             docker build -t $DOCKER_USERNAME/porfolio-fe:latest ./portfolio-frontend
 
+      - run:
+          name: Tag Docker image
+          command: |
+            TAG=$(git rev-parse --short HEAD)
+            docker tag $DOCKER_USERNAME/portfolio-fe:latest $DOCKER_USERNAME/portfolio-fe:$TAG
+            echo "export IMAGE_TAG=${TAG}" >> $BASH_ENV
+      
+      - run:
+          name: Docker Hub Login
+          command: |
+            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
+
+      - run:
+          name: Push Docker image
+          command: |
+            docker push $DOCKER_USERNAME/portfolio-fe:$IMAGE_TAG
+      
+  deploy:
+    executor: docker-executors
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+
+      - run:
+          name: Pull Docker image
+          command: |
+            ssh -o StrictHostKeyChecking=no -i $CIVO_KEY civo@$CIVO_IP "docker pull $DOCKER_USERNAME/porfolio-fe:$IMAGE_TAG"
+      
+      - run:
+          name: Stop Old Docker Container
+          command: |
+            ssh -o StrictHostKeyChecking=no -i $CIVO_KEY civo@$CIVO_IP "docker stop portfolio-container || true"
+            ssh -o StrictHostKeyChecking=no -i $CIVO_KEY civo@$CIVO_IP "docker rm portfolio-container || true"
+      
+      - run:
+          name: Deploy Docker Container
+          command: |
+            ssh -o StrictHostKeyChecking=no -i $CIVO_KEY civo@$CIVO_IP "docker run -d --name portfolio-container -p 80:3000 $DOCKER_USERNAME/porfolio-fe:$IMAGE_TAG"
+            
 workflows:
   version: 2
   build_and_deploy:
     jobs:
     - build_and_push
+    - deploy:
+        requires:
+          - build_and_push
