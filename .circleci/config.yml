@@ -34,54 +34,26 @@ jobs:
       
   deploy:
     docker:
-      - image: cimg/python:3.10
+      - image: arvindr226/alpine-ssh
     steps:
       - checkout
-
-      - run:
-          name: Install Civo CLI
-          command: |
-            wget https://github.com/civo/cli/releases/download/v1.0.40/civo-1.0.40-linux-amd64.tar.gz
-            tar -xvf civo-1.0.40-linux-amd64.tar.gz
-            sudo chmod +x civo
-            sudo mv ./civo /usr/local/bin/
-            export CIVO_API_KEY_NAME=${CIVO_API_KEY_NAME:-circleci}
-            civo apikey save --load-from-env
-
-      - run:
-            name: SSH into Instance and Manage Docker Images
-            command: |
-              # Pull the new Docker image on the instance
-              ssh -o StrictHostKeyChecking=no -i $CIVO_SSH_KEY root@$CIVO_IP "docker pull $DOCKER_USERNAME/portfolio-fe:$IMAGE_TAG"
-              
-              # Remove old Docker container if exists
-              ssh -o StrictHostKeyChecking=no -i $CIVO_SSH_KEY root@$CIVO_IP "docker rm -f my-app || true"
-              
-              # Remove old Docker image
-              ssh -o StrictHostKeyChecking=no -i $CIVO_SSH_KEY root@$CIVO_IP "docker image prune -f"
-              
-              # Run new Docker container
-              ssh -o StrictHostKeyChecking=no -i $CIVO_SSH_KEY root@$CIVO_IP "docker run -d --name my-app $DOCKER_USERNAME/portfolio-fe:$IMAGE_TAG"
 
       - run:
           name: Pull Docker Image
           command: |
             TAG=$(git rev-parse --short HEAD)
-            civo instance ssh $CIVO_INSTANCE_ID --command "docker pull $DOCKER_USERNAME/portfolio-fe:$TAG"
+            ssh -oStrictHostKeyChecking=no -v $CIVO_USER@$CIVO_IP "docker pull $DOCKER_USERNAME/portfolio-fe:$TAG"
 
-      # Delete the old Docker image
       - run:
           name: Delete Old Docker Image
           command: |
-          
-            civo instance ssh $CIVO_INSTANCE_ID --command "docker image prune -f"
+            ssh -oStrictHostKeyChecking=no -v $CIVO_USER@$CIVO_IP "docker image prune -f"
 
-      # Deploy the new Docker image
       - run:
           name: Deploy New Docker Image
           command: |
             TAG=$(git rev-parse --short HEAD)
-            civo instance ssh $CIVO_INSTANCE_ID --command "docker run -d --name portfolio-app -p 80:3000 $DOCKER_USERNAME/portfolio-fe:$TAG"
+            ssh -oStrictHostKeyChecking=no -v $CIVO_USER@$CIVO_IP "docker run -d --name portfolio-app -p 80:3000 $DOCKER_USERNAME/portfolio-fe:$TAG"
 
 workflows:
   version: 2
