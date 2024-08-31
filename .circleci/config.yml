@@ -45,11 +45,8 @@ jobs:
             tar -xvf civo-1.0.40-linux-amd64.tar.gz
             sudo chmod +x civo
             sudo mv ./civo /usr/local/bin/
-      
-      - run:
-          name: Civo CLI Login
-          command: |
-            echo $CIVO_API_KEY | civo apikey add circleci --name $CIVO_API_KEY
+            export CIVO_API_KEY_NAME=${CIVO_API_KEY_NAME:-circleci}
+            civo apikey save --load-from-env
 
       - run:
           name: Pull Docker Image
