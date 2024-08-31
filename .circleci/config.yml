@@ -49,7 +49,7 @@ jobs:
       - run:
           name: Civo CLI Login
           command: |
-            echo $CIVO_API_KEY | civo apikey add circleci --key $CIVO_API_KEY
+            echo $CIVO_API_KEY | civo apikey add circleci --name $CIVO_API_KEY
 
       - run:
           name: Pull Docker Image
