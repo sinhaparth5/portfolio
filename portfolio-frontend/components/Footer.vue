@@ -8,17 +8,17 @@
           <NuxtLink to="/" class="font-semibold">Parth Sinha</NuxtLink>
         </div>
         <div class="hidden md:flex gap-[24px] text-[24px] leading-[24px]">
-          <a href="#" class="text-transparent bg-clip-text bg-gradient-to-b from-[#1da1f2] from-[0%] to-[#00fafa] to-[100%]">
-            <i class="fa-brands fa-twitter"></i>
+          <a href="https://x.com/sinhaparth555" class="text-transparent bg-clip-text bg-gradient-to-b from-[#1da1f2] from-[0%] to-[#00fafa] to-[100%]">
+            <i class="fa-brands fa-x-twitter"></i>
           </a>
-          <a href="#" class="text-transparent bg-clip-text bg-gradient-to-b from-[#ffa800] from-[0%] to-[#ae01ff] to-[100%]">
+          <a href="https://www.instagram.com/sinhaparth5/" class="text-transparent bg-clip-text bg-gradient-to-b from-[#ffa800] from-[0%] to-[#ae01ff] to-[100%]">
             <i class="fa-brands fa-instagram"></i>
           </a>
-          <a href="#" class="text-transparent bg-clip-text bg-gradient-to-bl from-[#ff676a] from-[0%] via-[#c543d3] via-[42%] to-[#0074fd] to-[100%]">
-            <i class="fa-brands fa-facebook-messenger"></i>
+          <a href="https://www.linkedin.com/in/parth-sinha18/" class="text-transparent bg-clip-text bg-gradient-to-bl from-[#ff676a] from-[0%] via-[#c543d3] via-[42%] to-[#0074fd] to-[100%]">
+            <i class="fa-brands fa-linkedin-in"></i>
           </a>
-          <a href="#" class="text-transparent bg-clip-text bg-gradient-to-bl from-[#ff004d] from-[0%] to-[#cf1178] to-[100%]">
-            <i class="fa-brands fa-youtube"></i>
+          <a href="https://github.com/sinhaparth5" class="text-transparent bg-clip-text bg-gradient-to-bl from-[#ff004d] from-[0%] to-[#cf1178] to-[100%]">
+            <i class="fa-brands fa-github"></i>
           </a>
         </div>
       </div>

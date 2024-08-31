@@ -19,28 +19,28 @@
               </div>
               <div class="my-[10px] border-t-[1px] border-t-[#414141]"></div>
               <div class="flex gap-[12px] text-[24px] leading-[24px]">
-                <a href="#" class="relative w-[46px] h-[46px] flex items-center justify-center">
+                <a href="https://x.com/sinhaparth555" class="relative w-[46px] h-[46px] flex items-center justify-center">
                   <div class="absolute top-0 right-0 bottom-0 left-0 rounded-[46px] bg-white bg-opacity-[.01] backdrop-blur-[15px] shadow-[10px_10px_5px_0px_rgba(255,255,255,.1)_inset,_0px_-5px_25px_0px_rgba(29,161,242,.35)_inset]"></div>
                   <div class="relative text-transparent bg-clip-text bg-gradient-to-b from-[#1da1f2] from-[0%] to-[#00fafa] to-[100%]">
-                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-x-twitter"></i>
                   </div>
                 </a>
-                <a href="#" class="relative w-[46px] h-[46px] flex items-center justify-center">
+                <a href="https://www.instagram.com/sinhaparth5/" class="relative w-[46px] h-[46px] flex items-center justify-center">
                   <div class="absolute top-0 right-0 bottom-0 left-0 rounded-[46px] bg-white bg-opacity-[.01] backdrop-blur-[15px] shadow-[10px_10px_5px_0px_rgba(255,255,255,.1)_inset,_0px_-5px_25px_0px_rgba(174,1,255,.35)_inset]"></div>
                   <div class="relative text-transparent bg-clip-text bg-gradient-to-b from-[#ffa800] from-[0%] to-[#ae01ff] to-[100%]">
                     <i class="fa-brands fa-instagram"></i>
                   </div>
                 </a>
-                <a href="#" class="relative w-[46px] h-[46px] flex items-center justify-center">
+                <a href="https://www.linkedin.com/in/parth-sinha18/" class="relative w-[46px] h-[46px] flex items-center justify-center">
                   <div class="absolute top-0 right-0 bottom-0 left-0 rounded-[46px] bg-white bg-opacity-[.01] backdrop-blur-[15px] shadow-[10px_10px_5px_0px_rgba(255,255,255,.1)_inset,_0px_-5px_25px_0px_rgba(73,99,237,.45)_inset]"></div>
                   <div class="relative text-transparent bg-clip-text bg-gradient-to-bl from-[#ff676a] from-[0%] via-[#c543d3] via-[42%] to-[#0074fd] to-[100%]">
-                    <i class="fa-brands fa-facebook-messenger"></i>
+                    <i class="fa-brands fa-linkedin-in"></i>
                   </div>
                 </a>
-                <a href="#" class="relative w-[46px] h-[46px] flex items-center justify-center">
+                <a href="https://github.com/sinhaparth5" class="relative w-[46px] h-[46px] flex items-center justify-center">
                   <div class="absolute top-0 right-0 bottom-0 left-0 rounded-[46px] bg-white bg-opacity-[.01] backdrop-blur-[15px] shadow-[10px_10px_5px_0px_rgba(255,255,255,.1)_inset,_0px_-5px_25px_0px_rgba(255,0,77,.35)_inset]"></div>
                   <div class="relative text-transparent bg-clip-text bg-gradient-to-bl from-[#ff004d] from-[0%] to-[#cf1178] to-[100%]">
-                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-github"></i>
                   </div>
                 </a>
               </div>
@@ -50,7 +50,7 @@
               <div class="text-[20px] text-[#a0a0a0] group-hover:text-white transition-all duration-[.5s]">
                 <i class="fa-solid fa-circle-arrow-right"></i>
               </div>
-            </a>+
+            </a>
             <a href="#" class="group relative p-[20px] rounded-[20px] border-[1px] border-[#414141] hover:border-white flex items-center justify-between transition-all duration-[.5s]">
               <div class="font-bold">Download Resume</div>
               <div class="text-[20px] text-[#a0a0a0] group-hover:text-white transition-all duration-[.5s]">
@@ -59,7 +59,7 @@
             </a>
             <div class="flex text-[#949494]">
               <div class="me-[5px]">&copy; All Rights Reserved</div>
-              <a href="#" class="font-semibold">Exgrid</a>
+              <a href="#" class="font-semibold">Parth Sinha</a>
             </div>
           </div>
         </div>
@@ -121,7 +121,7 @@
               <div class="text-[15px] leading-[24px] text-[#686868]">TOTAL PROJECTS</div>
             </div>
             <div class="xl:flex-1">
-              <a href="#" class="group inline-flex gap-[20px] xl:gap-0 xl:flex justify-between px-[15px] py-[10px] border-[#414141] border-[1px] rounded-[12px]">
+              <a href="mailto:contact@parthsinha.com" class="group inline-flex gap-[20px] xl:gap-0 xl:flex justify-between px-[15px] py-[10px] border-[#414141] border-[1px] rounded-[12px]">
                 <div class="relative font-bold overflow-hidden">
                   <div class="absolute top-0 right-0 bottom-0 left-0 flex">
                     <div class="relative top-[-100%] group-hover:top-0 transition-all duration-[.25s] ease-[cubic-bezier(0.5,-1,0.5,2)] delay-[.35s] group-hover:delay-[.05s]">H</div>
@@ -171,140 +171,46 @@
             </div>
           </div>
         </div>
-        <div data-scroll="[data-scroll-item]" data-tippy="#tippy1">
-          <div v-if="false" data-scroll-cog>
-            {
-            "scrollTrigger": {
-            "trigger": "[data-scroll-item]"
-            }
-            }
-          </div>
-          <div data-scroll-item class="group overflow-hidden" :class="{ 'c-active': isActive }">
-            <div class="opacity-0 translate-y-[100px] group-[.c-active]:opacity-100 group-[.c-active]:translate-y-0 transition-all duration-[1s] delay-[.05s]">
-              <div class="border-t-[#414141] border-t-[1px]"></div>
-              <div class="py-[60px] text-[#686868]">
-                <div class="flex gap-[10px] mb-[18px]">
-                  <a href="#" class="py-[4px] px-[16px] border-[1px] border-[#414141] hover:border-[#f70354] hover:text-[#f70354] rounded-[40px]">Web Application</a>
-                  <a href="#" class="py-[4px] px-[16px] border-[1px] border-[#414141] hover:border-[#f70354] hover:text-[#f70354] rounded-[40px] flex items-center">
-                    <div>Client Review</div>
-                    <div class="ms-[10px]"><i class="fa-solid fa-square-caret-right"></i></div>
-                  </a>
-                </div>
-                <div class="flex justify-between items-center">
-                  <a href="#" class="text-[30px] leading-[40px] font-bold hover:text-[#f70354]">Top view idealight bulb draw</a>
-                  <a href="#" class="text-[15px] leading-[24px]">Design & Animation</a>
+        <div v-if="items && items.length">
+          <div v-for="item in items.slice(0, 4)" :key="item">
+            <div data-scroll="[data-scroll-item]">
+              <div v-if="false" data-scroll-cog>
+                {
+                "scrollTrigger": {
+                "trigger": "[data-scroll-item]"
+                }
+                }
+              </div>
+              <div data-scroll-item class="group overflow-hidden" :class="{ 'c-active': isActive }">
+                <div class="opacity-0 translate-y-[100px] group-[.c-active]:opacity-100 group-[.c-active]:translate-y-0 transition-all duration-[1s] delay-[.05s]">
+                  <div class="border-t-[#414141] border-t-[1px]"></div>
+                  <div class="py-[60px] text-[#686868]">
+                    <div class="flex gap-[10px] mb-[18px]">
+                      <a :href="item.link" class="py-[4px] px-[16px] border-[1px] border-[#414141] hover:border-[#f70354] hover:text-[#f70354] rounded-[40px] flex items-center">
+                        <div>Read Full Article</div>
+                        <div class="ms-[10px]"><i class="fa-solid fa-square-caret-right"></i></div>
+                      </a>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <a href="#" class="text-[30px] leading-[40px] font-bold hover:text-[#f70354]">{{ item.title }}</a>
+                      <a href="#" class="text-[15px] leading-[24px]">{{ formatDate(item.pubDate) }}</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div id="tippy1" class="hidden">
-            <NuxtImg class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/hover-thumb.png" alt="Tooltip Image" />
-          </div>
-        </div>
-        <div data-scroll="[data-scroll-item]" data-tippy="#tippy2" class="">
-          <div class="hidden" data-scroll-cog="">
-            {
-            "scrollTrigger": {
-            "trigger": "[data-scroll-item]"
-
-            }
-            }
-          </div>
-          <div data-scroll-item="" class="group overflow-hidden ">
-            <div class="opacity-0 translate-y-[100px] group-[.c-active]:opacity-100 group-[.c-active]:translate-y-0 transition-all duration-[1s] delay-[.05s]">
-              <div class="border-t-[#414141] border-t-[1px]"></div>
-              <div class="py-[60px] text-[#686868]">
-                <div class="flex gap-[10px] mb-[18px]">
-                  <a href="#" class="py-[4px] px-[16px] border-[1px] border-[#414141] hover:border-[#f70354] hover:text-[#f70354] rounded-[40px]">Web Application</a>
-                  <a href="#" class="py-[4px] px-[16px] border-[1px] border-[#414141] hover:border-[#f70354] hover:text-[#f70354] rounded-[40px] flex items-center">
-                    <div class="">Client Review</div>
-                    <div class="ms-[10px]"><i class="fa-solid fa-square-caret-right"></i></div>
-                  </a>
-                </div>
-                <div class="flex justify-between items-center">
-                  <a href="#" class="text-[30px] leading-[40px] font-bold hover:text-[#f70354]">The Wild Hunt web system</a>
-                  <a href="#" class="text-[15px] leading-[24px]">Design & Animation</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="tippy2" class="hidden">
-            <NuxtImg class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/two.png" alt="" />
-          </div>
-        </div>
-        <div data-scroll="[data-scroll-item]" data-tippy="#tippy3" class="">
-          <div class="hidden" data-scroll-cog="">
-            {
-            "scrollTrigger": {
-            "trigger": "[data-scroll-item]"
-
-            }
-            }
-          </div>
-          <div data-scroll-item="" class="group overflow-hidden ">
-            <div class="opacity-0 translate-y-[100px] group-[.c-active]:opacity-100 group-[.c-active]:translate-y-0 transition-all duration-[1s] delay-[.05s]">
-              <div class="border-t-[#414141] border-t-[1px]"></div>
-              <div class="py-[60px] text-[#686868]">
-                <div class="flex gap-[10px] mb-[18px]">
-                  <a href="#" class="py-[4px] px-[16px] border-[1px] border-[#414141] hover:border-[#f70354] hover:text-[#f70354] rounded-[40px]">Web Application</a>
-                  <a href="#" class="py-[4px] px-[16px] border-[1px] border-[#414141] hover:border-[#f70354] hover:text-[#f70354] rounded-[40px] flex items-center">
-                    <div class="">Client Review</div>
-                    <div class="ms-[10px]"><i class="fa-solid fa-square-caret-right"></i></div>
-                  </a>
-                </div>
-                <div class="flex justify-between items-center">
-                  <a href="#" class="text-[30px] leading-[40px] font-bold hover:text-[#f70354]">Netfly Provides A User-Friendly</a>
-                  <a href="#" class="text-[15px] leading-[24px]">Design & Animation</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="tippy3" class="hidden">
-            <NuxtImg class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/three.png" alt="" />
-          </div>
-        </div>
-        <div data-scroll="[data-scroll-item]" data-tippy="#tippy4" class="">
-          <div class="hidden" data-scroll-cog="">
-            {
-            "scrollTrigger": {
-            "trigger": "[data-scroll-item]"
-
-            }
-            }
-          </div>
-          <div data-scroll-item="" class="group overflow-hidden ">
-            <div class="opacity-0 translate-y-[100px] group-[.c-active]:opacity-100 group-[.c-active]:translate-y-0 transition-all duration-[1s] delay-[.05s]">
-              <div class="border-t-[#414141] border-t-[1px]"></div>
-              <div class="py-[60px] text-[#686868]">
-                <div class="flex gap-[10px] mb-[18px]">
-                  <a href="#" class="py-[4px] px-[16px] border-[1px] border-[#414141] hover:border-[#f70354] hover:text-[#f70354] rounded-[40px]">Web Application</a>
-                  <a href="#" class="py-[4px] px-[16px] border-[1px] border-[#414141] hover:border-[#f70354] hover:text-[#f70354] rounded-[40px] flex items-center">
-                    <div class="">Client Review</div>
-                    <div class="ms-[10px]"><i class="fa-solid fa-square-caret-right"></i></div>
-                  </a>
-                </div>
-                <div class="flex justify-between items-center">
-                  <a href="#" class="text-[30px] leading-[40px] font-bold hover:text-[#f70354]">Marketplaces NFT Collections</a>
-                  <a href="#" class="text-[15px] leading-[24px]">Design & Animation</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="tippy4" class="hidden">
-            <NuxtImg class="w-[196px] h-[176px] object-cover object-center rotate-[10deg] rounded-[30px]" src="https://raw.githubusercontent.com/uiaextend/exgrid/main/light/case-study/thumb.png" alt=""/>
           </div>
         </div>
         <div class="border-t-[#414141] border-t-[1px]"></div>
         <div data-scroll="[data-scroll-item]" class="text-[45px] leading-[55px] font-semibold mt-[60px] mb-[30px]">
           <div class="hidden" data-scroll-cog="">
             {
-            "scrollTrigger": {
-            "trigger": "[data-scroll-item]"
-
-            }
+              scrollTrigger: {
+                trigger: "[data-scroll-item]"
+              }
             }
           </div>
-          <div data-scroll-item="" class="group flex justify-center gap-[10px]">
+          <div ref="scrollItem" :class="{ 'c-active': isActive }" data-scroll-item="" class="group flex justify-center gap-[10px]">
             <div class="overflow-hidden">
               <div class="opacity-0 translate-x-[100px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all ease-out duration-[3.2s]">About</div>
             </div>
@@ -314,121 +220,51 @@
           </div>
         </div>
         <div class="p-[40px] rounded-[30px] border-[#414141] bg-gradient-to-b from-[#262626] to-[rgba(38,38,38,0.1)] border-[1px]">
-          <div data-scroll="[data-scroll-item]" class="text-[55px] leading-[65px] mb-[40px]">
-            <div class="hidden" data-scroll-cog="">
-              {
-              "scrollTrigger": {
-              "trigger": "[data-scroll-item]"
-
-              }
-              }
-            </div>
-            <div data-scroll-item="" class="group">
+          <div class="text-[55px] leading-[65px] mb-[40px]">
+            <div ref="scrollItem" :class="{ 'c-active': isActive }" class="group">
               <div class="flex uppercase overflow-hidden">
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-0">H</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.03s]">i</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.06s]">&nbsp;</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.09s]">I</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.12s]">'</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.15s]">m</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.18s]">&nbsp;</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.21s]">A</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.24s]">n</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.27s]">d</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.3s]">r</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.33s]">e</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.36s]">a</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.39s]">,</div>
+                <div v-for="(item, index) in formattedText('Hi I\'m Parth,')"
+                     :key="index"
+                     :class="['opacity-0 translate-x-[70px] transition-all duration-[.8s]', {'group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0': true, [`group-[.c-active]:delay-[${index * 0.03}s]`]: true }]">
+                  {{ item }}
+                </div>
               </div>
               <div class="flex">
                 <div class="font-bold flex overflow-hidden">
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-0">W</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.03s]">E</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.06s]">B</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.09s]">F</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.12s]">L</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.15s]">O</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.18s]">W</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.21s]">&nbsp;</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.24s]">D</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.27s]">E</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.3s]">S</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.33s]">I</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.36s]">G</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.39s]">N</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.42s]">E</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.42s]">R</div>
+                  <div v-for="(item, index) in formattedText('Developer')"
+                       :key="index"
+                       :class="['opacity-0 translate-x-[70px] transition-all duration-[.8s]', {'group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0': true, [`group-[.c-active]:delay-[${index * 0.03}s]`]: true }]">
+                    {{ item }}
+                  </div>
                 </div>
                 <div class="ms-[10px] flex overflow-hidden">
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.45s]">&nbsp;</div>
-                  <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.48s]">I</div>
+                  <div v-for="(item, index) in formattedText('AND')"
+                       :key="index"
+                       :class="['opacity-0 translate-x-[70px] transition-all duration-[.8s]', {'group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0': true, [`group-[.c-active]:delay-[${index * 0.03}s]`]: true }]">
+                    {{ item }}
+                  </div>
+                </div>
+              </div>
+              <div class="px-[10px] bg-white text-[#f70354] font-bold inline-flex overflow-hidden">
+                <div v-for="(item, index) in formattedText('Computer Science')"
+                     :key="index"
+                     :class="['opacity-0 translate-x-[70px] transition-all duration-[.8s]', {'group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0': true, [`group-[.c-active]:delay-[${index * 0.03}s]`]: true }]">
+                  {{ item }}
                 </div>
               </div>
               <div class="flex overflow-hidden">
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-0">W</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.03s]">O</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.06s]">R</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.09s]">K</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.12s]">&nbsp;</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.15s]">A</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.18s]">S</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.21s]">&nbsp;</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.24s]">T</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.27s]">H</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.3s]">E</div>
-              </div>
-              <div class="px-[10px] bg-white text-[#f70354] font-bold inline-flex overflow-hidden">
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-0">C</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.03s]">R</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.06s]">E</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.09s]">A</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.12s]">T</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.15s]">I</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.18s]">V</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.21s]">E</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.24s]">&nbsp;</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.27s]">D</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.3s]">I</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.33s]">R</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.36s]">E</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.39s]">C</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.42s]">T</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.42s]">O</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.45s]">R</div>
-              </div>
-              <div class="flex overflow-hidden">
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-0">A</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.03s]">T</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.06s]">&nbsp;</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.09s]">P</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.12s]">E</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.15s]">&nbsp;</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.18s]">C</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.21s]">R</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.24s]">E</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.27s]">A</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.3s]">&nbsp;</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.33s]">S</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.36s]">T</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.39s]">U</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.42s]">D</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.42s]">I</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.45s]">O</div>
+                <div v-for="(item, index) in formattedText('Student at Oxford')"
+                     :key="index"
+                     :class="['opacity-0 translate-x-[70px] transition-all duration-[.8s]', {'group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0': true, [`group-[.c-active]:delay-[${index * 0.03}s]`]: true }]">
+                  {{ item }}
+                </div>
               </div>
               <div class="font-bold flex">
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-0">I</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.03s]">N</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.06s]">&nbsp;</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.09s]">B</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.12s]">R</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.15s]">O</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.18s]">O</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.21s]">K</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.24s]">L</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.27s]">Y</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.3s]">N</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.33s]">&nbsp;</div>
-                <div class="opacity-0 translate-x-[70px] group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0 transition-all duration-[.8s] group-[.c-active]:delay-[0.36s]">.</div>
+                <div v-for="(item, index) in formattedText('Brookes University')"
+                     :key="index"
+                     :class="['opacity-0 translate-x-[70px] transition-all duration-[.8s]', {'group-[.c-active]:opacity-100 group-[.c-active]:translate-x-0': true, [`group-[.c-active]:delay-[${index * 0.03}s]`]: true }]">
+                  {{ item }}
+                </div>
               </div>
             </div>
           </div>
@@ -674,6 +510,13 @@
 import { ref, onMounted } from 'vue'
 import tippy from "tippy.js";
 import 'tippy.js/dist/tippy.css'
+import { useArticle } from "../composables/useArticle.ts";
+import {formatDate} from "compatx";
+import { useAnimation } from "../composables/useAnimation.ts";
+
+const { items, pending, error } = useArticle();
+
+const { element: animatedElement } = useAnimation('animated__fadeInLeft', '1s');
 
 // Data for the text lines
 const firstLine = ['H', 'i', ' ', 'I', "'", 'm', ' ', 'P', 'a', 'r', 't', 'h', ',']
@@ -711,8 +554,12 @@ onMounted(() => {
   setTimeout(() => {
     isActive.value = true
   }, 500)
-  initTippy()
 })
+
+const formattedText = (text) => {
+  // Split text into letters and spaces
+  return text.split('').map(char => char === ' ' ? '\u00A0' : char)
+}
 </script>
 
 <style scoped>
@@ -723,5 +570,13 @@ onMounted(() => {
 .group.c-active div {
   opacity: 1;
   transform: translateX(0);
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 </style>

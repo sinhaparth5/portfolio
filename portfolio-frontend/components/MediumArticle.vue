@@ -21,31 +21,8 @@
 </template>
 
 <script setup lang="ts">
-import {onMounted, ref} from 'vue';
-import type {Item} from 'types/Item';
-
-const items = ref<Item[] | null>(null);
-const pending = ref(true);
-const error = ref<string | null>(null);
-
-const fetchItems = async () => {
-  try {
-    const response = await fetch('http://localhost:8001/articles');
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    items.value = await response.json();
-  } catch (err) {
-    error.value = 'Error fetching Medium data';
-    console.error(err);
-  } finally {
-    pending.value = false;
-  }
-};
-
-onMounted(() => {
-  fetchItems();
-});
+import { useArticle } from "../composables/useArticle";
+const { items, pending, error } = useArticle();
 
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);

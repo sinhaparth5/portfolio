@@ -67,5 +67,8 @@ export default defineNuxtConfig({
     ],
     axios: {
         baseURL: 'http://localhost:8001'
-    }
+    },
+    css: [
+        'animate.css/animate.min.css',
+    ]
 })
