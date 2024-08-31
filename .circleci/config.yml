@@ -3,13 +3,14 @@ version: 2.1
 executors:
   docker-executors:
     docker:
-      - image: cimg/base:stable
+      - image: circleci/docker:latest
 
 jobs:
   build_and_push:
     executor: docker-executors
     steps:
       - checkout
+      - setup_remote_docker
 
       - run:
           name: Build Docker image
