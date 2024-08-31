@@ -39,7 +39,7 @@ jobs:
       - checkout
       - run:
           name: Install git
-          command: apt-get update && apt-get install -y git
+          command: apt update && apt install -y git
 
       - run:
           name: Pull Docker Image
