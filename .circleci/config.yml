@@ -34,7 +34,7 @@ jobs:
       
   deploy:
     docker:
-      - image: circleci/python:3.10
+      - image: cimg/python:3.10
     steps:
       - checkout
 
@@ -43,8 +43,8 @@ jobs:
           command: |
             wget https://github.com/civo/cli/releases/download/v1.0.40/civo-1.0.40-linux-amd64.tar.gz
             tar -xvf civo-1.0.40-linux-amd64.tar.gz
-            chmod +x civo
-            mv ./civo /usr/local/bin/
+            sudo chmod +x civo
+            sudo mv ./civo /usr/local/bin/
       
       - run:
           name: Civo CLI Login
