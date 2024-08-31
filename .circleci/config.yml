@@ -15,21 +15,10 @@ jobs:
           docker_layer_caching: true
 
       - run:
-          name: Docker Hub Login
-          command: |
-            echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-
-      - run:
-          name: Build Docker image
-          command: |
-            echo "${DOCKER_USERNAME}"
-            docker build -t $DOCKER_USERNAME/porfolio-fe:latest ./portfolio-frontend
-
-      - run:
           name: Tag Docker image
           command: |
             TAG=$(git rev-parse --short HEAD)
-            docker tag $DOCKER_USERNAME/portfolio-fe:latest $DOCKER_USERNAME/portfolio-fe:$TAG
+            docker build -t $DOCKER_USERNAME/portfolio-fe:$TAG ./portfolio-frontend
             echo "export IMAGE_TAG=${TAG}" >> $BASH_ENV
       
       - run:
