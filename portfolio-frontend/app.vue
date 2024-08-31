@@ -1,5 +1,6 @@
 <template>
   <NuxtLayout>
+    <SpeedInsights />
     <NuxtPage />
   </NuxtLayout>
 </template>
@@ -10,6 +11,8 @@
 </style>
 
 <script setup lang="ts">
+import { SpeedInsights } from "@vercel/speed-insights/nuxt";
+
 useSeoMeta({
   title: 'P4rth',
   ogTitle: 'P4rth Sinh@',
