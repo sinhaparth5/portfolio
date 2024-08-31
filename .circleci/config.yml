@@ -37,6 +37,9 @@ jobs:
       - image: arvindr226/alpine-ssh
     steps:
       - checkout
+      - run:
+          name: Install git
+          command: sudo apt-get update && sudo apt-get install -y git
 
       - run:
           name: Pull Docker Image
