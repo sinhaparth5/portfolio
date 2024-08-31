@@ -7,7 +7,7 @@
         <div class="sticky top-[220px]">
           <div class="grid grid-cols-1 gap-[24px]">
             <div class="text-[#686868] font-bold p-[20px] rounded-[30px] border-[1px] border-[#414141] bg-gradient-to-b from-[#262626] to-[rgba(38,38,38,0.1)] grid grid-cols-1 gap-[20px]">
-              <NuxtImg class="w-full rounded-[30px]" src="/img/parth-profile.JPG" alt="Portfolio profile picture" />
+              <NuxtImg class="w-full rounded-[30px]" src="/img/parth-profile.webp" alt="Portfolio profile picture" />
               <NuxtLink href="/" class="text-white text-[20px] leading-[30px]" target="_blank">Parth Sinha</NuxtLink>
               <div class="flex text-[15px] leading-[24px]">
                 <div class="me-[12px]"><i class="fa-solid fa-briefcase"></i></div>
