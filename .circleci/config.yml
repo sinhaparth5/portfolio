@@ -15,30 +15,11 @@ jobs:
           docker_layer_caching: true
 
       - run:
-          name: Docker Image tag
-          command: |
-            TAG=$(git rev-parse --short HEAD)
-            echo "TAG=${TAG}"
-            export IMAGE_TAG=$TAG
-
-      - run:
           name: Tag Docker image
           command: |
-            docker build -t $DOCKER_USERNAME/portfolio-fe:$IMAGE_TAG ./portfolio-frontend
-      
-      - run:
-          name: Validate IMAGE_TAG
-          command: |
-            echo "Validating IMAGE_TAG..."
-            if [ -z "$IMAGE_TAG" ]; then
-              echo "IMAGE_TAG is empty!"
-              exit 1
-            fi
-            if ! echo "$IMAGE_TAG" | grep -Eq '^[a-zA-Z0-9_.-]+$'; then
-              echo "IMAGE_TAG contains invalid characters!"
-              exit 1
-            fi
-            echo "IMAGE_TAG is valid: $IMAGE_TAG"
+            TAG=$(git rev-parse --short HEAD)
+            echo "TAG=${TAG}" # Debugging: Output the tag
+            docker build -t $DOCKER_USERNAME/portfolio-fe:$TAG ./portfolio-frontend
       
       - run:
           name: Docker Hub Login
@@ -48,7 +29,8 @@ jobs:
       - run:
           name: Push Docker image
           command: |
-            docker push $DOCKER_USERNAME/portfolio-fe:$IMAGE_TAG
+            TAG=$(git rev-parse --short HEAD)
+            docker push $DOCKER_USERNAME/portfolio-fe:$TAG
       
   deploy:
     executor: docker-executors
