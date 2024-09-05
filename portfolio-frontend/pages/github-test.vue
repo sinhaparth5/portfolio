@@ -21,7 +21,7 @@ onMounted(() => {
 
 <template>
 <div>
-  <div class="container mx-auto">
+  <div class="container mx-auto mt-1">
     <div id="calendar"></div>
   </div>
 </div>
