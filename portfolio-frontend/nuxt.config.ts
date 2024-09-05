@@ -32,11 +32,14 @@ export default defineNuxtConfig({
                 "data:",
                 'https://raw.githubusercontent.com/',
                 'https://api.rss2json.com',
-                'https://images.unsplash.com'
+                'https://images.unsplash.com',
+                'https://avatars.githubusercontent.com'
             ],
             'connect-src': [
               "'self'",
-                'http://localhost:8001/articles'
+                'http://localhost:8001/articles',
+                'https://api.bloggify.net',
+                'https://avatars.githubusercontent.com'
             ],
           }
         }
