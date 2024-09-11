@@ -45,7 +45,8 @@ export default defineNuxtConfig({
                 'https://avatars.githubusercontent.com',
                 'https://cdn-cookieyes.com',
                 'https://log.cookieyes.com',
-                'https://cdn-cookieyes.com'
+                'https://cdn-cookieyes.com',
+                'https://www.googletagmanager.com'
             ],
           }
         }
