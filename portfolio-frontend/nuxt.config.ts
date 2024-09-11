@@ -33,14 +33,17 @@ export default defineNuxtConfig({
                 'https://raw.githubusercontent.com/',
                 'https://api.rss2json.com',
                 'https://images.unsplash.com',
-                'https://avatars.githubusercontent.com'
+                'https://avatars.githubusercontent.com',
+                'https://cdn-cookieyes.com',
+                'https://log.cookieyes.com'
             ],
             'connect-src': [
               "'self'",
                 'http://localhost:8001/articles',
                 'https://api.bloggify.net',
                 'https://avatars.githubusercontent.com',
-                'https://cdn-cookieyes.com'
+                'https://cdn-cookieyes.com',
+                'https://log.cookieyes.com'
             ],
           }
         }
