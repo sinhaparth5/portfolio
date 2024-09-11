@@ -23,7 +23,6 @@
     "@vercel/speed-insights": "^1.0.12",
     "animate.css": "^4.1.1",
     "animejs": "^3.2.2",
-    "axios": "^1.7.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "compatx": "^0.1.8",
