@@ -35,7 +35,8 @@ export default defineNuxtConfig({
                 'https://images.unsplash.com',
                 'https://avatars.githubusercontent.com',
                 'https://cdn-cookieyes.com',
-                'https://log.cookieyes.com'
+                'https://log.cookieyes.com',
+                'https://cdn-cookieyes.com'
             ],
             'connect-src': [
               "'self'",
@@ -43,7 +44,8 @@ export default defineNuxtConfig({
                 'https://api.bloggify.net',
                 'https://avatars.githubusercontent.com',
                 'https://cdn-cookieyes.com',
-                'https://log.cookieyes.com'
+                'https://log.cookieyes.com',
+                'https://cdn-cookieyes.com'
             ],
           }
         }
