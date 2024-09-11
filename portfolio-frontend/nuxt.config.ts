@@ -79,11 +79,7 @@ export default defineNuxtConfig({
     },
     plugins: [
         '~/plugins/BodyClass.ts',
-        '~/plugins/axios.ts'
     ],
-    axios: {
-        baseURL: 'http://localhost:8001'
-    },
     css: [
         'animate.css/animate.min.css',
     ]
