@@ -39,7 +39,8 @@ export default defineNuxtConfig({
               "'self'",
                 'http://localhost:8001/articles',
                 'https://api.bloggify.net',
-                'https://avatars.githubusercontent.com'
+                'https://avatars.githubusercontent.com',
+                'https://cdn-cookieyes.com'
             ],
           }
         }
@@ -51,7 +52,13 @@ export default defineNuxtConfig({
                 src: '/js/all.js',
                 type: 'text/javascript',
                 defer: true
-            }
+            },
+            {
+                id: 'cookieyes',
+                src: 'https://cdn-cookieyes.com/client_data/09dd0aeb9d43543f5ddd3538/script.js',
+                type: 'text/javascript',
+                async: true,
+            },
         ],
           link: [
               { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
