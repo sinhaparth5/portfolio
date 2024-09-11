@@ -10,6 +10,11 @@ export default defineNuxtConfig({
     packTracking: true,
     noscript: true,
   },
+  scripts: {
+    registry: {
+      id: 'GTM-NGRLW2RH'
+    }
+  },
     shadcn: {
         /**
          * Prefix for all the imported component
