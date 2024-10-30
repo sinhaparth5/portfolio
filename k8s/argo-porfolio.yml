@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: portfolio-proj
+  namespace: argocd
+spec:
+  project: default  # Change if you have a different project
+  source:
+    repoURL: 'https://github.com/sinhaparth5/portfolio'
+    targetRevision: HEAD  # Specify the branch you want to deploy
+    path: 'k8s'  # Replace with the path to your manifests
+  destination:
+    server: 'https://kubernetes.default.svc'  # Default cluster
+    namespace: default  # Specify the namespace to deploy to
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true 
