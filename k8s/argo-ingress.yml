@@ -4,16 +4,22 @@ metadata:
   name: argocd-ingress
   namespace: argocd
   annotations:
+    kubernetes.io/ingress.class: "nginx"  # Specify the ingress class
     nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"  # Redirect HTTP to HTTPS
 spec:
+  tls:
+    - hosts:
+        - argo.pksinha.co.uk
+      secretName: your-tls-secret  # Replace with your actual TLS secret name
   rules:
-  - host: argo.pksinha.co.uk
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: argocd-server
-            port:
-              number: 80
+    - host: argo.pksinha.co.uk
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 8080  # Use the internal port of the service
