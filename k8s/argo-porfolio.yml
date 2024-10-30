@@ -1,18 +1,20 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: networking.k8s.io/v1
+kind: Ingress
 metadata:
-  name: portfolio-proj
+  name: argocd-ingress
   namespace: argocd
+  annotations:
+    kubernetes.io/ingress.class: "nginx"  # Specify the ingress class
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
-  project: default  # Change if you have a different project
-  source:
-    repoURL: 'https://github.com/sinhaparth5/portfolio'
-    targetRevision: HEAD  # Specify the branch you want to deploy
-    path: 'k8s'  # Replace with the path to your manifests
-  destination:
-    server: 'https://kubernetes.default.svc'  # Default cluster
-    namespace: default  # Specify the namespace to deploy to
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true 
+  rules:
+    - host: argo.pksinha.co.uk
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: argocd-server
+                port:
+                  number: 8080  # Use the internal port of the service
