@@ -1,19 +1,17 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
   name: portfolio-ingress
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  namespace: default # Change this to the correct namespace
 spec:
-  rules:
-  - host: kube.pksinha.co.uk
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: portfolio-service
-            port: 
-              number: 80
+  entryPoints:
+    - web
+    - websecure # Include this if you want HTTPS
+  routes:
+    - match: Host(`kube.pksinha.co.uk`)
+      kind: Rule
+      services:
+        - name: portfolio-service
+          port: 80
+  tls:
+    secretName: your-tls-secret # Replace with your actual TLS secret name
