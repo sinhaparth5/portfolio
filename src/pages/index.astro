@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import testImage from '../assets/images/testImage.png';
+import { Image } from 'astro:assets'
+---
+<Layout>
+  <div class="container mx-auto flex flex-col">
+    <h1 class="text-xl">Parth Sinha</h1>
+    <Image src={testImage} decoding="async" loading="lazy" width="900" height="1200" alt="testing to see if it shows" />
+  </div>
+</Layout>
