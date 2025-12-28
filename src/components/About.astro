@@ -6,19 +6,33 @@ const skills = [
 ];
 ---
 
-<section id="about" class="py-20 md:py-32 bg-[var(--secondary-background)] px-6 md:px-12">
-  <div class="max-w-6xl mx-auto">
+<section id="about" class="py-20 md:py-32 bg-[var(--secondary-background)] px-6 md:px-12 relative overflow-hidden">
+  <!-- Huge blur text background -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <h2 class="about-blur-text absolute top-1/4 -right-20 text-[18vw] font-[var(--font-heading)] text-[var(--secondary-foreground)] opacity-[0.03] font-bold leading-none whitespace-nowrap">
+      EXPERTISE
+    </h2>
+    <h2 class="about-blur-text-2 absolute bottom-1/4 -left-32 text-[16vw] font-[var(--font-heading)] text-[var(--secondary-foreground)] opacity-[0.03] font-bold leading-none whitespace-nowrap">
+      SKILLS
+    </h2>
+  </div>
+
+  <!-- Decorative elements -->
+  <div class="absolute top-20 left-10 w-40 h-40 rounded-full border border-[var(--muted)] opacity-10 badge-float"></div>
+  <div class="absolute bottom-32 right-16 w-32 h-32 bg-[var(--muted)] opacity-5 rotate-45 shape-rotate"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
     <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
       <div class="space-y-6">
-        <div class="scroll-reveal">
+        <div class="about-header">
           <p class="text-sm text-[var(--muted)] tracking-widest uppercase mb-4">About Me</p>
           <h2 class="text-4xl md:text-[52px] font-[var(--font-heading)] text-[var(--secondary-foreground)] leading-tight">
             Story About Me
           </h2>
-          <div class="w-16 h-[2px] bg-[var(--secondary-foreground)] mt-4"></div>
+          <div class="w-16 h-[2px] bg-[var(--secondary-foreground)] mt-4 about-line"></div>
         </div>
 
-        <div class="space-y-4 text-[var(--muted)] text-base leading-relaxed scroll-reveal">
+        <div class="space-y-4 text-[var(--muted)] text-base leading-relaxed about-text">
           <p>
             I'm a passionate full-stack developer with a keen eye for creating elegant solutions to complex problems.
             My journey in software development has been driven by curiosity and a constant desire to learn and grow.
@@ -33,28 +47,31 @@ const skills = [
           </p>
         </div>
 
-        <div class="grid grid-cols-2 gap-6 pt-4 scroll-reveal">
-          <div class="border-l-2 border-[var(--secondary-foreground)] pl-4">
+        <div class="grid grid-cols-2 gap-6 pt-4 about-stats">
+          <div class="border-l-2 border-[var(--secondary-foreground)] pl-4 shadow-lg bg-[var(--accent)] p-4">
             <h3 class="text-3xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2">5+</h3>
             <p class="text-[var(--muted)] text-sm">Years Experience</p>
           </div>
-          <div class="border-l-2 border-[var(--secondary-foreground)] pl-4">
+          <div class="border-l-2 border-[var(--secondary-foreground)] pl-4 shadow-lg bg-[var(--accent)] p-4">
             <h3 class="text-3xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2">50+</h3>
             <p class="text-[var(--muted)] text-sm">Projects Completed</p>
           </div>
         </div>
       </div>
 
-      <div class="space-y-8 scroll-reveal">
-        <div>
+      <div class="space-y-8 about-skills">
+        <div class="relative">
+          <!-- Decorative corner badge -->
+          <div class="absolute -top-6 -right-6 w-20 h-20 bg-[var(--muted)] opacity-10 badge-pulse"></div>
+
           <h3 class="text-xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-6">
             Technical Skills
           </h3>
           <div class="flex flex-wrap gap-3">
             {skills.map((skill, index) => (
               <span
-                class="px-4 py-2 border border-[var(--muted)] text-[var(--secondary-foreground)] text-sm hover:bg-[var(--secondary-foreground)] hover:text-[var(--secondary-background)] transition-all duration-300 cursor-default skill-tag"
-                style={`animation-delay: ${index * 0.1}s`}
+                class="px-4 py-2 border border-[var(--muted)] text-[var(--secondary-foreground)] text-sm hover:bg-[var(--secondary-foreground)] hover:text-[var(--secondary-background)] hover:shadow-xl transition-all duration-300 cursor-default skill-tag"
+                data-index={index}
               >
                 {skill}
               </span>
@@ -62,7 +79,7 @@ const skills = [
           </div>
         </div>
 
-        <div class="bg-[var(--accent)] p-6 border-l-4 border-[var(--secondary-foreground)]">
+        <div class="bg-[var(--accent)] p-6 border-l-4 border-[var(--secondary-foreground)] shadow-2xl about-quote">
           <p class="text-[var(--muted)] text-base italic leading-relaxed">
             "Building digital experiences that make a difference. Focused on performance, accessibility, and user-centric design."
           </p>
@@ -72,38 +89,120 @@ const skills = [
   </div>
 </section>
 
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // About section animations
+  const aboutTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#about',
+      start: 'top 80%',
+      end: 'bottom 20%',
+      toggleActions: 'play none none reverse'
+    },
+    defaults: { ease: 'power3.out' }
+  });
+
+  aboutTl
+    .fromTo('.about-header',
+      { y: 60, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.6 }
+    )
+    .fromTo('.about-line',
+      { width: 0 },
+      { width: '4rem', duration: 0.4 },
+      '-=0.3'
+    )
+    .fromTo('.about-text p',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5, stagger: 0.1 },
+      '-=0.2'
+    )
+    .fromTo('.about-stats > div',
+      { y: 30, opacity: 0, scale: 0.9 },
+      { y: 0, opacity: 1, scale: 1, duration: 0.4, stagger: 0.1 },
+      '-=0.2'
+    )
+    .fromTo('.about-skills',
+      { x: 60, opacity: 0 },
+      { x: 0, opacity: 1, duration: 0.6 },
+      0.2
+    )
+    .fromTo('.skill-tag',
+      { scale: 0, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.3, stagger: 0.03, ease: 'back.out(1.7)' },
+      '-=0.3'
+    )
+    .fromTo('.about-quote',
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.4 },
+      '-=0.2'
+    );
+
+  // Blur text parallax
+  gsap.to('.about-blur-text', {
+    x: 150,
+    scrollTrigger: {
+      trigger: '#about',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1
+    }
+  });
+
+  gsap.to('.about-blur-text-2', {
+    x: -150,
+    scrollTrigger: {
+      trigger: '#about',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 1
+    }
+  });
+</script>
+
 <style>
-  .scroll-reveal {
-    opacity: 0;
-    animation: fadeInUp 0.8s ease-out forwards;
-    animation-timeline: view();
-    animation-range: entry 0% cover 30%;
+  @keyframes badgeFloat {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-30px) scale(1.05);
+    }
   }
 
-  .skill-tag {
-    opacity: 0;
-    animation: fadeInScale 0.6s ease-out forwards;
-  }
-
-  @keyframes fadeInUp {
+  @keyframes shapeRotate {
     from {
-      opacity: 0;
-      transform: translateY(30px);
+      transform: rotate(45deg);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+      transform: rotate(405deg);
     }
   }
 
-  @keyframes fadeInScale {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    to {
-      opacity: 1;
+  @keyframes badgePulse {
+    0%, 100% {
       transform: scale(1);
+      opacity: 0.1;
     }
+    50% {
+      transform: scale(1.1);
+      opacity: 0.15;
+    }
+  }
+
+  .badge-float {
+    animation: badgeFloat 8s ease-in-out infinite;
+  }
+
+  .shape-rotate {
+    animation: shapeRotate 25s linear infinite;
+  }
+
+  .badge-pulse {
+    animation: badgePulse 4s ease-in-out infinite;
   }
 </style>

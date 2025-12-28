@@ -3,9 +3,20 @@ const { name, email, github, linkedin, twitter } = Astro.props;
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-[var(--secondary-background)] px-6 md:px-12 py-16">
-  <div class="max-w-6xl mx-auto">
-    <div class="grid md:grid-cols-3 gap-12 mb-12">
+<footer class="bg-[var(--secondary-background)] px-6 md:px-12 py-16 relative overflow-hidden">
+  <!-- Huge blur text background -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <h2 class="footer-blur-text absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[28vw] font-[var(--font-heading)] text-[var(--secondary-foreground)] opacity-[0.015] font-bold leading-none whitespace-nowrap">
+      CONNECT
+    </h2>
+  </div>
+
+  <!-- Decorative elements -->
+  <div class="absolute top-8 right-12 w-32 h-32 rounded-full border border-[var(--muted)] opacity-10 badge-float"></div>
+  <div class="absolute bottom-12 left-16 w-40 h-40 bg-[var(--muted)] opacity-5 rotate-45 shape-rotate"></div>
+
+  <div class="max-w-6xl mx-auto relative z-10">
+    <div class="grid md:grid-cols-3 gap-12 mb-12 footer-content">
       <div class="space-y-4">
         <h3 class="text-2xl font-[var(--font-heading)] text-[var(--secondary-foreground)]">
           {name}
@@ -42,12 +53,12 @@ const currentYear = new Date().getFullYear();
         <h4 class="text-lg font-[var(--font-heading)] text-[var(--secondary-foreground)]">
           Connect
         </h4>
-        <div class="flex gap-4">
+        <div class="flex gap-4 footer-social">
           <a
             href={`https://github.com/${github}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="w-10 h-10 border-2 border-[var(--muted)] flex items-center justify-center hover:border-[var(--secondary-foreground)] hover:bg-[var(--secondary-foreground)] text-[var(--muted)] hover:text-[var(--secondary-background)] transition-all"
+            class="w-10 h-10 border-2 border-[var(--muted)] flex items-center justify-center hover:border-[var(--secondary-foreground)] hover:bg-[var(--secondary-foreground)] text-[var(--muted)] hover:text-[var(--secondary-background)] transition-all shadow-md hover:shadow-xl hover:scale-110"
             aria-label="GitHub"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -59,7 +70,7 @@ const currentYear = new Date().getFullYear();
             href={linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            class="w-10 h-10 border-2 border-[var(--muted)] flex items-center justify-center hover:border-[var(--secondary-foreground)] hover:bg-[var(--secondary-foreground)] text-[var(--muted)] hover:text-[var(--secondary-background)] transition-all"
+            class="w-10 h-10 border-2 border-[var(--muted)] flex items-center justify-center hover:border-[var(--secondary-foreground)] hover:bg-[var(--secondary-foreground)] text-[var(--muted)] hover:text-[var(--secondary-background)] transition-all shadow-md hover:shadow-xl hover:scale-110"
             aria-label="LinkedIn"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -71,7 +82,7 @@ const currentYear = new Date().getFullYear();
             href={`https://twitter.com/${twitter}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="w-10 h-10 border-2 border-[var(--muted)] flex items-center justify-center hover:border-[var(--secondary-foreground)] hover:bg-[var(--secondary-foreground)] text-[var(--muted)] hover:text-[var(--secondary-background)] transition-all"
+            class="w-10 h-10 border-2 border-[var(--muted)] flex items-center justify-center hover:border-[var(--secondary-foreground)] hover:bg-[var(--secondary-foreground)] text-[var(--muted)] hover:text-[var(--secondary-background)] transition-all shadow-md hover:shadow-xl hover:scale-110"
             aria-label="Twitter"
           >
             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -81,7 +92,7 @@ const currentYear = new Date().getFullYear();
 
           <a
             href={`mailto:${email}`}
-            class="w-10 h-10 border-2 border-[var(--muted)] flex items-center justify-center hover:border-[var(--secondary-foreground)] hover:bg-[var(--secondary-foreground)] text-[var(--muted)] hover:text-[var(--secondary-background)] transition-all"
+            class="w-10 h-10 border-2 border-[var(--muted)] flex items-center justify-center hover:border-[var(--secondary-foreground)] hover:bg-[var(--secondary-foreground)] text-[var(--muted)] hover:text-[var(--secondary-background)] transition-all shadow-md hover:shadow-xl hover:scale-110"
             aria-label="Email"
           >
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,7 +103,7 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
 
-    <div class="pt-8 border-t border-[var(--muted)] border-opacity-20">
+    <div class="pt-8 border-t border-[var(--muted)] border-opacity-20 footer-bottom">
       <div class="flex flex-col md:flex-row justify-between items-center gap-4">
         <p class="text-[var(--muted)] text-sm">
           © {currentYear} {name}. All rights reserved.
@@ -104,3 +115,76 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Footer animations
+  const footerTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: 'footer',
+      start: 'top 90%',
+      end: 'bottom bottom',
+      toggleActions: 'play none none reverse'
+    },
+    defaults: { ease: 'power3.out' }
+  });
+
+  footerTl
+    .fromTo('.footer-content > div',
+      { y: 40, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5, stagger: 0.15 }
+    )
+    .fromTo('.footer-social a',
+      { scale: 0, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 0.3, stagger: 0.08, ease: 'back.out(1.7)' },
+      '-=0.3'
+    )
+    .fromTo('.footer-bottom',
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.4 },
+      '-=0.2'
+    );
+
+  // Blur text subtle movement
+  gsap.to('.footer-blur-text', {
+    scale: 1.05,
+    scrollTrigger: {
+      trigger: 'footer',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 2
+    }
+  });
+</script>
+
+<style>
+  @keyframes badgeFloat {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-20px) scale(1.05);
+    }
+  }
+
+  @keyframes shapeRotate {
+    from {
+      transform: rotate(45deg);
+    }
+    to {
+      transform: rotate(405deg);
+    }
+  }
+
+  .badge-float {
+    animation: badgeFloat 10s ease-in-out infinite;
+  }
+
+  .shape-rotate {
+    animation: shapeRotate 30s linear infinite;
+  }
+</style>

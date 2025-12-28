@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 const { name } = Astro.props;
 ---
 
@@ -77,10 +78,14 @@ const { name } = Astro.props;
         <div class="relative group">
           <!-- Image container with effects -->
           <div class="relative overflow-hidden shadow-2xl">
-            <img
+            <Image
               src="/images/photo.jpg"
               alt="Portfolio"
+              width={736}
+              height={1302}
               class="w-full h-[500px] md:h-[600px] object-cover object-center transform group-hover:scale-105 transition-transform duration-700"
+              loading="eager"
+              quality={90}
             />
             <!-- Overlay gradient -->
             <div class="absolute inset-0 bg-gradient-to-t from-[var(--foreground)] via-transparent to-transparent opacity-40"></div>
@@ -117,36 +122,35 @@ const { name } = Astro.props;
   // Hero animations
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-  tl.from('.hero-title', {
-    y: 100,
-    opacity: 0,
-    duration: 1.2
-  })
-  .from('.hero-line', {
-    width: 0,
-    duration: 0.8
-  }, '-=0.6')
-  .from('.hero-subtitle', {
-    y: 50,
-    opacity: 0,
-    duration: 0.8
-  }, '-=0.4')
-  .from('.hero-buttons', {
-    y: 30,
-    opacity: 0,
-    duration: 0.6
-  }, '-=0.3')
-  .from('.hero-stats > div', {
-    y: 20,
-    opacity: 0,
-    duration: 0.5,
-    stagger: 0.1
-  }, '-=0.3')
-  .from('.hero-image', {
-    x: 100,
-    opacity: 0,
-    duration: 1
-  }, 0.3);
+  tl.fromTo('.hero-title',
+    { y: 100, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.8 }
+  )
+  .fromTo('.hero-line',
+    { width: 0 },
+    { width: '6rem', duration: 0.5 },
+    '-=0.4'
+  )
+  .fromTo('.hero-subtitle',
+    { y: 50, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.5 },
+    '-=0.3'
+  )
+  .fromTo('.hero-buttons',
+    { y: 30, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.4 },
+    '-=0.2'
+  )
+  .fromTo('.hero-stats > div',
+    { y: 20, opacity: 0 },
+    { y: 0, opacity: 1, duration: 0.3, stagger: 0.08 },
+    '-=0.2'
+  )
+  .fromTo('.hero-image',
+    { x: 100, opacity: 0 },
+    { x: 0, opacity: 1, duration: 0.7 },
+    0.2
+  );
 
   // Blur text parallax
   gsap.to('.hero-blur-text', {
