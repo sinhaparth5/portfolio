@@ -1,0 +1,24 @@
+{
+	"name": "portfolio",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro build && wrangler dev",
+		"astro": "astro",
+		"deploy": "astro build && wrangler deploy",
+		"cf-typegen": "wrangler types"
+	},
+	"dependencies": {
+		"@astrojs/cloudflare": "^12.6.12",
+		"@tailwindcss/vite": "^4.1.18",
+		"astro": "^5.16.6",
+		"gsap": "^3.14.2",
+		"tailwindcss": "^4.1.18"
+	},
+	"devDependencies": {
+		"@types/node": "^25.0.3",
+		"wrangler": "^4.54.0"
+	}
+}

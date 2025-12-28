@@ -1,0 +1,109 @@
+---
+const skills = [
+  "JavaScript", "TypeScript", "React", "Node.js",
+  "Python", "AWS", "Docker", "MongoDB",
+  "Next.js", "Tailwind CSS", "GraphQL", "PostgreSQL"
+];
+---
+
+<section id="about" class="py-20 md:py-32 bg-[var(--secondary-background)] px-6 md:px-12">
+  <div class="max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
+      <div class="space-y-6">
+        <div class="scroll-reveal">
+          <p class="text-sm text-[var(--muted)] tracking-widest uppercase mb-4">About Me</p>
+          <h2 class="text-4xl md:text-[52px] font-[var(--font-heading)] text-[var(--secondary-foreground)] leading-tight">
+            Story About Me
+          </h2>
+          <div class="w-16 h-[2px] bg-[var(--secondary-foreground)] mt-4"></div>
+        </div>
+
+        <div class="space-y-4 text-[var(--muted)] text-base leading-relaxed scroll-reveal">
+          <p>
+            I'm a passionate full-stack developer with a keen eye for creating elegant solutions to complex problems.
+            My journey in software development has been driven by curiosity and a constant desire to learn and grow.
+          </p>
+          <p>
+            With expertise in modern web technologies, I specialize in building scalable applications that deliver
+            exceptional user experiences. I believe in writing clean, maintainable code and following best practices.
+          </p>
+          <p>
+            When I'm not coding, you'll find me exploring new technologies, contributing to open-source projects,
+            or sharing my knowledge through blog posts and technical writing.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-6 pt-4 scroll-reveal">
+          <div class="border-l-2 border-[var(--secondary-foreground)] pl-4">
+            <h3 class="text-3xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2">5+</h3>
+            <p class="text-[var(--muted)] text-sm">Years Experience</p>
+          </div>
+          <div class="border-l-2 border-[var(--secondary-foreground)] pl-4">
+            <h3 class="text-3xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2">50+</h3>
+            <p class="text-[var(--muted)] text-sm">Projects Completed</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-8 scroll-reveal">
+        <div>
+          <h3 class="text-xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-6">
+            Technical Skills
+          </h3>
+          <div class="flex flex-wrap gap-3">
+            {skills.map((skill, index) => (
+              <span
+                class="px-4 py-2 border border-[var(--muted)] text-[var(--secondary-foreground)] text-sm hover:bg-[var(--secondary-foreground)] hover:text-[var(--secondary-background)] transition-all duration-300 cursor-default skill-tag"
+                style={`animation-delay: ${index * 0.1}s`}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div class="bg-[var(--accent)] p-6 border-l-4 border-[var(--secondary-foreground)]">
+          <p class="text-[var(--muted)] text-base italic leading-relaxed">
+            "Building digital experiences that make a difference. Focused on performance, accessibility, and user-centric design."
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .scroll-reveal {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+    animation-timeline: view();
+    animation-range: entry 0% cover 30%;
+  }
+
+  .skill-tag {
+    opacity: 0;
+    animation: fadeInScale 0.6s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+</style>
