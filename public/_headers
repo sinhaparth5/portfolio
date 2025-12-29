@@ -60,3 +60,8 @@
 /
   # HTML - No cache (always fresh)
   Cache-Control: public, max-age=0, must-revalidate
+
+# Proxy external GitHub stats (cache for 24 hours)
+/api/github-stats/*
+  Cache-Control: public, max-age=86400, s-maxage=86400
+  Access-Control-Allow-Origin: *

@@ -91,13 +91,22 @@ const skills = [
           <h3 id="github-activity-heading" class="text-lg font-[var(--font-heading)] text-[var(--secondary-foreground)]">
             GitHub Activity
           </h3>
-          <img
-            src="https://github-readme-streak-stats.herokuapp.com/?user=sinhaparth5&theme=dark&background=1A1A1A&ring=2B2B2B&fire=F5F1E8&currStreakLabel=F5F1E8&hide_border=true"
-            alt="GitHub streak statistics showing current streak, longest streak, and total contributions for sinhaparth5"
-            class="w-full rounded shadow-2xl"
-            loading="lazy"
-            role="img"
-          />
+          <div class="relative bg-[var(--accent)] rounded overflow-hidden min-h-[170px] flex items-center justify-center">
+            <img
+              src="https://streak-stats.demolab.com?user=sinhaparth5&theme=dark&background=1A1A1A&ring=2B2B2B&fire=F5F1E8&currStreakLabel=F5F1E8&hide_border=true"
+              alt="GitHub streak statistics showing current streak, longest streak, and total contributions for sinhaparth5"
+              class="w-full rounded shadow-2xl github-streak-img"
+              loading="lazy"
+              role="img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+            />
+            <div class="hidden text-[var(--muted)] text-center p-6" style="display:none;">
+              <p class="text-sm">GitHub Stats Temporarily Unavailable</p>
+              <a href="https://github.com/sinhaparth5" target="_blank" rel="noopener noreferrer" class="text-[var(--secondary-foreground)] hover:underline mt-2 inline-block">
+                View Profile on GitHub →
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
