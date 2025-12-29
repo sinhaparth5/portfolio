@@ -62,7 +62,8 @@ const structuredData = {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+		<link rel="manifest" href="/manifest.json" />
 		<meta name="generator" content={Astro.generator} />
 
 		<!-- Primary Meta Tags -->
@@ -107,13 +108,69 @@ const structuredData = {
 		<!-- Structured Data (JSON-LD) -->
 		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-		<!-- Fonts -->
+		<!-- DNS Prefetch & Preconnect for Performance -->
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+		<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+		<link rel="dns-prefetch" href="https://api.github.com" />
+		<link rel="dns-prefetch" href="https://medium.com" />
+
+		<!-- Fonts with Optimized Loading -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" as="style" />
+		<!-- Web Vitals Monitoring (Optional - for performance tracking) -->
+		<script>
+			// Report Web Vitals to analytics (optional)
+			// You can send these to your analytics service
+			if ('web-vitals' in window) {
+				const reportWebVitals = (metric) => {
+					console.log(metric);
+					// Send to analytics: gtag('event', metric.name, { value: metric.value });
+				};
+			}
+		</script>
 	</head>
 	<body>
+		<!-- Scroll Progress Indicator -->
+		<div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-[var(--accent)] via-[var(--foreground)] to-[var(--accent)] z-50 transition-all duration-300" style="width: 0%"></div>
+
+		<!-- Back to Top Button -->
+		<button
+			id="back-to-top"
+			class="fixed bottom-8 right-8 w-12 h-12 bg-[var(--foreground)] text-[var(--background)] rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)] z-40 flex items-center justify-center"
+			aria-label="Back to top"
+		>
+			<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+			</svg>
+		</button>
+
 		<slot />
+
+		<!-- Performance: Defer non-critical scripts -->
+		<script>
+			// Add loading="lazy" to all images without it (fallback)
+			if ('loading' in HTMLImageElement.prototype) {
+				document.querySelectorAll('img:not([loading])').forEach(img => {
+					img.loading = 'lazy';
+				});
+			}
+
+			// Preload next page on hover (for faster navigation)
+			const links = document.querySelectorAll('a[href^="/"]');
+			links.forEach(link => {
+				link.addEventListener('mouseenter', () => {
+					const url = link.getAttribute('href');
+					if (url && !document.querySelector(`link[rel="prefetch"][href="${url}"]`)) {
+						const prefetch = document.createElement('link');
+						prefetch.rel = 'prefetch';
+						prefetch.href = url;
+						document.head.appendChild(prefetch);
+					}
+				}, { once: true });
+			});
+		</script>
 	</body>
 </html>
 

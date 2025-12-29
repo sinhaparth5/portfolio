@@ -11,6 +11,14 @@ export default defineConfig({
 
   integrations: [sitemap()],
 
+  // Build optimizations
+  build: {
+    inlineStylesheets: 'auto',
+  },
+
+  // Compression and minification
+  compressHTML: true,
+
   adapter: cloudflare({
     platformProxy: {
       enabled: true
@@ -18,7 +26,26 @@ export default defineConfig({
 
     imageService: "cloudflare"
   }),
+
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+    build: {
+      // Minify for production
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true, // Remove console.logs in production
+          drop_debugger: true,
+        },
+      },
+      // Split chunks for better caching
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'gsap': ['gsap'],
+          },
+        },
+      },
+    },
+  },
 });

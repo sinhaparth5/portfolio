@@ -10,16 +10,16 @@ importers:
     dependencies:
       '@astrojs/cloudflare':
         specifier: ^12.6.12
-        version: 12.6.12(@types/node@25.0.3)(astro@5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.54.0)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.30.2)
+        version: 12.6.12(@types/node@25.0.3)(astro@5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.54.0)(terser@5.44.1)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)
       '@astrojs/sitemap':
         specifier: ^3.6.0
         version: 3.6.0
       '@tailwindcss/vite':
         specifier: ^4.1.18
-        version: 4.1.18(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2))
+        version: 4.1.18(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1))
       astro:
         specifier: ^5.16.6
-        version: 5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.54.0)(typescript@5.9.3)
+        version: 5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.54.0)(terser@5.44.1)(typescript@5.9.3)
       gsap:
         specifier: ^3.14.2
         version: 3.14.2
@@ -30,6 +30,9 @@ importers:
       '@types/node':
         specifier: ^25.0.3
         version: 25.0.3
+      terser:
+        specifier: ^5.44.1
+        version: 5.44.1
       wrangler:
         specifier: ^4.54.0
         version: 4.54.0(@cloudflare/workers-types@4.20251228.0)
@@ -895,6 +898,9 @@ packages:
     resolution: {integrity: sha512-bRISgCIjP20/tbWSPWMEi54QVPRZExkuD9lJL+UIxUKtwVJA8wW1Trb1jMs1RFXo1CBTNZ/5hpC9QvmKWdopKw==}
     engines: {node: '>=6.0.0'}
 
+  '@jridgewell/source-map@0.3.11':
+    resolution: {integrity: sha512-ZMp1V8ZFcPG5dIWnQLr3NSI1MiCU7UETdS/A0G8V/XWHvJv3ZsFqutJn1Y5RPmAPX6F3BiE397OqveU/9NCuIA==}
+
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
@@ -1269,6 +1275,9 @@ packages:
   brotli@1.3.3:
     resolution: {integrity: sha512-oTKjJdShmDuGW94SyyaoQvAjf30dZaHnjJ8uAF+u2/vGJkJbJPJAT1gDiOJP5v1Zb6f9KEyW/1HpuaWIXtGHPg==}
 
+  buffer-from@1.1.2:
+    resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
+
   camelcase@8.0.0:
     resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
     engines: {node: '>=16'}
@@ -1329,6 +1338,9 @@ packages:
   commander@11.1.0:
     resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
     engines: {node: '>=16'}
+
+  commander@2.20.3:
+    resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
 
   common-ancestor-path@1.0.1:
     resolution: {integrity: sha512-L3sHRo1pXXEqX8VU28kfgUY+YGsk09hPqZiZmLacNib6XNTCM8ubYeT7ryXQw8asB1sKgcU5lkB7ONug08aB8w==}
@@ -2055,6 +2067,13 @@ packages:
     resolution: {integrity: sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==}
     engines: {node: '>=0.10.0'}
 
+  source-map-support@0.5.21:
+    resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==}
+
+  source-map@0.6.1:
+    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
+    engines: {node: '>=0.10.0'}
+
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
 
@@ -2099,6 +2118,11 @@ packages:
   tapable@2.3.0:
     resolution: {integrity: sha512-g9ljZiwki/LfxmQADO3dEY1CbpmXT5Hm2fJ+QaGKwSXUylMybePR7/67YW7jOrrvjEgL1Fmz5kzyAjWVWLlucg==}
     engines: {node: '>=6'}
+
+  terser@5.44.1:
+    resolution: {integrity: sha512-t/R3R/n0MSwnnazuPpPNVO60LX0SKL45pyl9YlvxIdkH0Of7D5qM2EVe+yASRIlY5pZ73nclYJfNANGWPwFDZw==}
+    engines: {node: '>=10'}
+    hasBin: true
 
   tiny-inflate@1.0.3:
     resolution: {integrity: sha512-pkY1fj1cKHb2seWDy0B16HeWyczlJA9/WW3u3c4z/NiWDsO3DOU5D7nhTLE9CF0yXv/QZFY7sEJmj24dK+Rrqw==}
@@ -2420,14 +2444,14 @@ packages:
 
 snapshots:
 
-  '@astrojs/cloudflare@12.6.12(@types/node@25.0.3)(astro@5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.54.0)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.30.2)':
+  '@astrojs/cloudflare@12.6.12(@types/node@25.0.3)(astro@5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.54.0)(terser@5.44.1)(typescript@5.9.3))(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)':
     dependencies:
       '@astrojs/internal-helpers': 0.7.5
       '@astrojs/underscore-redirects': 1.0.0
       '@cloudflare/workers-types': 4.20251228.0
-      astro: 5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.54.0)(typescript@5.9.3)
+      astro: 5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.54.0)(terser@5.44.1)(typescript@5.9.3)
       tinyglobby: 0.2.15
-      vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)
+      vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)
       wrangler: 4.50.0(@cloudflare/workers-types@4.20251228.0)
     transitivePeerDependencies:
       - '@types/node'
@@ -2991,6 +3015,11 @@ snapshots:
 
   '@jridgewell/resolve-uri@3.1.2': {}
 
+  '@jridgewell/source-map@0.3.11':
+    dependencies:
+      '@jridgewell/gen-mapping': 0.3.13
+      '@jridgewell/trace-mapping': 0.3.31
+
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
   '@jridgewell/trace-mapping@0.3.31':
@@ -3193,12 +3222,12 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.1.18
       '@tailwindcss/oxide-win32-x64-msvc': 4.1.18
 
-  '@tailwindcss/vite@4.1.18(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2))':
+  '@tailwindcss/vite@4.1.18(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1))':
     dependencies:
       '@tailwindcss/node': 4.1.18
       '@tailwindcss/oxide': 4.1.18
       tailwindcss: 4.1.18
-      vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)
+      vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)
 
   '@types/debug@4.1.12':
     dependencies:
@@ -3267,7 +3296,7 @@ snapshots:
 
   array-iterate@2.0.1: {}
 
-  astro@5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.54.0)(typescript@5.9.3):
+  astro@5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.54.0)(terser@5.44.1)(typescript@5.9.3):
     dependencies:
       '@astrojs/compiler': 2.13.0
       '@astrojs/internal-helpers': 0.7.5
@@ -3324,8 +3353,8 @@ snapshots:
       unist-util-visit: 5.0.0
       unstorage: 1.17.3
       vfile: 6.0.3
-      vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)
-      vitefu: 1.1.1(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2))
+      vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)
+      vitefu: 1.1.1(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.3
@@ -3396,6 +3425,8 @@ snapshots:
     dependencies:
       base64-js: 1.5.1
 
+  buffer-from@1.1.2: {}
+
   camelcase@8.0.0: {}
 
   ccount@2.0.1: {}
@@ -3439,6 +3470,8 @@ snapshots:
   comma-separated-tokens@2.0.3: {}
 
   commander@11.1.0: {}
+
+  commander@2.20.3: {}
 
   common-ancestor-path@1.0.1: {}
 
@@ -4554,6 +4587,13 @@ snapshots:
 
   source-map-js@1.2.1: {}
 
+  source-map-support@0.5.21:
+    dependencies:
+      buffer-from: 1.1.2
+      source-map: 0.6.1
+
+  source-map@0.6.1: {}
+
   space-separated-tokens@2.0.2: {}
 
   stoppable@1.1.0: {}
@@ -4600,6 +4640,13 @@ snapshots:
   tailwindcss@4.1.18: {}
 
   tapable@2.3.0: {}
+
+  terser@5.44.1:
+    dependencies:
+      '@jridgewell/source-map': 0.3.11
+      acorn: 8.15.0
+      commander: 2.20.3
+      source-map-support: 0.5.21
 
   tiny-inflate@1.0.3: {}
 
@@ -4732,7 +4779,7 @@ snapshots:
       '@types/unist': 3.0.3
       vfile-message: 4.0.3
 
-  vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2):
+  vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1):
     dependencies:
       esbuild: 0.25.12
       fdir: 6.5.0(picomatch@4.0.3)
@@ -4745,10 +4792,11 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.6.1
       lightningcss: 1.30.2
+      terser: 5.44.1
 
-  vitefu@1.1.1(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)):
+  vitefu@1.1.1(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)):
     optionalDependencies:
-      vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)
+      vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(terser@5.44.1)
 
   web-namespaces@2.0.1: {}
 
