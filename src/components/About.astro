@@ -6,31 +6,31 @@ const skills = [
 ];
 ---
 
-<section id="about" class="py-20 md:py-32 bg-[var(--secondary-background)] px-6 md:px-12 relative overflow-hidden">
+<section id="about" class="py-20 md:py-32 bg-[var(--secondary-background)] px-6 md:px-12 relative overflow-hidden" aria-labelledby="about-heading">
   <!-- Huge blur text background -->
-  <div class="absolute inset-0 pointer-events-none overflow-hidden">
-    <h2 class="about-blur-text absolute top-1/4 -right-20 text-[18vw] font-[var(--font-heading)] text-[var(--secondary-foreground)] opacity-[0.03] font-bold leading-none whitespace-nowrap">
+  <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
+    <p class="about-blur-text absolute top-1/4 -right-20 text-[18vw] font-[var(--font-heading)] text-[var(--secondary-foreground)] opacity-[0.03] font-bold leading-none whitespace-nowrap">
       EXPERTISE
-    </h2>
-    <h2 class="about-blur-text-2 absolute bottom-1/4 -left-32 text-[16vw] font-[var(--font-heading)] text-[var(--secondary-foreground)] opacity-[0.03] font-bold leading-none whitespace-nowrap">
+    </p>
+    <p class="about-blur-text-2 absolute bottom-1/4 -left-32 text-[16vw] font-[var(--font-heading)] text-[var(--secondary-foreground)] opacity-[0.03] font-bold leading-none whitespace-nowrap">
       SKILLS
-    </h2>
+    </p>
   </div>
 
   <!-- Decorative elements -->
-  <div class="absolute top-20 left-10 w-40 h-40 rounded-full border border-[var(--muted)] opacity-10 badge-float"></div>
-  <div class="absolute bottom-32 right-16 w-32 h-32 bg-[var(--muted)] opacity-5 rotate-45 shape-rotate"></div>
+  <div class="absolute top-20 left-10 w-40 h-40 rounded-full border border-[var(--muted)] opacity-10 badge-float" aria-hidden="true"></div>
+  <div class="absolute bottom-32 right-16 w-32 h-32 bg-[var(--muted)] opacity-5 rotate-45 shape-rotate" aria-hidden="true"></div>
 
   <div class="max-w-6xl mx-auto relative z-10">
     <div class="grid md:grid-cols-2 gap-12 md:gap-16 items-start">
       <div class="space-y-6">
-        <div class="about-header">
+        <header class="about-header">
           <p class="text-sm text-[var(--muted)] tracking-widest uppercase mb-4">About Me</p>
-          <h2 class="text-4xl md:text-[52px] font-[var(--font-heading)] text-[var(--secondary-foreground)] leading-tight">
+          <h2 id="about-heading" class="text-4xl md:text-[52px] font-[var(--font-heading)] text-[var(--secondary-foreground)] leading-tight">
             Story About Me
           </h2>
-          <div class="w-16 h-[2px] bg-[var(--secondary-foreground)] mt-4 about-line"></div>
-        </div>
+          <div class="w-16 h-[2px] bg-[var(--secondary-foreground)] mt-4 about-line" aria-hidden="true"></div>
+        </header>
 
         <div class="space-y-4 text-[var(--muted)] text-base leading-relaxed about-text">
           <p>
@@ -47,13 +47,13 @@ const skills = [
           </p>
         </div>
 
-        <div class="grid grid-cols-2 gap-6 pt-4 about-stats">
-          <div class="border-l-2 border-[var(--secondary-foreground)] pl-4 shadow-lg bg-[var(--accent)] p-4">
-            <h3 class="text-3xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2">5+</h3>
+        <div class="grid grid-cols-2 gap-6 pt-4 about-stats" role="list" aria-label="Professional achievements">
+          <div class="border-l-2 border-[var(--secondary-foreground)] pl-4 shadow-lg bg-[var(--accent)] p-4" role="listitem">
+            <p class="text-3xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2" aria-label="5 plus years of experience">5+</p>
             <p class="text-[var(--muted)] text-sm">Years Experience</p>
           </div>
-          <div class="border-l-2 border-[var(--secondary-foreground)] pl-4 shadow-lg bg-[var(--accent)] p-4">
-            <h3 class="text-3xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2">50+</h3>
+          <div class="border-l-2 border-[var(--secondary-foreground)] pl-4 shadow-lg bg-[var(--accent)] p-4" role="listitem">
+            <p class="text-3xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2" aria-label="50 plus projects completed">50+</p>
             <p class="text-[var(--muted)] text-sm">Projects Completed</p>
           </div>
         </div>
@@ -62,21 +62,22 @@ const skills = [
       <div class="space-y-8 about-skills">
         <div class="relative">
           <!-- Decorative corner badge -->
-          <div class="absolute -top-6 -right-6 w-20 h-20 bg-[var(--muted)] opacity-10 badge-pulse"></div>
+          <div class="absolute -top-6 -right-6 w-20 h-20 bg-[var(--muted)] opacity-10 badge-pulse" aria-hidden="true"></div>
 
           <h3 class="text-xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-6">
             Technical Skills
           </h3>
-          <div class="flex flex-wrap gap-3">
+          <ul class="flex flex-wrap gap-3" role="list" aria-label="List of technical skills">
             {skills.map((skill, index) => (
-              <span
+              <li
                 class="px-4 py-2 border border-[var(--muted)] text-[var(--secondary-foreground)] text-sm hover:bg-[var(--secondary-foreground)] hover:text-[var(--secondary-background)] hover:shadow-xl transition-all duration-300 cursor-default skill-tag"
                 data-index={index}
+                role="listitem"
               >
                 {skill}
-              </span>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
 
         <div class="bg-[var(--accent)] p-6 border-l-4 border-[var(--secondary-foreground)] shadow-2xl about-quote">
@@ -86,35 +87,37 @@ const skills = [
         </div>
 
         <!-- GitHub Streak Stats -->
-        <div class="space-y-4 github-streak">
-          <h3 class="text-lg font-[var(--font-heading)] text-[var(--secondary-foreground)]">
+        <div class="space-y-4 github-streak" aria-labelledby="github-activity-heading">
+          <h3 id="github-activity-heading" class="text-lg font-[var(--font-heading)] text-[var(--secondary-foreground)]">
             GitHub Activity
           </h3>
           <img
             src="https://github-readme-streak-stats.herokuapp.com/?user=sinhaparth5&theme=dark&background=1A1A1A&ring=2B2B2B&fire=F5F1E8&currStreakLabel=F5F1E8&hide_border=true"
-            alt="GitHub Streak"
+            alt="GitHub streak statistics showing current streak, longest streak, and total contributions for sinhaparth5"
             class="w-full rounded shadow-2xl"
             loading="lazy"
+            role="img"
           />
         </div>
       </div>
     </div>
 
     <!-- GitHub Contribution Heatmap - Full Width -->
-    <div class="mt-12 github-heatmap">
-      <div class="text-center mb-6">
-        <h3 class="text-2xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2">
+    <div class="mt-12 github-heatmap" aria-labelledby="contribution-calendar-heading">
+      <header class="text-center mb-6">
+        <h3 id="contribution-calendar-heading" class="text-2xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2">
           Contribution Calendar
         </h3>
         <p class="text-sm text-[var(--muted)]">Year-long coding activity</p>
-      </div>
+      </header>
       <div class="flex justify-center p-6 bg-[var(--accent)] rounded-lg shadow-2xl">
         <img
           src="https://ghchart.rshah.org/2B2B2B/sinhaparth5"
-          alt="GitHub Contribution Chart"
+          alt="GitHub contribution calendar heatmap showing a year of coding activity for sinhaparth5"
           class="w-full max-w-4xl"
           loading="lazy"
           style="filter: invert(0.9) hue-rotate(180deg);"
+          role="img"
         />
       </div>
     </div>

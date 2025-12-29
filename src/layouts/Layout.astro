@@ -132,8 +132,11 @@ const structuredData = {
 		</script>
 	</head>
 	<body>
+		<!-- Skip to Main Content Link -->
+		<a href="#main-content" class="skip-link">Skip to main content</a>
+
 		<!-- Scroll Progress Indicator -->
-		<div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-[var(--accent)] via-[var(--foreground)] to-[var(--accent)] z-50 transition-all duration-300" style="width: 0%"></div>
+		<div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-[var(--accent)] via-[var(--foreground)] to-[var(--accent)] z-50 transition-all duration-300" style="width: 0%" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 
 		<!-- Back to Top Button -->
 		<button
@@ -146,7 +149,9 @@ const structuredData = {
 			</svg>
 		</button>
 
-		<slot />
+		<main id="main-content">
+			<slot />
+		</main>
 
 		<!-- Performance: Defer non-critical scripts -->
 		<script>
@@ -178,7 +183,9 @@ const structuredData = {
 				const documentHeight = document.documentElement.scrollHeight;
 				const scrollTop = window.scrollY;
 				const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
-				scrollProgress.style.width = `${Math.min(scrollPercent, 100)}%`;
+				const progress = Math.min(scrollPercent, 100);
+				scrollProgress.style.width = `${progress}%`;
+				scrollProgress.setAttribute('aria-valuenow', Math.round(progress).toString());
 			};
 
 			window.addEventListener('scroll', updateScrollProgress, { passive: true });
