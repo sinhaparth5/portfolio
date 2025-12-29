@@ -1,0 +1,23 @@
+{
+  "name": "Parth Sinha - Full Stack Developer",
+  "short_name": "Parth Sinha",
+  "description": "Full Stack Developer passionate about creating elegant solutions. Portfolio showcasing projects and blog posts.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F1E8",
+  "theme_color": "#1A1A1A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["portfolio", "developer", "technology"],
+  "lang": "en-US",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+}
