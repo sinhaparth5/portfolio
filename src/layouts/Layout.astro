@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import CookieConsent from "../components/CookieConsent.astro";
 
 interface Props {
 	title?: string;
@@ -72,6 +73,7 @@ const structuredData = {
 		<meta name="robots" content="index, follow" />
 		<meta name="language" content="English" />
 		<meta name="revisit-after" content="7 days" />
+		<meta name="google-adsense-account" content="ca-pub-1491419950635233">
 		<link rel="canonical" href={canonicalURL} />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL} />
@@ -103,19 +105,8 @@ const structuredData = {
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
 		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" as="style" />
-		<!-- Google Tag Manager -->
-		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-NGRLW2RH');</script>
-		<!-- End Google Tag Manager -->
 	</head>
 	<body>
-		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRLW2RH"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
 		<a href="#main-content" class="skip-link">Skip to main content</a>
 
 		<div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-[var(--accent)] via-[var(--foreground)] to-[var(--accent)] z-50 transition-all duration-300" style="width: 0%" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
@@ -133,6 +124,8 @@ const structuredData = {
 		<main id="main-content">
 			<slot />
 		</main>
+
+		<CookieConsent />
 
 		<script>
 			if ('loading' in HTMLImageElement.prototype) {
