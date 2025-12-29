@@ -170,6 +170,37 @@ const structuredData = {
 					}
 				}, { once: true });
 			});
+
+			// Scroll Progress Indicator
+			const scrollProgress = document.getElementById('scroll-progress');
+			const updateScrollProgress = () => {
+				const windowHeight = window.innerHeight;
+				const documentHeight = document.documentElement.scrollHeight;
+				const scrollTop = window.scrollY;
+				const scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
+				scrollProgress.style.width = `${Math.min(scrollPercent, 100)}%`;
+			};
+
+			window.addEventListener('scroll', updateScrollProgress, { passive: true });
+			updateScrollProgress();
+
+			// Back to Top Button
+			const backToTop = document.getElementById('back-to-top');
+			const toggleBackToTop = () => {
+				if (window.scrollY > 300) {
+					backToTop.classList.remove('opacity-0', 'pointer-events-none');
+					backToTop.classList.add('opacity-100', 'pointer-events-auto');
+				} else {
+					backToTop.classList.add('opacity-0', 'pointer-events-none');
+					backToTop.classList.remove('opacity-100', 'pointer-events-auto');
+				}
+			};
+
+			window.addEventListener('scroll', toggleBackToTop, { passive: true });
+
+			backToTop.addEventListener('click', () => {
+				window.scrollTo({ top: 0, behavior: 'smooth' });
+			});
 		</script>
 	</body>
 </html>

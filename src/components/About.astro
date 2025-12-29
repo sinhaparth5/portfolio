@@ -84,6 +84,38 @@ const skills = [
             "Building digital experiences that make a difference. Focused on performance, accessibility, and user-centric design."
           </p>
         </div>
+
+        <!-- GitHub Streak Stats -->
+        <div class="space-y-4 github-streak">
+          <h3 class="text-lg font-[var(--font-heading)] text-[var(--secondary-foreground)]">
+            GitHub Activity
+          </h3>
+          <img
+            src="https://github-readme-streak-stats.herokuapp.com/?user=sinhaparth5&theme=dark&background=1A1A1A&ring=2B2B2B&fire=F5F1E8&currStreakLabel=F5F1E8&hide_border=true"
+            alt="GitHub Streak"
+            class="w-full rounded shadow-2xl"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- GitHub Contribution Heatmap - Full Width -->
+    <div class="mt-12 github-heatmap">
+      <div class="text-center mb-6">
+        <h3 class="text-2xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2">
+          Contribution Calendar
+        </h3>
+        <p class="text-sm text-[var(--muted)]">Year-long coding activity</p>
+      </div>
+      <div class="flex justify-center p-6 bg-[var(--accent)] rounded-lg shadow-2xl">
+        <img
+          src="https://ghchart.rshah.org/2B2B2B/sinhaparth5"
+          alt="GitHub Contribution Chart"
+          class="w-full max-w-4xl"
+          loading="lazy"
+          style="filter: invert(0.9) hue-rotate(180deg);"
+        />
       </div>
     </div>
   </div>
@@ -140,7 +172,29 @@ const skills = [
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.4 },
       '-=0.2'
+    )
+    .fromTo('.github-streak',
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.5 },
+      '-=0.2'
     );
+
+  // GitHub Heatmap Animation
+  gsap.fromTo('.github-heatmap',
+    { y: 40, opacity: 0, scale: 0.95 },
+    {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      duration: 0.8,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.github-heatmap',
+        start: 'top 85%',
+        toggleActions: 'play none none reverse'
+      }
+    }
+  );
 
   // Blur text parallax
   gsap.to('.about-blur-text', {

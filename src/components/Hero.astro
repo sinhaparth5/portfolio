@@ -37,7 +37,7 @@ const { name } = Astro.props;
         </div>
 
         <p class="text-xl md:text-2xl text-[var(--muted-foreground)] max-w-xl font-light leading-relaxed hero-subtitle">
-          Full Stack Developer crafting digital experiences with creativity and precision
+          <span id="typing-text"></span><span class="typing-cursor">|</span>
         </p>
 
         <div class="flex flex-wrap gap-4 pt-4 hero-buttons">
@@ -118,6 +118,22 @@ const { name } = Astro.props;
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
   gsap.registerPlugin(ScrollTrigger);
+
+  // Typing Animation
+  const typingText = document.getElementById('typing-text');
+  const text = 'Full Stack Developer crafting digital experiences with creativity and precision';
+  let index = 0;
+
+  function type() {
+    if (index < text.length) {
+      typingText.textContent += text.charAt(index);
+      index++;
+      setTimeout(type, 50);
+    }
+  }
+
+  // Start typing after a short delay
+  setTimeout(type, 1000);
 
   // Hero animations
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
@@ -211,6 +227,15 @@ const { name } = Astro.props;
     }
   }
 
+  @keyframes blink {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+
   .badge-float {
     animation: badgeFloat 6s ease-in-out infinite;
   }
@@ -225,5 +250,10 @@ const { name } = Astro.props;
 
   .badge-pulse {
     animation: badgePulse 3s ease-in-out infinite;
+  }
+
+  .typing-cursor {
+    animation: blink 1s infinite;
+    font-weight: 300;
   }
 </style>
