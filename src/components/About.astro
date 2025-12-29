@@ -4,6 +4,40 @@ const skills = [
   "Python", "AWS", "Docker", "MongoDB",
   "Next.js", "Tailwind CSS", "GraphQL", "PostgreSQL"
 ];
+
+// Fetch GitHub stats from API
+let githubStats = {
+  publicRepos: 0,
+  totalStars: 0,
+  followers: 0,
+  topLanguage: 'JavaScript'
+};
+
+try {
+  const userResponse = await fetch('https://api.github.com/users/sinhaparth5');
+  if (userResponse.ok) {
+    const userData = await userResponse.json();
+    githubStats.publicRepos = userData.public_repos;
+    githubStats.followers = userData.followers;
+  }
+
+  const reposResponse = await fetch('https://api.github.com/users/sinhaparth5/repos?per_page=100');
+  if (reposResponse.ok) {
+    const repos = await reposResponse.json();
+    githubStats.totalStars = repos.reduce((sum: number, repo: any) => sum + repo.stargazers_count, 0);
+
+    // Find most used language
+    const languages: any = {};
+    repos.forEach((repo: any) => {
+      if (repo.language) {
+        languages[repo.language] = (languages[repo.language] || 0) + 1;
+      }
+    });
+    githubStats.topLanguage = Object.keys(languages).sort((a, b) => languages[b] - languages[a])[0] || 'JavaScript';
+  }
+} catch (error) {
+  console.error('Error fetching GitHub stats:', error);
+}
 ---
 
 <section id="about" class="py-20 md:py-32 bg-[var(--secondary-background)] px-6 md:px-12 relative overflow-hidden" aria-labelledby="about-heading">
@@ -86,26 +120,46 @@ const skills = [
           </p>
         </div>
 
-        <!-- GitHub Streak Stats -->
+        <!-- GitHub Stats Card -->
         <div class="space-y-4 github-streak" aria-labelledby="github-activity-heading">
           <h3 id="github-activity-heading" class="text-lg font-[var(--font-heading)] text-[var(--secondary-foreground)]">
-            GitHub Activity
+            GitHub Statistics
           </h3>
-          <div class="relative bg-[var(--accent)] rounded overflow-hidden min-h-[170px] flex items-center justify-center">
-            <img
-              src="https://streak-stats.demolab.com?user=sinhaparth5&theme=dark&background=1A1A1A&ring=2B2B2B&fire=F5F1E8&currStreakLabel=F5F1E8&hide_border=true"
-              alt="GitHub streak statistics showing current streak, longest streak, and total contributions for sinhaparth5"
-              class="w-full rounded shadow-2xl github-streak-img"
-              loading="lazy"
-              role="img"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-            />
-            <div class="hidden text-[var(--muted)] text-center p-6" style="display:none;">
-              <p class="text-sm">GitHub Stats Temporarily Unavailable</p>
-              <a href="https://github.com/sinhaparth5" target="_blank" rel="noopener noreferrer" class="text-[var(--secondary-foreground)] hover:underline mt-2 inline-block">
-                View Profile on GitHub →
-              </a>
+          <div class="bg-[var(--accent)] rounded shadow-2xl p-6 border-l-4 border-[var(--secondary-foreground)]">
+            <div class="grid grid-cols-2 gap-4">
+              <div class="text-center p-3 bg-[var(--secondary-background)] bg-opacity-30 rounded">
+                <div class="text-2xl font-bold text-[var(--secondary-foreground)] font-[var(--font-heading)]">
+                  {githubStats.publicRepos}
+                </div>
+                <div class="text-xs text-[var(--muted)] mt-1">Repositories</div>
+              </div>
+              <div class="text-center p-3 bg-[var(--secondary-background)] bg-opacity-30 rounded">
+                <div class="text-2xl font-bold text-[var(--secondary-foreground)] font-[var(--font-heading)]">
+                  {githubStats.totalStars}
+                </div>
+                <div class="text-xs text-[var(--muted)] mt-1">Total Stars</div>
+              </div>
+              <div class="text-center p-3 bg-[var(--secondary-background)] bg-opacity-30 rounded">
+                <div class="text-2xl font-bold text-[var(--secondary-foreground)] font-[var(--font-heading)]">
+                  {githubStats.followers}
+                </div>
+                <div class="text-xs text-[var(--muted)] mt-1">Followers</div>
+              </div>
+              <div class="text-center p-3 bg-[var(--secondary-background)] bg-opacity-30 rounded">
+                <div class="text-sm font-bold text-[var(--secondary-foreground)] font-[var(--font-heading)] truncate">
+                  {githubStats.topLanguage}
+                </div>
+                <div class="text-xs text-[var(--muted)] mt-1">Top Language</div>
+              </div>
             </div>
+            <a
+              href="https://github.com/sinhaparth5"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="block text-center text-[var(--secondary-foreground)] hover:text-[var(--muted)] text-xs mt-4 transition-colors"
+            >
+              View GitHub Profile →
+            </a>
           </div>
         </div>
       </div>
