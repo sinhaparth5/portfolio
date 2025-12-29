@@ -35,10 +35,10 @@ const { email, linkedin, twitter } = Astro.props;
             Whether you have a question or just want to say hi, feel free to reach out!
           </p>
 
-          <nav class="space-y-4 contact-links" aria-label="Contact methods">
+          <nav class="space-y-4 contact-links flex flex-col items-start" aria-label="Contact methods">
             <a
               href={`mailto:${email}`}
-              class="flex items-center gap-4 text-[var(--secondary-foreground)] hover:text-[var(--accent)] transition-colors group shadow-lg hover:shadow-xl bg-[var(--secondary-background)] p-4"
+              class="flex items-center justify-start gap-4 text-[var(--secondary-foreground)] hover:text-[var(--accent)] transition-colors group shadow-lg hover:shadow-xl bg-[var(--secondary-background)] p-4 w-full"
               aria-label={`Send email to ${email}`}
             >
               <div class="w-12 h-12 border-2 border-[var(--secondary-foreground)] flex items-center justify-center group-hover:bg-[var(--secondary-foreground)] group-hover:border-[var(--secondary-foreground)] transition-all shadow-md" aria-hidden="true">
@@ -56,7 +56,7 @@ const { email, linkedin, twitter } = Astro.props;
               href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center gap-4 text-[var(--secondary-foreground)] hover:text-[var(--accent)] transition-colors group shadow-lg hover:shadow-xl bg-[var(--secondary-background)] p-4"
+              class="flex items-center justify-start gap-4 text-[var(--secondary-foreground)] hover:text-[var(--accent)] transition-colors group shadow-lg hover:shadow-xl bg-[var(--secondary-background)] p-4 w-full"
               aria-label="Connect with me on LinkedIn"
             >
               <div class="w-12 h-12 border-2 border-[var(--secondary-foreground)] flex items-center justify-center group-hover:bg-[var(--secondary-foreground)] group-hover:border-[var(--secondary-foreground)] transition-all shadow-md" aria-hidden="true">
@@ -74,7 +74,7 @@ const { email, linkedin, twitter } = Astro.props;
               href={`https://twitter.com/${twitter}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center gap-4 text-[var(--secondary-foreground)] hover:text-[var(--accent)] transition-colors group shadow-lg hover:shadow-xl bg-[var(--secondary-background)] p-4"
+              class="flex items-center justify-start gap-4 text-[var(--secondary-foreground)] hover:text-[var(--accent)] transition-colors group shadow-lg hover:shadow-xl bg-[var(--secondary-background)] p-4 w-full"
               aria-label={`Follow me on Twitter @${twitter}`}
             >
               <div class="w-12 h-12 border-2 border-[var(--secondary-foreground)] flex items-center justify-center group-hover:bg-[var(--secondary-foreground)] group-hover:border-[var(--secondary-foreground)] transition-all shadow-md">
@@ -93,9 +93,13 @@ const { email, linkedin, twitter } = Astro.props;
 
       <div class="bg-[var(--secondary-background)] p-8 shadow-2xl contact-form relative">
         <!-- Decorative corner -->
-        <div class="absolute -top-4 -right-4 w-24 h-24 border-2 border-[var(--accent)] opacity-20"></div>
+        <div class="absolute -top-4 -right-4 w-24 h-24 border-2 border-[var(--accent)] opacity-20" aria-hidden="true"></div>
 
-        <form class="space-y-6 relative z-10" method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
+        <h3 id="contact-form-heading" class="text-xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-6">
+          Send Me a Message
+        </h3>
+
+        <form class="space-y-6 relative z-10" method="POST" action="https://formspree.io/f/xregyoee" aria-labelledby="contact-form-heading">
           <div>
             <label for="name" class="block text-sm text-[var(--secondary-foreground)] mb-2">
               Name
