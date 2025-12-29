@@ -1,18 +1,116 @@
 ---
 import "../styles/global.css";
+
+interface Props {
+	title?: string;
+	description?: string;
+	image?: string;
+	canonical?: string;
+}
+
+const {
+	title = "Parth Sinha - Full Stack Developer | Portfolio 2025",
+	description = "Full Stack Developer passionate about creating elegant solutions. Experienced in JavaScript, TypeScript, React, Node.js, Python, AWS, Docker, and modern web technologies. Explore my projects and blog posts on software development.",
+	image = "/images/Holi%20Joy_%20A%20Vibrant%20Portrait%20of%20Celebration.png",
+	canonical = Astro.url.pathname,
+} = Astro.props;
+
+// Dynamic base URL
+const baseUrl = Astro.site || new URL(Astro.url.origin);
+const canonicalURL = new URL(canonical, baseUrl);
+const imageUrl = new URL(image, baseUrl);
+
+// Structured data for SEO
+const structuredData = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	"name": "Parth Sinha",
+	"url": baseUrl.href,
+	"image": imageUrl.href,
+	"sameAs": [
+		"https://github.com/sinhaparth5",
+		"https://www.linkedin.com/in/parth-sinha18",
+		"https://x.com/sinhaparth555",
+		"https://parth-sinha.medium.com"
+	],
+	"jobTitle": "Full Stack Developer",
+	"worksFor": {
+		"@type": "Organization",
+		"name": "Freelance"
+	},
+	"description": description,
+	"email": "sinhaparth555@gmail.com",
+	"knowsAbout": [
+		"JavaScript",
+		"TypeScript",
+		"React",
+		"Node.js",
+		"Python",
+		"AWS",
+		"Docker",
+		"MongoDB",
+		"Next.js",
+		"Tailwind CSS",
+		"GraphQL",
+		"PostgreSQL"
+	]
+};
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content={title} />
+		<meta name="description" content={description} />
+		<meta name="author" content="Parth Sinha" />
+		<meta name="keywords" content="Parth Sinha, Full Stack Developer, Web Developer, JavaScript, TypeScript, React, Node.js, Python, AWS, Docker, MongoDB, Portfolio, Software Engineer, Frontend Developer, Backend Developer" />
+		<meta name="robots" content="index, follow" />
+		<meta name="language" content="English" />
+		<meta name="revisit-after" content="7 days" />
+
+		<!-- Canonical URL -->
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={imageUrl} />
+		<meta property="og:image:alt" content="Parth Sinha - Full Stack Developer Portfolio" />
+		<meta property="og:site_name" content="Parth Sinha Portfolio" />
+		<meta property="og:locale" content="en_US" />
+
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageUrl} />
+		<meta name="twitter:image:alt" content="Parth Sinha - Full Stack Developer Portfolio" />
+		<meta name="twitter:creator" content="@sinhaparth555" />
+		<meta name="twitter:site" content="@sinhaparth555" />
+
+		<!-- Additional Meta Tags -->
+		<meta name="theme-color" content="#1A1A1A" />
+		<meta name="msapplication-TileColor" content="#1A1A1A" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<!-- Structured Data (JSON-LD) -->
+		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
+		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-		<title>Parth Sinha - Portfolio</title>
 	</head>
 	<body>
 		<slot />
