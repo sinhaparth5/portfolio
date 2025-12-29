@@ -14,7 +14,6 @@ interface BlogPost {
 let blogs: BlogPost[] = [];
 
 try {
-  // Extract username from Medium URL
   const username = mediumUrl.replace('https://', '').replace('.medium.com', '').replace('medium.com/@', '');
   const rssFeedUrl = `https://medium.com/feed/@${username}`;
 
@@ -22,7 +21,6 @@ try {
   if (response.ok) {
     const xmlText = await response.text();
 
-    // Parse RSS feed (simple parser)
     const items = xmlText.match(/<item>[\s\S]*?<\/item>/g) || [];
 
     blogs = items.slice(0, 3).map(item => {
@@ -53,7 +51,6 @@ function formatDate(dateString: string) {
   return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
-// Blog images
 const blogImages = [
   '/images/Rain-Kissed Reflections on an Ancient Street.png',
   '/images/Holi Joy_ A Vibrant Portrait of Celebration.png',
@@ -62,7 +59,6 @@ const blogImages = [
 ---
 
 <section id="blogs" class="py-20 md:py-32 bg-[var(--secondary-background)] px-6 md:px-12 relative overflow-hidden" aria-labelledby="blogs-heading">
-  <!-- Huge blur text background -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
     <p class="blogs-blur-text absolute top-1/4 -left-28 text-[24vw] font-[var(--font-heading)] text-[var(--secondary-foreground)] opacity-[0.02] font-bold leading-none whitespace-nowrap">
       INSIGHTS
@@ -72,7 +68,6 @@ const blogImages = [
     </p>
   </div>
 
-  <!-- Decorative elements -->
   <div class="absolute top-24 right-16 w-44 h-44 rounded-full border-2 border-[var(--muted)] opacity-10 badge-float" aria-hidden="true"></div>
   <div class="absolute bottom-16 left-20 w-52 h-52 bg-[var(--muted)] opacity-5 rotate-45 shape-rotate" aria-hidden="true"></div>
 
@@ -180,7 +175,6 @@ const blogImages = [
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Blogs section animations
   const blogsTl = gsap.timeline({
     scrollTrigger: {
       trigger: '#blogs',
@@ -212,7 +206,6 @@ const blogImages = [
       '-=0.2'
     );
 
-  // Blur text parallax
   gsap.to('.blogs-blur-text', {
     x: -200,
     scrollTrigger: {

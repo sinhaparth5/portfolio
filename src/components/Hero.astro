@@ -4,7 +4,6 @@ const { name } = Astro.props;
 ---
 
 <section id="home" class="min-h-screen flex items-center justify-center bg-[var(--background)] px-6 md:px-12 relative overflow-hidden" aria-labelledby="hero-heading">
-  <!-- Huge blur text background -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
     <p class="hero-blur-text absolute top-1/4 -left-20 text-[20vw] font-[var(--font-heading)] text-[var(--foreground)] opacity-[0.03] font-bold leading-none whitespace-nowrap">
       DEVELOPER
@@ -14,16 +13,13 @@ const { name } = Astro.props;
     </p>
   </div>
 
-  <!-- Decorative circular badges -->
   <div class="absolute top-10 right-10 w-32 h-32 rounded-full border-2 border-[var(--accent)] opacity-20 badge-float" aria-hidden="true"></div>
   <div class="absolute bottom-20 left-20 w-24 h-24 rounded-full bg-[var(--accent)] opacity-10 badge-float-delay" aria-hidden="true"></div>
 
-  <!-- Geometric shapes -->
   <div class="absolute top-1/3 right-1/4 w-64 h-64 border border-[var(--border)] opacity-20 rotate-45 shape-rotate" aria-hidden="true"></div>
 
   <div class="max-w-7xl w-full z-10">
     <div class="grid md:grid-cols-2 gap-12 items-center">
-      <!-- Left: Text Content -->
       <div class="space-y-8 hero-content">
         <div class="space-y-4">
           <div class="inline-block px-4 py-2 border border-[var(--accent)] mb-4 backdrop-blur-sm">
@@ -56,7 +52,6 @@ const { name } = Astro.props;
           </a>
         </div>
 
-        <!-- Stats -->
         <div class="flex gap-8 pt-8 hero-stats" role="list" aria-label="Professional statistics">
           <div role="listitem">
             <div class="text-4xl font-[var(--font-heading)] font-bold text-[var(--foreground)]" aria-label="5 plus years of experience">5+</div>
@@ -73,10 +68,8 @@ const { name } = Astro.props;
         </div>
       </div>
 
-      <!-- Right: Image -->
       <div class="relative hero-image">
         <div class="relative group">
-          <!-- Image container with effects -->
           <div class="relative overflow-hidden shadow-2xl">
             <Image
               src="/images/photo.jpg"
@@ -87,14 +80,11 @@ const { name } = Astro.props;
               loading="eager"
               quality={90}
             />
-            <!-- Overlay gradient -->
             <div class="absolute inset-0 bg-gradient-to-t from-[var(--foreground)] via-transparent to-transparent opacity-40" aria-hidden="true"></div>
           </div>
 
-          <!-- Decorative frame -->
           <div class="absolute -inset-4 border-2 border-[var(--accent)] -z-10 transform translate-x-4 translate-y-4" aria-hidden="true"></div>
 
-          <!-- Floating badge -->
           <div class="absolute -bottom-8 -left-8 bg-[var(--secondary-background)] p-6 shadow-2xl badge-pulse" role="status" aria-label="Availability status">
             <div class="text-sm text-[var(--muted)] mb-1">Available for</div>
             <div class="text-xl font-[var(--font-heading)] font-bold text-[var(--secondary-foreground)]">Freelance</div>
@@ -104,7 +94,6 @@ const { name } = Astro.props;
     </div>
   </div>
 
-  <!-- Scroll indicator -->
   <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 scroll-indicator" aria-hidden="true">
     <div class="flex flex-col items-center gap-2 text-[var(--muted-foreground)]">
       <span class="text-xs tracking-widest">SCROLL</span>
@@ -119,23 +108,22 @@ const { name } = Astro.props;
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Typing Animation
   const typingText = document.getElementById('typing-text');
   const text = 'Full Stack Developer crafting digital experiences with creativity and precision';
   let index = 0;
 
   function type() {
-    if (index < text.length) {
+    if (typingText && index < text.length) {
       typingText.textContent += text.charAt(index);
       index++;
       setTimeout(type, 50);
     }
   }
 
-  // Start typing after a short delay
-  setTimeout(type, 1000);
+  if (typingText) {
+    setTimeout(type, 1000);
+  }
 
-  // Hero animations
   const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
   tl.fromTo('.hero-title',
@@ -168,7 +156,6 @@ const { name } = Astro.props;
     0.2
   );
 
-  // Blur text parallax
   gsap.to('.hero-blur-text', {
     x: -200,
     scrollTrigger: {
@@ -189,7 +176,6 @@ const { name } = Astro.props;
     }
   });
 
-  // Scroll line animation
   gsap.to('.scroll-line', {
     scaleY: 1.5,
     yoyo: true,

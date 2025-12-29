@@ -5,7 +5,6 @@ const skills = [
   "Next.js", "Tailwind CSS", "GraphQL", "PostgreSQL"
 ];
 
-// Fetch GitHub stats from API
 let githubStats = {
   publicRepos: 0,
   totalStars: 0,
@@ -16,17 +15,16 @@ let githubStats = {
 try {
   const userResponse = await fetch('https://api.github.com/users/sinhaparth5');
   if (userResponse.ok) {
-    const userData = await userResponse.json();
+    const userData = await userResponse.json() as { public_repos: number; followers: number };
     githubStats.publicRepos = userData.public_repos;
     githubStats.followers = userData.followers;
   }
 
   const reposResponse = await fetch('https://api.github.com/users/sinhaparth5/repos?per_page=100');
   if (reposResponse.ok) {
-    const repos = await reposResponse.json();
+    const repos = await reposResponse.json() as Array<{ stargazers_count: number; language: string | null }>;
     githubStats.totalStars = repos.reduce((sum: number, repo: any) => sum + repo.stargazers_count, 0);
 
-    // Find most used language
     const languages: any = {};
     repos.forEach((repo: any) => {
       if (repo.language) {
@@ -41,7 +39,6 @@ try {
 ---
 
 <section id="about" class="py-20 md:py-32 bg-[var(--secondary-background)] px-6 md:px-12 relative overflow-hidden" aria-labelledby="about-heading">
-  <!-- Huge blur text background -->
   <div class="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
     <p class="about-blur-text absolute top-1/4 -right-20 text-[18vw] font-[var(--font-heading)] text-[var(--secondary-foreground)] opacity-[0.03] font-bold leading-none whitespace-nowrap">
       EXPERTISE
@@ -51,7 +48,6 @@ try {
     </p>
   </div>
 
-  <!-- Decorative elements -->
   <div class="absolute top-20 left-10 w-40 h-40 rounded-full border border-[var(--muted)] opacity-10 badge-float" aria-hidden="true"></div>
   <div class="absolute bottom-32 right-16 w-32 h-32 bg-[var(--muted)] opacity-5 rotate-45 shape-rotate" aria-hidden="true"></div>
 
@@ -95,7 +91,6 @@ try {
 
       <div class="space-y-8 about-skills">
         <div class="relative">
-          <!-- Decorative corner badge -->
           <div class="absolute -top-6 -right-6 w-20 h-20 bg-[var(--muted)] opacity-10 badge-pulse" aria-hidden="true"></div>
 
           <h3 class="text-xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-6">
@@ -120,7 +115,6 @@ try {
           </p>
         </div>
 
-        <!-- GitHub Stats Card -->
         <div class="space-y-4 github-streak" aria-labelledby="github-activity-heading">
           <h3 id="github-activity-heading" class="text-lg font-[var(--font-heading)] text-[var(--secondary-foreground)]">
             GitHub Statistics
@@ -165,7 +159,6 @@ try {
       </div>
     </div>
 
-    <!-- GitHub Contribution Heatmap - Full Width -->
     <div class="mt-12 github-heatmap" aria-labelledby="contribution-calendar-heading">
       <header class="text-center mb-6">
         <h3 id="contribution-calendar-heading" class="text-2xl font-[var(--font-heading)] text-[var(--secondary-foreground)] mb-2">
@@ -193,7 +186,6 @@ try {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // About section animations
   const aboutTl = gsap.timeline({
     scrollTrigger: {
       trigger: '#about',
@@ -245,7 +237,6 @@ try {
       '-=0.2'
     );
 
-  // GitHub Heatmap Animation
   gsap.fromTo('.github-heatmap',
     { y: 40, opacity: 0, scale: 0.95 },
     {
@@ -262,7 +253,6 @@ try {
     }
   );
 
-  // Blur text parallax
   gsap.to('.about-blur-text', {
     x: 150,
     scrollTrigger: {

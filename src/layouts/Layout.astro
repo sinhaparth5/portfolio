@@ -15,12 +15,10 @@ const {
 	canonical = Astro.url.pathname,
 } = Astro.props;
 
-// Dynamic base URL
 const baseUrl = Astro.site || new URL(Astro.url.origin);
 const canonicalURL = new URL(canonical, baseUrl);
 const imageUrl = new URL(image, baseUrl);
 
-// Structured data for SEO
 const structuredData = {
 	"@context": "https://schema.org",
 	"@type": "Person",
@@ -62,16 +60,10 @@ const structuredData = {
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-		<!-- Favicons -->
 		<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
-
 		<link rel="manifest" href="/manifest.json" />
-		<meta name="generator" content={Astro.generator} />
-
-		<!-- Primary Meta Tags -->
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
@@ -80,11 +72,7 @@ const structuredData = {
 		<meta name="robots" content="index, follow" />
 		<meta name="language" content="English" />
 		<meta name="revisit-after" content="7 days" />
-
-		<!-- Canonical URL -->
 		<link rel="canonical" href={canonicalURL} />
-
-		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={title} />
@@ -93,8 +81,6 @@ const structuredData = {
 		<meta property="og:image:alt" content="Parth Sinha - Full Stack Developer Portfolio" />
 		<meta property="og:site_name" content="Parth Sinha Portfolio" />
 		<meta property="og:locale" content="en_US" />
-
-		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:url" content={canonicalURL} />
 		<meta name="twitter:title" content={title} />
@@ -103,48 +89,37 @@ const structuredData = {
 		<meta name="twitter:image:alt" content="Parth Sinha - Full Stack Developer Portfolio" />
 		<meta name="twitter:creator" content="@sinhaparth555" />
 		<meta name="twitter:site" content="@sinhaparth555" />
-
-		<!-- Additional Meta Tags -->
 		<meta name="theme-color" content="#1A1A1A" />
 		<meta name="msapplication-TileColor" content="#1A1A1A" />
 		<meta name="mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-		<!-- Structured Data (JSON-LD) -->
 		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
-
-		<!-- DNS Prefetch & Preconnect for Performance -->
 		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 		<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
 		<link rel="dns-prefetch" href="https://api.github.com" />
 		<link rel="dns-prefetch" href="https://medium.com" />
-
-		<!-- Fonts with Optimized Loading -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" as="style" />
-		<!-- Web Vitals Monitoring (Optional - for performance tracking) -->
-		<script>
-			// Report Web Vitals to analytics (optional)
-			// You can send these to your analytics service
-			if ('web-vitals' in window) {
-				const reportWebVitals = (metric) => {
-					console.log(metric);
-					// Send to analytics: gtag('event', metric.name, { value: metric.value });
-				};
-			}
-		</script>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" as="style" />
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-NGRLW2RH');</script>
+		<!-- End Google Tag Manager -->
 	</head>
 	<body>
-		<!-- Skip to Main Content Link -->
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRLW2RH"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
 		<a href="#main-content" class="skip-link">Skip to main content</a>
 
-		<!-- Scroll Progress Indicator -->
 		<div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-[var(--accent)] via-[var(--foreground)] to-[var(--accent)] z-50 transition-all duration-300" style="width: 0%" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 
-		<!-- Back to Top Button -->
 		<button
 			id="back-to-top"
 			class="fixed bottom-8 right-8 w-12 h-12 bg-[var(--foreground)] text-[var(--background)] rounded-full shadow-2xl opacity-0 pointer-events-none transition-all duration-300 hover:scale-110 hover:shadow-[0_0_30px_rgba(0,0,0,0.3)] z-40 flex items-center justify-center"
@@ -159,16 +134,13 @@ const structuredData = {
 			<slot />
 		</main>
 
-		<!-- Performance: Defer non-critical scripts -->
 		<script>
-			// Add loading="lazy" to all images without it (fallback)
 			if ('loading' in HTMLImageElement.prototype) {
 				document.querySelectorAll('img:not([loading])').forEach(img => {
 					img.loading = 'lazy';
 				});
 			}
 
-			// Preload next page on hover (for faster navigation)
 			const links = document.querySelectorAll('a[href^="/"]');
 			links.forEach(link => {
 				link.addEventListener('mouseenter', () => {
@@ -182,7 +154,6 @@ const structuredData = {
 				}, { once: true });
 			});
 
-			// Scroll Progress Indicator
 			const scrollProgress = document.getElementById('scroll-progress');
 			const updateScrollProgress = () => {
 				const windowHeight = window.innerHeight;
@@ -197,7 +168,6 @@ const structuredData = {
 			window.addEventListener('scroll', updateScrollProgress, { passive: true });
 			updateScrollProgress();
 
-			// Back to Top Button
 			const backToTop = document.getElementById('back-to-top');
 			const toggleBackToTop = () => {
 				if (window.scrollY > 300) {
