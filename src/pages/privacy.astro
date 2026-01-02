@@ -19,7 +19,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <!-- Content -->
-      <div class="prose prose-lg max-w-none space-y-8 text-[var(--muted)]">
+      <div class="prose prose-lg max-w-none space-y-8 text-[var(--foreground)]">
 
         <!-- Introduction -->
         <section>
@@ -186,8 +186,8 @@ import Layout from '../layouts/Layout.astro';
             If you have any questions about this privacy policy or wish to exercise your rights, please contact us:
           </p>
           <div class="bg-[var(--secondary-background)] p-6 rounded-lg border-l-4 border-[var(--accent)]">
-            <p class="text-[var(--foreground)]"><strong>Email:</strong> <a href="mailto:contact@parthsinha.com" class="text-[var(--accent)] hover:underline">contact@parthsinha.com</a></p>
-            <p class="text-[var(--foreground)] mt-2"><strong>Website:</strong> <a href="https://parthsinha.com" class="text-[var(--accent)] hover:underline">parthsinha.com</a></p>
+            <p class="text-[var(--secondary-foreground)]"><strong>Email:</strong> <a href="mailto:contact@parthsinha.com" class="text-[var(--secondary-foreground)] hover:underline hover:opacity-80">contact@parthsinha.com</a></p>
+            <p class="text-[var(--secondary-foreground)] mt-2"><strong>Website:</strong> <a href="https://parthsinha.com" class="text-[var(--secondary-foreground)] hover:underline hover:opacity-80">parthsinha.com</a></p>
           </div>
         </section>
 
@@ -226,13 +226,24 @@ import Layout from '../layouts/Layout.astro';
     text-decoration: underline;
   }
 
+  /* Contact box links - override to be visible on dark background */
+  .bg-\[var\(--secondary-background\)\] a {
+    color: var(--secondary-foreground) !important;
+    text-decoration: underline;
+  }
+
+  .bg-\[var\(--secondary-background\)\] a:hover {
+    opacity: 0.8;
+  }
+
   /* List styling */
   ul {
-    color: var(--muted);
+    color: var(--foreground);
   }
 
   ul li strong {
     color: var(--foreground);
+    font-weight: 600;
   }
 
   /* Section spacing */
