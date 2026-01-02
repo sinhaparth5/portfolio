@@ -32,6 +32,14 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    ssr: {
+      external: [
+        'node:path',
+        'node:fs/promises',
+        'node:url',
+        'node:crypto'
+      ],
+    },
     build: {
       // Minify for production
       minify: 'terser',
