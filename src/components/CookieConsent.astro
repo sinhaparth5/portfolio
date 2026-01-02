@@ -5,18 +5,21 @@
 <div id="cookie-consent" class="cookie-consent hidden">
   <div class="cookie-consent-content">
     <div class="cookie-text">
-      <h3 class="cookie-title">Cookie Notice</h3>
+      <h3 class="cookie-title">🍪 Cookie Consent</h3>
       <p class="cookie-description">
-        We use cookies to analyze site traffic and improve your experience. By accepting, you consent to our use of analytics cookies.
+        We use <strong>non-essential cookies</strong> (Google Analytics and Google Tag Manager) to analyze site traffic and improve your experience. These cookies are not required for the website to function but help us understand how visitors use our site.
+      </p>
+      <p class="cookie-description-small">
+        Only essential cookies (for storing your consent preference) will be set if you decline.
         <a href="/privacy" class="cookie-link">Learn more about our privacy policy</a>
       </p>
     </div>
     <div class="cookie-buttons">
       <button id="cookie-accept" class="cookie-btn cookie-btn-accept">
-        Accept
+        Accept All Cookies
       </button>
       <button id="cookie-decline" class="cookie-btn cookie-btn-decline">
-        Decline
+        Essential Only
       </button>
     </div>
   </div>
@@ -67,7 +70,20 @@
     font-size: 0.875rem;
     line-height: 1.5;
     color: var(--muted);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .cookie-description strong {
+    color: var(--secondary-foreground);
+    font-weight: 600;
+  }
+
+  .cookie-description-small {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--muted);
     margin: 0;
+    opacity: 0.9;
   }
 
   .cookie-link {
@@ -156,6 +172,10 @@
       font-size: 0.8125rem;
     }
 
+    .cookie-description-small {
+      font-size: 0.75rem;
+    }
+
     .cookie-buttons {
       width: 100%;
       flex-direction: column;
@@ -178,6 +198,10 @@
 
     .cookie-description {
       font-size: 0.75rem;
+    }
+
+    .cookie-description-small {
+      font-size: 0.6875rem;
     }
   }
 </style>

@@ -9,6 +9,9 @@ export default defineConfig({
   // Set your production site URL here for proper SEO
   site: process.env.SITE_URL || 'https://parthsinha.com',
 
+  // Remove trailing slashes from URLs
+  trailingSlash: 'never',
+
   integrations: [sitemap()],
 
   // Build optimizations
