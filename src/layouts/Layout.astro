@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import CookieConsent from "../components/CookieConsent.astro";
+import { SEO } from "astro-seo";
 
 interface Props {
 	title?: string;
@@ -17,7 +18,9 @@ const {
 } = Astro.props;
 
 const baseUrl = Astro.site || new URL(Astro.url.origin);
-const canonicalURL = new URL(canonical, baseUrl);
+// Remove trailing slash from canonical path (except for root "/")
+const cleanCanonical = canonical === '/' ? canonical : canonical.replace(/\/$/, '');
+const canonicalURL = new URL(cleanCanonical, baseUrl);
 const imageUrl = new URL(image, baseUrl);
 
 const structuredData = {
@@ -59,52 +62,64 @@ const structuredData = {
 <!doctype html>
 <html lang="en">
 	<head>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-0P5Z6LMTGX"></script>
-		<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'G-0P5Z6LMTGX');
-		</script>
-		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<SEO
+			charset="UTF-8"
+			title={title}
+			description={description}
+			canonical={canonicalURL.href}
+			noindex={false}
+			nofollow={false}
+			openGraph={{
+				basic: {
+					title: title,
+					type: "website",
+					image: imageUrl.href,
+					url: canonicalURL.href
+				},
+				optional: {
+					description: description,
+					siteName: "Parth Sinha Portfolio",
+					locale: "en_US"
+				},
+				image: {
+					alt: "Parth Sinha - Full Stack Developer Portfolio",
+					width: 1200,
+					height: 630
+				}
+			}}
+			twitter={{
+				card: "summary_large_image",
+				site: "@sinhaparth555",
+				creator: "@sinhaparth555",
+				title: title,
+				description: description,
+				image: imageUrl.href,
+				imageAlt: "Parth Sinha - Full Stack Developer Portfolio"
+			}}
+			extend={{
+				meta: [
+					{ name: "author", content: "Parth Sinha" },
+					{ name: "keywords", content: "Parth Sinha, Full Stack Developer, Web Developer, JavaScript, TypeScript, React, Node.js, Python, AWS, Docker, MongoDB, Portfolio, Software Engineer, Frontend Developer, Backend Developer" },
+					{ name: "language", content: "English" },
+					{ name: "revisit-after", content: "7 days" },
+					{ name: "google-adsense-account", content: "ca-pub-1491419950635233" },
+					{ name: "theme-color", content: "#1A1A1A" },
+					{ name: "msapplication-TileColor", content: "#1A1A1A" },
+					{ name: "mobile-web-app-capable", content: "yes" },
+					{ name: "apple-mobile-web-app-capable", content: "yes" },
+					{ name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" }
+				],
+				link: []
+			}}
+		/>
+
 		<link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
 		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2" />
 		<link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
 		<link rel="manifest" href="/manifest.json" />
-		<title>{title}</title>
-		<meta name="title" content={title} />
-		<meta name="description" content={description} />
-		<meta name="author" content="Parth Sinha" />
-		<meta name="keywords" content="Parth Sinha, Full Stack Developer, Web Developer, JavaScript, TypeScript, React, Node.js, Python, AWS, Docker, MongoDB, Portfolio, Software Engineer, Frontend Developer, Backend Developer" />
-		<meta name="robots" content="index, follow" />
-		<meta name="language" content="English" />
-		<meta name="revisit-after" content="7 days" />
-		<meta name="google-adsense-account" content="ca-pub-1491419950635233">
-		<link rel="canonical" href={canonicalURL} />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={canonicalURL} />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={imageUrl} />
-		<meta property="og:image:alt" content="Parth Sinha - Full Stack Developer Portfolio" />
-		<meta property="og:site_name" content="Parth Sinha Portfolio" />
-		<meta property="og:locale" content="en_US" />
-		<meta name="twitter:card" content="summary_large_image" />
-		<meta name="twitter:url" content={canonicalURL} />
-		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content={imageUrl} />
-		<meta name="twitter:image:alt" content="Parth Sinha - Full Stack Developer Portfolio" />
-		<meta name="twitter:creator" content="@sinhaparth555" />
-		<meta name="twitter:site" content="@sinhaparth555" />
-		<meta name="theme-color" content="#1A1A1A" />
-		<meta name="msapplication-TileColor" content="#1A1A1A" />
-		<meta name="mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
 		<script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
 		<link rel="dns-prefetch" href="https://fonts.gstatic.com" />
@@ -112,8 +127,8 @@ const structuredData = {
 		<link rel="dns-prefetch" href="https://medium.com" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
-		<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" as="style" />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+		<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" /></noscript>
 	</head>
 	<body>
 		<a href="#main-content" class="skip-link">Skip to main content</a>
@@ -135,6 +150,21 @@ const structuredData = {
 		</main>
 
 		<CookieConsent />
+
+		<!-- Google Analytics - Deferred for performance -->
+		<script>
+		window.addEventListener('load', function() {
+			var gaScript = document.createElement('script');
+			gaScript.async = true;
+			gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-0P5Z6LMTGX';
+			document.head.appendChild(gaScript);
+
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-0P5Z6LMTGX');
+		});
+		</script>
 
 		<script>
 			if ('loading' in HTMLImageElement.prototype) {

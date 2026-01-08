@@ -19,6 +19,12 @@ export default defineConfig({
     inlineStylesheets: 'auto',
   },
 
+  // Image optimization
+  image: {
+    formats: ['webp', 'avif'],
+    quality: 60,
+  },
+
   // Compression and minification
   compressHTML: true,
 
