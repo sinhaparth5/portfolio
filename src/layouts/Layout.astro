@@ -167,6 +167,10 @@ const structuredData = {
 		</script>
 
 		<script>
+			import '../scripts/effects';
+		</script>
+
+		<script>
 			if ('loading' in HTMLImageElement.prototype) {
 				document.querySelectorAll('img:not([loading])').forEach(img => {
 					img.loading = 'lazy';
@@ -221,6 +225,27 @@ const structuredData = {
 </html>
 
 <style>
+	/* Lenis smooth scroll */
+	html.lenis, html.lenis body {
+		height: auto;
+	}
+
+	.lenis.lenis-smooth {
+		scroll-behavior: auto !important;
+	}
+
+	.lenis.lenis-smooth [data-lenis-prevent] {
+		overscroll-behavior: contain;
+	}
+
+	.lenis.lenis-stopped {
+		overflow: hidden;
+	}
+
+	.lenis.lenis-scrolling iframe {
+		pointer-events: none;
+	}
+
 	html {
 		height: 100%;
 	}
@@ -230,5 +255,23 @@ const structuredData = {
 		width: 100%;
 		min-height: 100%;
 		position: relative;
+	}
+
+	/* Marquee styles */
+	.marquee {
+		overflow: hidden;
+		white-space: nowrap;
+	}
+
+	.marquee-content {
+		display: inline-flex;
+		gap: 4rem;
+		padding-right: 4rem;
+	}
+
+	/* Split text styles */
+	.split-char {
+		display: inline-block;
+		will-change: transform, opacity;
 	}
 </style>

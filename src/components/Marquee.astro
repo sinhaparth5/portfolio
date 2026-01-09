@@ -1,0 +1,79 @@
+---
+interface Props {
+  text: string;
+  speed?: number;
+  direction?: 'left' | 'right';
+  variant?: 'default' | 'outline' | 'muted';
+}
+
+const {
+  text,
+  speed = 30,
+  direction = 'left',
+  variant = 'default'
+} = Astro.props;
+
+const words = text.split(' ');
+
+const variantClasses = {
+  default: 'text-[var(--foreground)]',
+  outline: 'text-transparent [-webkit-text-stroke:1px_var(--foreground)]',
+  muted: 'text-[var(--muted)]'
+};
+---
+
+<div
+  class="marquee py-8 border-y border-[var(--border)] bg-[var(--background)]"
+  data-speed={speed}
+  data-direction={direction}
+  aria-hidden="true"
+>
+  <div class="marquee-content">
+    {words.map((word, i) => (
+      <span class={`text-4xl md:text-6xl lg:text-7xl font-[var(--font-heading)] font-bold uppercase tracking-wider ${variantClasses[variant]}`}>
+        {word}
+        {i < words.length - 1 && (
+          <span class="mx-8 text-[var(--accent)]">/</span>
+        )}
+      </span>
+    ))}
+    <span class="text-4xl md:text-6xl lg:text-7xl text-[var(--accent)]">★</span>
+  </div>
+</div>
+
+<style>
+  .marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+  }
+
+  .marquee::before,
+  .marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .marquee::before {
+    left: 0;
+    background: linear-gradient(to right, var(--background), transparent);
+  }
+
+  .marquee::after {
+    right: 0;
+    background: linear-gradient(to left, var(--background), transparent);
+  }
+
+  .marquee-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 2rem;
+    padding-right: 2rem;
+    animation: none; /* Controlled by GSAP */
+  }
+</style>

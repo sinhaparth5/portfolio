@@ -6,6 +6,7 @@ import Projects from '../components/Projects.astro';
 import Blogs from '../components/Blogs.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
+import Marquee from '../components/Marquee.astro';
 
 const config = {
 	name: 'Parth Sinha',
@@ -19,9 +20,41 @@ const config = {
 
 <Layout>
 	<Hero name={config.name} />
+
+	<Marquee
+		text="FULL STACK DEVELOPER CREATIVE SOLUTIONS MODERN TECH"
+		speed={35}
+		direction="left"
+		variant="default"
+	/>
+
 	<About />
+
+	<Marquee
+		text="REACT NODE.JS TYPESCRIPT PYTHON AWS DOCKER"
+		speed={40}
+		direction="right"
+		variant="outline"
+	/>
+
 	<Projects username={config.github} />
+
+	<Marquee
+		text="INNOVATION DESIGN CODE PASSION EXCELLENCE"
+		speed={30}
+		direction="left"
+		variant="muted"
+	/>
+
 	<Blogs mediumUrl={config.mediumUrl} />
+
+	<Marquee
+		text="LET'S BUILD SOMETHING AMAZING TOGETHER"
+		speed={45}
+		direction="right"
+		variant="default"
+	/>
+
 	<Contact
 		email={config.email}
 		linkedin={config.linkedin}

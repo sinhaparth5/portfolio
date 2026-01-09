@@ -13,10 +13,10 @@ const { name } = Astro.props;
     </p>
   </div>
 
-  <div class="absolute top-10 right-10 w-32 h-32 rounded-full border-2 border-[var(--accent)] opacity-20 badge-float" aria-hidden="true"></div>
-  <div class="absolute bottom-20 left-20 w-24 h-24 rounded-full bg-[var(--accent)] opacity-10 badge-float-delay" aria-hidden="true"></div>
+  <div class="absolute top-10 right-10 w-32 h-32 rounded-full border-2 border-[var(--accent)] opacity-20 badge-float parallax-bg" data-parallax="-0.3" aria-hidden="true"></div>
+  <div class="absolute bottom-20 left-20 w-24 h-24 rounded-full bg-[var(--accent)] opacity-10 badge-float-delay parallax-bg" data-parallax="0.2" aria-hidden="true"></div>
 
-  <div class="absolute top-1/3 right-1/4 w-64 h-64 border border-[var(--border)] opacity-20 rotate-45 shape-rotate" aria-hidden="true"></div>
+  <div class="absolute top-1/3 right-1/4 w-64 h-64 border border-[var(--border)] opacity-20 rotate-45 shape-rotate parallax-bg" data-parallax="-0.4" aria-hidden="true"></div>
 
   <div class="max-w-7xl w-full z-10">
     <div class="grid md:grid-cols-2 gap-12 items-center">
@@ -40,6 +40,7 @@ const { name } = Astro.props;
           <a
             href="#projects"
             class="group px-8 py-4 bg-[var(--accent)] text-[var(--secondary-foreground)] font-medium relative overflow-hidden hover:shadow-2xl transition-all duration-300"
+            data-magnetic="0.4"
           >
             <span class="relative z-10">View Work</span>
             <div class="absolute inset-0 bg-[var(--foreground)] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
@@ -47,6 +48,7 @@ const { name } = Astro.props;
           <a
             href="#contact"
             class="px-8 py-4 border-2 border-[var(--accent)] text-[var(--accent)] font-medium hover:bg-[var(--accent)] hover:text-[var(--secondary-foreground)] hover:shadow-xl transition-all duration-300"
+            data-magnetic="0.4"
           >
             Get in Touch
           </a>
@@ -68,7 +70,7 @@ const { name } = Astro.props;
         </div>
       </div>
 
-      <div class="relative hero-image">
+      <div class="relative hero-image" data-velocity-scale>
         <div class="relative group">
           <div class="relative overflow-hidden shadow-2xl">
             <Image
