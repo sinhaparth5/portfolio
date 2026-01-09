@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import cloudflare from '@astrojs/cloudflare';
 import sitemap from '@astrojs/sitemap';
+import genericNames from 'astro-generic-build-filenames';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,7 +13,7 @@ export default defineConfig({
   // Remove trailing slashes from URLs
   trailingSlash: 'never',
 
-  integrations: [sitemap()],
+  integrations: [sitemap(), genericNames()],
 
   // Build optimizations
   build: {
