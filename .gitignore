@@ -23,6 +23,12 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
+# wasm build artifacts
+public/wasm/
+wasm/target/
+wasm/pkg/
+src/scripts/wasm-glue.js
+
 # wrangler files
 .wrangler
 .dev.vars*

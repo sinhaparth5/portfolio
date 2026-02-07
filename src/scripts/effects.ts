@@ -1,15 +1,19 @@
 import Lenis from 'lenis';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { getAnimMath, getAnimMathSync } from './wasm-bridge';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// Kick off WASM loading early
+getAnimMath();
 
 // ============================================
 // 1. LENIS SMOOTH SCROLL
 // ============================================
 const lenis = new Lenis({
   duration: 1.2,
-  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  easing: (t) => getAnimMathSync().exponential_ease(t),
   orientation: 'vertical',
   gestureOrientation: 'vertical',
   smoothWheel: true,
@@ -177,33 +181,32 @@ lenis.on('scroll', ({ velocity }: { velocity: number }) => {
   scrollVelocity = velocity;
 });
 
-// Apply skew based on scroll velocity
+// Apply skew based on scroll velocity (using quickTo for reusable tweens)
 const velocityElements = document.querySelectorAll('[data-velocity]');
-if (velocityElements.length > 0) {
-  gsap.ticker.add(() => {
-    const skew = Math.min(Math.max(scrollVelocity * 0.3, -10), 10);
+const velocitySkewSetters = Array.from(velocityElements).map(el =>
+  gsap.quickTo(el, 'skewY', { duration: 0.3, ease: 'power2.out' })
+);
 
-    velocityElements.forEach(el => {
-      gsap.to(el, {
-        skewY: skew,
-        duration: 0.3,
-        ease: 'power2.out'
-      });
-    });
+// Stretch images on fast scroll (using quickTo)
+const velocityScaleElements = document.querySelectorAll('[data-velocity-scale]');
+const velocityScaleSetters = Array.from(velocityScaleElements).map(el =>
+  gsap.quickTo(el, 'scaleY', { duration: 0.3, ease: 'power2.out' })
+);
+
+// Single merged ticker for all velocity effects
+if (velocitySkewSetters.length > 0 || velocityScaleSetters.length > 0) {
+  gsap.ticker.add(() => {
+    const math = getAnimMathSync();
+    if (velocitySkewSetters.length > 0) {
+      const skew = math.calc_velocity_skew(scrollVelocity, 0.3, 10);
+      for (const setter of velocitySkewSetters) setter(skew);
+    }
+    if (velocityScaleSetters.length > 0) {
+      const scale = math.calc_velocity_scale(scrollVelocity, 0.02, 0.15);
+      for (const setter of velocityScaleSetters) setter(scale);
+    }
   });
 }
-
-// Stretch images on fast scroll
-document.querySelectorAll('[data-velocity-scale]').forEach(el => {
-  gsap.ticker.add(() => {
-    const scale = 1 + Math.abs(scrollVelocity) * 0.02;
-    gsap.to(el, {
-      scaleY: Math.min(scale, 1.15),
-      duration: 0.3,
-      ease: 'power2.out'
-    });
-  });
-});
 
 // ============================================
 // 6. MAGNETIC NAVIGATION
@@ -211,28 +214,29 @@ document.querySelectorAll('[data-velocity-scale]').forEach(el => {
 document.querySelectorAll('[data-magnetic]').forEach(el => {
   const element = el as HTMLElement;
   const strength = parseFloat(element.getAttribute('data-magnetic') || '0.3');
+  const quickX = gsap.quickTo(element, 'x', { duration: 0.3, ease: 'power2.out' });
+  const quickY = gsap.quickTo(element, 'y', { duration: 0.3, ease: 'power2.out' });
+  let cachedRect: DOMRect | null = null;
+
+  element.addEventListener('mouseenter', () => {
+    cachedRect = element.getBoundingClientRect();
+  });
 
   element.addEventListener('mousemove', (e: MouseEvent) => {
-    const rect = element.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-
-    gsap.to(element, {
-      x: x * strength,
-      y: y * strength,
-      duration: 0.3,
-      ease: 'power2.out'
-    });
+    if (!cachedRect) cachedRect = element.getBoundingClientRect();
+    const centerX = cachedRect.left + cachedRect.width / 2;
+    const centerY = cachedRect.top + cachedRect.height / 2;
+    const result = getAnimMathSync().calc_magnetic(e.clientX, e.clientY, centerX, centerY, strength);
+    quickX(result[0]);
+    quickY(result[1]);
   });
 
   element.addEventListener('mouseleave', () => {
-    gsap.to(element, {
-      x: 0,
-      y: 0,
-      duration: 0.5,
-      ease: 'elastic.out(1, 0.3)'
-    });
+    cachedRect = null;
+    gsap.to(element, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)' });
   });
+
+  window.addEventListener('resize', () => { cachedRect = null; }, { passive: true });
 });
 
 // ============================================

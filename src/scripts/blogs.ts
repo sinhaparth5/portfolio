@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { getAnimMathSync } from './wasm-bridge';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -113,55 +114,45 @@ gsap.fromTo('.blogs-blur-text-2',
   }
 );
 
-// Blog card hover effects with 3D tilt
+// Blog card hover effects with 3D tilt (cached rect + quickTo + WASM)
 document.querySelectorAll('.blog-card').forEach(card => {
   const cardElement = card as HTMLElement;
+  const quickRotX = gsap.quickTo(cardElement, 'rotationX', { duration: 0.4, ease: 'power2.out' });
+  const quickRotY = gsap.quickTo(cardElement, 'rotationY', { duration: 0.4, ease: 'power2.out' });
+  let cachedRect: DOMRect | null = null;
+
+  gsap.set(cardElement, { transformPerspective: 1000 });
+
+  cardElement.addEventListener('mouseenter', () => {
+    cachedRect = cardElement.getBoundingClientRect();
+  });
 
   cardElement.addEventListener('mousemove', (e: MouseEvent) => {
-    const rect = cardElement.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-
-    const rotateX = (y - centerY) / 25;
-    const rotateY = (centerX - x) / 25;
-
-    gsap.to(cardElement, {
-      rotationX: rotateX,
-      rotationY: rotateY,
-      transformPerspective: 1000,
-      duration: 0.4,
-      ease: 'power2.out'
-    });
+    if (!cachedRect) cachedRect = cardElement.getBoundingClientRect();
+    const localX = e.clientX - cachedRect.left;
+    const localY = e.clientY - cachedRect.top;
+    const centerX = cachedRect.width / 2;
+    const centerY = cachedRect.height / 2;
+    const result = getAnimMathSync().calc_tilt_3d(localX, localY, centerX, centerY, 25);
+    quickRotX(result[0]);
+    quickRotY(result[1]);
   });
 
   cardElement.addEventListener('mouseleave', () => {
-    gsap.to(cardElement, {
-      rotationX: 0,
-      rotationY: 0,
-      duration: 0.6,
-      ease: 'elastic.out(1, 0.4)'
-    });
+    cachedRect = null;
+    gsap.to(cardElement, { rotationX: 0, rotationY: 0, duration: 0.6, ease: 'elastic.out(1, 0.4)' });
   });
+
+  window.addEventListener('resize', () => { cachedRect = null; }, { passive: true });
 
   // Image parallax on hover
   const image = cardElement.querySelector('img');
   if (image) {
     cardElement.addEventListener('mouseenter', () => {
-      gsap.to(image, {
-        scale: 1.15,
-        duration: 0.6,
-        ease: 'power2.out'
-      });
+      gsap.to(image, { scale: 1.15, duration: 0.6, ease: 'power2.out' });
     });
-
     cardElement.addEventListener('mouseleave', () => {
-      gsap.to(image, {
-        scale: 1,
-        duration: 0.6,
-        ease: 'power2.out'
-      });
+      gsap.to(image, { scale: 1, duration: 0.6, ease: 'power2.out' });
     });
   }
 
@@ -169,19 +160,10 @@ document.querySelectorAll('.blog-card').forEach(card => {
   const arrow = cardElement.querySelector('svg');
   if (arrow) {
     cardElement.addEventListener('mouseenter', () => {
-      gsap.to(arrow, {
-        x: 8,
-        duration: 0.3,
-        ease: 'power2.out'
-      });
+      gsap.to(arrow, { x: 8, duration: 0.3, ease: 'power2.out' });
     });
-
     cardElement.addEventListener('mouseleave', () => {
-      gsap.to(arrow, {
-        x: 0,
-        duration: 0.3,
-        ease: 'power2.out'
-      });
+      gsap.to(arrow, { x: 0, duration: 0.3, ease: 'power2.out' });
     });
   }
 });

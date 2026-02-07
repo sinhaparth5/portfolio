@@ -3,11 +3,12 @@
 	"type": "module",
 	"version": "0.0.1",
 	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro build && wrangler dev",
+		"wasm:build": "cd wasm && wasm-pack build --target web --out-dir ../public/wasm && sed \"s|new URL('portfolio_wasm_bg.wasm', import.meta.url)|/* @vite-ignore */ new URL('portfolio_wasm_bg.wasm', import.meta.url)|\" ../public/wasm/portfolio_wasm.js > ../src/scripts/wasm-glue.js",
+		"dev": "pnpm wasm:build && astro dev",
+		"build": "pnpm wasm:build && astro build",
+		"preview": "pnpm wasm:build && astro build && wrangler dev",
 		"astro": "astro",
-		"deploy": "astro build && wrangler deploy",
+		"deploy": "pnpm wasm:build && astro build && wrangler deploy",
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {

@@ -1,5 +1,6 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { getAnimMathSync } from './wasm-bridge';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -229,28 +230,30 @@ gsap.to('.hero-image', {
   }
 });
 
-// Magnetic button effect
+// Magnetic button effect (cached rect + quickTo + WASM math)
 document.querySelectorAll('.hero-buttons a').forEach(btn => {
-  btn.addEventListener('mousemove', (e: Event) => {
-    const mouseEvent = e as MouseEvent;
-    const rect = (btn as HTMLElement).getBoundingClientRect();
-    const x = mouseEvent.clientX - rect.left - rect.width / 2;
-    const y = mouseEvent.clientY - rect.top - rect.height / 2;
+  const el = btn as HTMLElement;
+  const quickX = gsap.quickTo(el, 'x', { duration: 0.3, ease: 'power2.out' });
+  const quickY = gsap.quickTo(el, 'y', { duration: 0.3, ease: 'power2.out' });
+  let cachedRect: DOMRect | null = null;
 
-    gsap.to(btn, {
-      x: x * 0.3,
-      y: y * 0.3,
-      duration: 0.3,
-      ease: 'power2.out'
-    });
+  el.addEventListener('mouseenter', () => {
+    cachedRect = el.getBoundingClientRect();
   });
 
-  btn.addEventListener('mouseleave', () => {
-    gsap.to(btn, {
-      x: 0,
-      y: 0,
-      duration: 0.5,
-      ease: 'elastic.out(1, 0.3)'
-    });
+  el.addEventListener('mousemove', (e: MouseEvent) => {
+    if (!cachedRect) cachedRect = el.getBoundingClientRect();
+    const centerX = cachedRect.left + cachedRect.width / 2;
+    const centerY = cachedRect.top + cachedRect.height / 2;
+    const result = getAnimMathSync().calc_magnetic(e.clientX, e.clientY, centerX, centerY, 0.3);
+    quickX(result[0]);
+    quickY(result[1]);
   });
+
+  el.addEventListener('mouseleave', () => {
+    cachedRect = null;
+    gsap.to(el, { x: 0, y: 0, duration: 0.5, ease: 'elastic.out(1, 0.3)' });
+  });
+
+  window.addEventListener('resize', () => { cachedRect = null; }, { passive: true });
 });
