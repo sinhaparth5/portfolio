@@ -1,0 +1,106 @@
+---
+import NotebookPage from "./NotebookPage.astro";
+import ProjectCard from "./ProjectCard.astro";
+import styles from "./Projects.module.css";
+import gpuSvg from "../assets/doodles/gpu-diagram.svg?raw";
+import transistorSvg from "../assets/doodles/transistor.svg?raw";
+import shieldSvg from "../assets/doodles/shield.svg?raw";
+import terminalSvg from "../assets/doodles/terminal.svg?raw";
+import diceSvg from "../assets/doodles/dice.svg?raw";
+import bucketSvg from "../assets/doodles/bucket.svg?raw";
+import ringBufferSvg from "../assets/doodles/ring-buffer.svg?raw";
+import nvmeSvg from "../assets/doodles/nvme.svg?raw";
+import vectorLanesSvg from "../assets/doodles/vector-lanes.svg?raw";
+
+const projects = [
+	{
+		title: "coraza-waf-mod",
+		summary:
+			"A single-binary web application firewall and reverse proxy for Go, built on Coraza and the OWASP core rule set. One binary, one SQLite file: CLI flags handle the bootstrap settings, and the admin dashboard baked into that same binary handles everything else at runtime, so there's no separate config service to keep alive.",
+		tags: ["Go", "Coraza", "WAF"],
+		href: "https://github.com/sinhaparth5/coraza-waf-mod",
+		titleColor: "var(--marker-purple)",
+		doodle: shieldSvg,
+		doodleRot: "-2deg",
+	},
+	{
+		title: "gittop",
+		summary:
+			"A terminal dashboard for git and CI, built on FTXUI and libgit2. Most git tools make you pick one: a TUI that knows the repo but nothing about the pipeline, or a web UI that shows the pipeline but pulls you out of the terminal. gittop puts working tree state, commit history, the activity graph, diffs, branches, and stashes on one screen, entirely offline.",
+		tags: ["C++", "Git", "TUI"],
+		href: "https://github.com/sinhaparth5/gittop",
+		titleColor: "var(--marker-pink)",
+		doodle: terminalSvg,
+		doodleRot: "2deg",
+	},
+	{
+		title: "vphilox",
+		summary:
+			"A header-only counter-based RNG for C++20. Give it the same seed and it hands back the same numbers on a different compiler, a different OS, a different CPU, whether the work runs on one thread or sixty-four. Save the counter state, move it to another machine, and the sequence picks up exactly where it left off.",
+		tags: ["C++20", "PRNG", "SIMD"],
+		href: "https://github.com/sinhaparth5/vphilox",
+		titleColor: "var(--marker-mint)",
+		doi: "10.5281/zenodo.22103483",
+		doodle: diceSvg,
+		doodleRot: "-4deg",
+	},
+	{
+		title: "MonoBucket",
+		summary:
+			"A single-binary S3-compatible object store: a C++20 storage server and a Svelte dashboard in one process, no sidecars or external database. It speaks S3 well enough for the AWS CLI, boto3, and rclone, and it keeps dashboard logins and S3 access keys as two separate credential systems, so rotating one never locks you out of the other.",
+		tags: ["C++20", "RocksDB", "S3"],
+		href: "https://github.com/sinhaparth5/MonoBucket",
+		titleColor: "var(--marker-peach)",
+		doodle: bucketSvg,
+		doodleRot: "3deg",
+	},
+	{
+		title: "NumaRing",
+		summary:
+			"A NUMA-aware MPMC queue: one ring buffer per node instead of every core fighting over the same cache lines. Two profiling-driven fixes cut routing lookups 61x and median latency 202x, and the write-up admits the backoff optimization that got reverted because the numbers said it wasn't helping.",
+		tags: ["C++", "NUMA", "lock-free"],
+		href: "https://github.com/sinhaparth5/NumaRing",
+		titleColor: "var(--marker-purple)",
+		doi: "10.5281/zenodo.22232854",
+		doodle: ringBufferSvg,
+		doodleRot: "-2deg",
+	},
+	{
+		title: "ringio",
+		summary:
+			"A header-only, zero-allocation C++20 storage engine that wires a lock-free MPMC ring buffer straight into Linux io_uring running in SQPOLL mode. Buffers are pre-registered and page-aligned, file descriptors are registered once instead of looked up per operation, and issuing I/O becomes a plain memory write as long as the kernel's polling thread hasn't gone idle.",
+		tags: ["C++20", "io_uring", "NVMe"],
+		href: "https://github.com/sinhaparth5/ringio",
+		titleColor: "var(--marker-pink)",
+		doodle: nvmeSvg,
+		doodleRot: "-1deg",
+	},
+	{
+		title: "aparajita-memtable",
+		summary:
+			"A drop-in replacement for RocksDB's default skip list, selected by name with no patch to RocksDB itself. A skip list chases pointers across scattered heap allocations, so every key comparison risks a cache miss and a branch misprediction. Aparajita packs fifteen order-preserving key surrogates into one 64-byte cache line and searches all of them with a single branchless vector compare instead.",
+		tags: ["C++", "LSM-tree", "SIMD"],
+		href: "https://github.com/sinhaparth5/aparajita-memtable",
+		titleColor: "var(--marker-mint)",
+		doi: "10.5281/zenodo.22180368",
+		doodle: vectorLanesSvg,
+		doodleRot: "2deg",
+	},
+];
+---
+
+<NotebookPage id="projects">
+	<div class="heading-row">
+		<h2 class={styles.heading}>
+			<span class="hl" style="--hl: var(--marker-pink-wash)">things I've built</span>
+		</h2>
+		<div class="doodle-icon" style="--doodle-w: 52px; --doodle-rot: 4deg" set:html={transistorSvg} />
+	</div>
+	<p class={styles.intro}>A few of the notebooks that turned into working boards.</p>
+
+	<div class="diagram-figure" set:html={gpuSvg} />
+
+	<div class={styles.grid}>
+		{projects.map((p) => <ProjectCard {...p} />)}
+	</div>
+</NotebookPage>

@@ -1,0 +1,14 @@
+<svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  <title>Hand-drawn sketch of a ring buffer shared across NUMA nodes</title>
+  <defs>
+    <marker id="rb-arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="currentColor" />
+    </marker>
+  </defs>
+  <circle cx="70" cy="70" r="40" fill="none" stroke="currentColor" stroke-width="2.2" stroke-dasharray="6 5" />
+  <path d="M100 44 A40 40 0 0 1 105 72" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" marker-end="url(#rb-arrow)" />
+  <rect x="18" y="58" width="22" height="22" rx="3" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2" />
+  <rect x="100" y="58" width="22" height="22" rx="3" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2" />
+  <rect x="59" y="14" width="22" height="22" rx="3" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2" />
+  <rect x="59" y="104" width="22" height="22" rx="3" fill="currentColor" opacity="0.1" stroke="currentColor" stroke-width="2" />
+</svg>

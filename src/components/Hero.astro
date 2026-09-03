@@ -1,0 +1,35 @@
+---
+import NotebookPage from "./NotebookPage.astro";
+import styles from "./Hero.module.css";
+import smSvg from "../assets/doodles/sm-core-diagram.svg?raw";
+import chipSvg from "../assets/doodles/chip.svg?raw";
+---
+
+<NotebookPage id="hero" reveal={false}>
+	<div class={styles.introRow}>
+		<div>
+			<p class={styles.eyebrow}>independent researcher</p>
+			<h1 class={styles.name}>Parth</h1>
+			<p class={styles.tagline}>
+				I build things close to the metal:
+				<span class="hl" style="--hl: var(--marker-mint-wash)"
+					>storage engines, lock-free queues, and code that argues with cache lines</span
+				>.
+			</p>
+			<p class={styles.lede}>
+				No lab, no company, no funding. Just a laptop, a profiler, and too many papers I keep
+				promising myself I've finished reading.
+			</p>
+			<div class={styles.ctaRow}>
+				<button type="button" data-sketch-button="solid" onclick="document.getElementById('projects')?.scrollIntoView({behavior: 'smooth'})">
+					See the work
+				</button>
+				<button type="button" data-sketch-button="outline" onclick="document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})">
+					Say hi
+				</button>
+			</div>
+		</div>
+		<div class={styles.chipIcon} set:html={chipSvg} />
+	</div>
+	<div class={`diagram-figure ${styles.heroDiagram}`} set:html={smSvg} />
+</NotebookPage>

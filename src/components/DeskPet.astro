@@ -1,0 +1,121 @@
+---
+// Mochi cat: each mood/action is its own pre-drawn frame (src/assets/mochi-cat),
+// pre-rendered here and toggled by pet.ts rather than swapping one shared SVG's
+// sub-parts — simpler once there are this many distinct poses.
+import idleSvg from "../assets/mochi-cat/idle.svg?raw";
+import blinkSvg from "../assets/mochi-cat/blink.svg?raw";
+import walk1Svg from "../assets/mochi-cat/walk-1.svg?raw";
+import walk2Svg from "../assets/mochi-cat/walk-2.svg?raw";
+import run1Svg from "../assets/mochi-cat/run-1.svg?raw";
+import run2Svg from "../assets/mochi-cat/run-2.svg?raw";
+import eatSvg from "../assets/mochi-cat/eat.svg?raw";
+import sleepSvg from "../assets/mochi-cat/sleep.svg?raw";
+import angrySvg from "../assets/mochi-cat/angry.svg?raw";
+import happySvg from "../assets/mochi-cat/happy.svg?raw";
+import loveSvg from "../assets/mochi-cat/love.svg?raw";
+import surprisedSvg from "../assets/mochi-cat/surprised.svg?raw";
+import sadSvg from "../assets/mochi-cat/sad.svg?raw";
+import playSvg from "../assets/mochi-cat/play.svg?raw";
+import stretchSvg from "../assets/mochi-cat/stretch.svg?raw";
+
+const poses: Record<string, string> = {
+	idle: idleSvg,
+	blink: blinkSvg,
+	"walk-1": walk1Svg,
+	"walk-2": walk2Svg,
+	"run-1": run1Svg,
+	"run-2": run2Svg,
+	eat: eatSvg,
+	sleep: sleepSvg,
+	angry: angrySvg,
+	happy: happySvg,
+	love: loveSvg,
+	surprised: surprisedSvg,
+	sad: sadSvg,
+	play: playSvg,
+	stretch: stretchSvg,
+};
+---
+
+<div id="desk-pet" class="pet" data-pose="idle" aria-hidden="true">
+	<span class="pet-bubble"></span>
+	{
+		Object.entries(poses).map(([name, svg]) => (
+			<div class="pet-pose" data-pose-frame={name} hidden={name !== "idle"} set:html={svg} />
+		))
+	}
+</div>
+<script src="../scripts/pet.ts"></script>
+
+<style>
+	.pet {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 84px;
+		height: 84px;
+		z-index: 30;
+		cursor: pointer;
+		user-select: none;
+	}
+
+	.pet-pose {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+	}
+
+	/* poses don't all share one viewBox aspect ratio (eating/loving/stretching
+	   frames are a little wider or taller), so scale to fit rather than
+	   stretching to fill and distorting the art */
+	.pet-pose :global(svg) {
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+		display: block;
+	}
+
+	.pet-pose[hidden] {
+		display: none;
+	}
+
+	.pet-bubble {
+		position: absolute;
+		top: -1.7rem;
+		left: 50%;
+		transform: translateX(-50%);
+		background: var(--paper);
+		border: 1px solid var(--ink-faint);
+		border-radius: 999px;
+		padding: 0.15rem 0.6rem;
+		font-family: var(--font-mono);
+		font-size: 0.7rem;
+		white-space: nowrap;
+		opacity: 0;
+		transition: opacity 0.2s ease;
+		pointer-events: none;
+	}
+
+	.pet-bubble.show {
+		opacity: 1;
+	}
+
+	.pet[data-pose="angry"] {
+		animation: pet-shake 0.3s ease-in-out 2;
+	}
+	@keyframes pet-shake {
+		0%, 100% { transform: translateX(0); }
+		25% { transform: translateX(-3px); }
+		75% { transform: translateX(3px); }
+	}
+
+	@media (max-width: 640px) {
+		.pet {
+			width: 64px;
+			height: 64px;
+		}
+	}
+</style>

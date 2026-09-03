@@ -1,0 +1,17 @@
+<svg viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  <title>Hand-drawn 3D sketch of a die</title>
+  <path d="M30 55 L70 35 L110 55 L70 75 Z" fill="currentColor" opacity="0.08" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" />
+  <path d="M70 75 L110 55 L110 100 L70 120 Z" fill="currentColor" opacity="0.16" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" />
+  <path d="M30 55 L70 75 L70 120 L30 100 Z" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" />
+  <g fill="currentColor">
+    <circle cx="90" cy="70" r="3" />
+    <circle cx="98" cy="82" r="3" />
+    <circle cx="90" cy="95" r="3" />
+  </g>
+  <g fill="currentColor" opacity="0.85">
+    <circle cx="44" cy="70" r="3" />
+    <circle cx="56" cy="78" r="3" />
+    <circle cx="44" cy="90" r="3" />
+    <circle cx="56" cy="98" r="3" />
+  </g>
+</svg>

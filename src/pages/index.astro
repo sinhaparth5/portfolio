@@ -1,11 +1,54 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Projects from "../components/Projects.astro";
+import Papers from "../components/Papers.astro";
+import Contact from "../components/Contact.astro";
+import ConsentBanner from "../components/ConsentBanner.astro";
+import BackToTop from "../components/BackToTop.astro";
+import DeskPet from "../components/DeskPet.astro";
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+	title="Parth — independent researcher"
+	description="Independent researcher working close to the metal: storage engines, lock-free concurrency, io_uring, NUMA-aware systems, and the papers written along the way."
+>
+	<Nav />
+	<main id="main-content" tabindex="-1">
+		<Hero />
+		<hr class="divider" data-sketch-divider />
+		<About />
+		<hr class="divider" data-sketch-divider />
+		<Projects />
+		<hr class="divider" data-sketch-divider />
+		<Papers />
+		<hr class="divider" data-sketch-divider />
+		<Contact />
+	</main>
+	<ConsentBanner />
+	<BackToTop />
+	<DeskPet />
+	<script src="../scripts/drawably-init.ts"></script>
+	<script src="../scripts/scroll-effects.ts"></script>
+	<script src="../scripts/copy.ts"></script>
 </Layout>
+
+<style>
+	main {
+		padding: var(--space-4) var(--space-2) var(--space-5);
+	}
+
+	.divider {
+		max-width: var(--page-w);
+		margin: var(--space-2) auto;
+		color: var(--ink-faint);
+	}
+
+	@media (max-width: 640px) {
+		main {
+			padding: var(--space-3) 0.6rem var(--space-4);
+		}
+	}
+</style>

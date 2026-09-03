@@ -1,0 +1,38 @@
+---
+import NotebookPage from "./NotebookPage.astro";
+import CopyButton from "./CopyButton.astro";
+import styles from "./Contact.module.css";
+import waveformSvg from "../assets/doodles/waveform.svg?raw";
+import signalSvg from "../assets/doodles/signal-doodle.svg?raw";
+
+const email = "sinhaparth555@gmail.com";
+---
+
+<NotebookPage id="contact">
+	<div class={styles.layout}>
+		<div>
+			<h2 class={styles.heading}>
+				<span class="hl" style="--hl: var(--marker-peach-wash)">say hi</span>
+			</h2>
+			<div class={styles.wave} set:html={waveformSvg} />
+			<p class={styles.note}>
+				I read everything that lands in this inbox, eventually: questions, corrections, and the
+				occasional "you got this register wrong" email are all welcome.
+			</p>
+
+			<div class={styles.row}>
+				<button type="button" data-sketch-button="solid" onclick={`window.location.href='mailto:${email}'`}>
+					email me
+				</button>
+				<a href={`mailto:${email}`}>{email}</a>
+				<CopyButton value={email} label="Copy email address" />
+			</div>
+
+			<ul class={styles.social}>
+				<li><a href="https://github.com/sinhaparth5" target="_blank" rel="noopener noreferrer" data-sketch-underline>github</a></li>
+				<li><a href="https://x.com/parth_sinha18" target="_blank" rel="noopener noreferrer" data-sketch-underline>x / twitter</a></li>
+			</ul>
+		</div>
+		<div class={styles.signal} set:html={signalSvg} />
+	</div>
+</NotebookPage>

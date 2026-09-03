@@ -1,0 +1,55 @@
+<div id="consent-banner" class="banner" data-sketch-card>
+	<p>
+		This site uses Google Analytics to see what's actually being read. Essential cookies keep the
+		notebook running either way, that part's not optional.
+	</p>
+	<div class="row">
+		<button type="button" data-sketch-button="outline" id="consent-essential">essential only</button>
+		<button type="button" data-sketch-button="solid" id="consent-all">accept all</button>
+	</div>
+</div>
+<script src="../scripts/consent.ts"></script>
+
+<style>
+	.banner {
+		position: fixed;
+		left: var(--space-2);
+		right: var(--space-2);
+		bottom: var(--space-2);
+		max-width: 30rem;
+		margin: 0 auto;
+		padding: var(--space-2);
+		background: var(--paper);
+		z-index: 100;
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(12px);
+		transition: opacity 150ms ease, transform 150ms ease;
+	}
+
+	.banner.show {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateY(0);
+	}
+
+	.banner p {
+		margin: 0 0 var(--space-1);
+		font-size: 1rem;
+		color: var(--ink-soft);
+	}
+
+	.row {
+		display: flex;
+		gap: var(--space-1);
+		flex-wrap: wrap;
+	}
+
+	@media (max-width: 640px) {
+		.banner {
+			left: 0.6rem;
+			right: 0.6rem;
+			bottom: 0.6rem;
+		}
+	}
+</style>

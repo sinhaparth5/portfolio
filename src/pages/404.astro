@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import chipSvg from "../assets/doodles/chip.svg?raw";
+---
+
+<Layout title="Page not found — Parth" description="This page doesn't exist. Head back to the notebook.">
+	<main id="main-content" tabindex="-1" class="notFound">
+		<p class="eyebrow">404</p>
+		<h1>Wrong pin, nothing's here</h1>
+		<p class="note">Whatever you were looking for isn't on this page. It might've moved, or never existed.</p>
+		<div class="chip" set:html={chipSvg} />
+		<a href="/" data-sketch-button="solid" class="home-link">back to the notebook</a>
+	</main>
+	<script src="../scripts/drawably-init.ts"></script>
+</Layout>
+
+<style>
+	.notFound {
+		max-width: var(--page-w);
+		margin: 0 auto;
+		padding: var(--space-5) var(--space-2);
+		text-align: center;
+	}
+
+	.eyebrow {
+		font-family: var(--font-mono);
+		color: var(--ink-faint);
+		font-size: 1.1rem;
+		margin: 0;
+	}
+
+	h1 {
+		font-size: clamp(1.8rem, 5vw, 2.6rem);
+		margin: var(--space-1) 0 var(--space-2);
+	}
+
+	.note {
+		color: var(--ink-soft);
+		max-width: 42ch;
+		margin: 0 auto var(--space-3);
+	}
+
+	.chip {
+		width: 120px;
+		margin: 0 auto var(--space-3);
+		color: var(--ink-faint);
+		transform: rotate(-6deg);
+	}
+
+	.home-link {
+		display: inline-block;
+		text-decoration: none;
+	}
+</style>

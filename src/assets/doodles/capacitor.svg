@@ -1,0 +1,33 @@
+<svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  <title>Hand-drawn 3D sketch of an electrolytic capacitor</title>
+
+  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="50" cy="24" rx="16" ry="6" stroke-width="2.4" />
+    <path d="M34 24 V78" stroke-width="2.4" />
+    <path d="M66 24 V78" stroke-width="2.4" />
+    <path d="M34 78 A16 6 0 0 0 66 78" stroke-width="2.4" />
+    <!-- sketchy boil -->
+    <ellipse cx="50" cy="24.5" rx="15.2" ry="5.6" stroke-width="1.1" opacity="0.35" />
+  </g>
+
+  <!-- polarity stripe -->
+  <rect x="52" y="27" width="12" height="49" fill="currentColor" opacity="0.12" />
+  <g stroke="currentColor" stroke-width="1.6" stroke-linecap="round" opacity="0.8">
+    <path d="M55 38 H61" />
+    <path d="M55 48 H61" />
+    <path d="M55 58 H61" />
+    <path d="M55 68 H61" />
+  </g>
+
+  <!-- scored vent on top -->
+  <g stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round">
+    <path d="M44 21 L56 27" />
+    <path d="M44 27 L56 21" />
+  </g>
+
+  <!-- legs -->
+  <g stroke="currentColor" stroke-width="2.4" fill="none" stroke-linecap="round">
+    <path d="M42 78 V95 M42 95 L38 100" />
+    <path d="M58 78 V98" />
+  </g>
+</svg>

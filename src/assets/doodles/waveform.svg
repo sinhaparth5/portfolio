@@ -1,0 +1,7 @@
+<svg viewBox="0 0 320 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  <title>Hand-drawn clock signal doodle</title>
+  <path d="M4 48 H36 V16 H76 V48 H116 V16 H156 V48 H196 V16 H236 V48 H276 V16 H316"
+        fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M4 48.6 H36 V16.6 H76 V48.6 H116 V16.6 H156 V48.6 H196 V16.6 H236 V48.6 H276 V16.6 H316"
+        fill="none" stroke="currentColor" stroke-width="1.2" opacity="0.35" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

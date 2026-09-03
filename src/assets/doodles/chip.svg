@@ -1,0 +1,36 @@
+<svg viewBox="0 0 220 190" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  <title>Hand-drawn 3D sketch of a DIP integrated circuit</title>
+
+  <!-- top face -->
+  <path d="M45 75 L145 75 L165 59 L65 59 Z" fill="currentColor" opacity="0.07" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" />
+  <!-- right (shaded) face -->
+  <path d="M145 75 L145 145 L165 129 L165 59 Z" fill="currentColor" opacity="0.16" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" />
+  <!-- shading hatch on right face -->
+  <g stroke="currentColor" stroke-width="1" opacity="0.35" stroke-linecap="round">
+    <path d="M150 70 L150 140" />
+    <path d="M156 66 L156 136" />
+    <path d="M162 62 L162 132" />
+  </g>
+
+  <!-- front face, double-stroked for a sketchy boil -->
+  <rect x="45" y="75" width="100" height="70" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" />
+  <rect x="46.5" y="76.5" width="97" height="67" fill="none" stroke="currentColor" stroke-width="1.1" opacity="0.35" stroke-linejoin="round" />
+
+  <!-- pin-1 notch, top-left of the top face -->
+  <circle cx="76" cy="67.5" r="4" fill="none" stroke="currentColor" stroke-width="2" />
+
+  <!-- legs along the front edge, straight down then a small outward foot -->
+  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+    <path d="M57 145 V162 M57 162 L52 167" />
+    <path d="M75 145 V164 M75 164 L71 169" />
+    <path d="M93 145 V166" />
+    <path d="M111 145 V166" />
+    <path d="M129 145 V164 M129 164 L133 169" />
+  </g>
+
+  <!-- a couple of foreshortened legs on the shaded right face -->
+  <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.85">
+    <path d="M150 145 L150 158 L156 163" />
+    <path d="M160 138 L160 151 L166 156" />
+  </g>
+</svg>

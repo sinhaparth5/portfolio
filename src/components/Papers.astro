@@ -1,0 +1,85 @@
+---
+import NotebookPage from "./NotebookPage.astro";
+import CopyButton from "./CopyButton.astro";
+import styles from "./Papers.module.css";
+import paperSvg from "../assets/doodles/paper-stack.svg?raw";
+import diceSvg from "../assets/doodles/dice.svg?raw";
+import ringBufferSvg from "../assets/doodles/ring-buffer.svg?raw";
+import nvmeSvg from "../assets/doodles/nvme.svg?raw";
+import vectorLanesSvg from "../assets/doodles/vector-lanes.svg?raw";
+
+const papers = [
+	{
+		title: "vphilox",
+		tagline:
+			"A counter-based RNG built so the sequence is the contract, not the implementation: seed it once, and the same numbers come back on another compiler, another OS, another CPU, single-threaded or spread across sixty-four. The paper covers the counter-state format and why that portability was worth designing for in the first place.",
+		href: "https://github.com/sinhaparth5/vphilox/blob/master/paper/vphilox.pdf",
+		doi: "10.5281/zenodo.22103483",
+		doodle: diceSvg,
+		doodleRot: "-4deg",
+	},
+	{
+		title: "NumaRing",
+		tagline:
+			"Why a single MPMC queue loses to one ring buffer per NUMA node once core counts climb, and the two profiling-driven fixes that turned that theory into a 61x cut in routing lookups and a 202x cut in median latency. Also covers the backoff optimization that looked promising on paper and got reverted once the benchmarks disagreed.",
+		href: "https://github.com/sinhaparth5/NumaRing/blob/master/paper/main.pdf",
+		doi: "10.5281/zenodo.22232854",
+		doodle: ringBufferSvg,
+		doodleRot: "-2deg",
+	},
+	{
+		title: "ringio",
+		tagline:
+			"How a lock-free ring buffer gets wired directly into io_uring's SQPOLL submission queues so that issuing I/O becomes a memory write instead of a syscall, plus pre-registered buffers and fixed file descriptors to keep the kernel out of the hot path. The write-up doesn't stop at the win: it covers the tail-latency cost that only showed up once the design moved from a dev laptop to a wider multi-socket machine.",
+		href: "https://github.com/sinhaparth5/ringio/blob/master/docs/paper/ringio-paper.pdf",
+		doodle: nvmeSvg,
+		doodleRot: "-1deg",
+	},
+	{
+		title: "aparajita-memtable",
+		tagline:
+			"RocksDB's default memtable is a skip list, which means pointer-chasing across scattered heap allocations and a cache miss on nearly every comparison. This paper packs fifteen order-preserving key surrogates into a single 64-byte cache line and replaces the pointer chase with one branchless SIMD compare, then measures what that actually buys in cache-line invalidations and branch mispredictions.",
+		href: "https://github.com/sinhaparth5/aparajita-memtable/blob/master/paper/main.pdf",
+		doi: "10.5281/zenodo.22180368",
+		doodle: vectorLanesSvg,
+		doodleRot: "2deg",
+	},
+];
+---
+
+<NotebookPage id="papers">
+	<div class="heading-row">
+		<h2 class={styles.heading}>
+			<span class="hl" style="--hl: var(--marker-mint-wash)">write-ups</span>
+		</h2>
+		<div class="doodle-icon" style="--doodle-w: 52px; --doodle-rot: 2deg" set:html={paperSvg} />
+	</div>
+	<p class={styles.intro}>A few of the projects above came with enough evidence behind them to write up properly.</p>
+
+	<ul class={styles.list}>
+		{
+			papers.map((p) => (
+				<li class={styles.item}>
+					<div class={styles.body}>
+						<h3>{p.title}</h3>
+						<p>{p.tagline}</p>
+						<div class={styles.meta}>
+							<a href={p.href} target="_blank" rel="noopener noreferrer" data-sketch-underline>
+								read the paper →
+							</a>
+							{p.doi && (
+								<>
+									<a class={styles.doi} href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener noreferrer">
+										doi:{p.doi}
+									</a>
+									<CopyButton value={p.doi} label={`Copy DOI for ${p.title}`} />
+								</>
+							)}
+						</div>
+					</div>
+					<div class={styles.doodle} style={`--doodle-rot: ${p.doodleRot}`} set:html={p.doodle} />
+				</li>
+			))
+		}
+	</ul>
+</NotebookPage>

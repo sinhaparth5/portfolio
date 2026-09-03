@@ -1,0 +1,79 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.doodle {
+  flex: none;
+  width: clamp(64px, 9vw, 96px);
+  color: var(--ink-faint);
+  transform: rotate(var(--doodle-rot, -3deg));
+}
+
+.title {
+  font-family: var(--font-hand);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--title-color, var(--marker-purple));
+}
+
+.summary {
+  color: var(--ink-soft);
+  font-size: 1rem;
+  margin: 0;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0.2rem 0 0;
+}
+
+.tags li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.25rem 0.55rem;
+}
+
+.doiRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.doi {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  width: fit-content;
+}
+
+.link {
+  margin-top: auto;
+  padding-top: 0.4rem;
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  width: fit-content;
+}
+
+@media (max-width: 640px) {
+  .doodle {
+    width: 56px;
+  }
+}

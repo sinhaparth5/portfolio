@@ -1,0 +1,59 @@
+---
+import NotebookPage from "./NotebookPage.astro";
+import styles from "./About.module.css";
+import cpuSvg from "../assets/doodles/cpu-diagram.svg?raw";
+import capacitorSvg from "../assets/doodles/capacitor.svg?raw";
+import transistorSvg from "../assets/doodles/transistor.svg?raw";
+
+const workingOn = [
+	"Storage engines and I/O paths: bridging lock-free ring buffers straight into io_uring instead of trusting a syscall per request",
+	"NUMA-aware concurrent data structures, profiled until a fix is a measured multiple, not a guess",
+	"SIMD-aligned data layouts, because a cache-line invalidation doesn't care how clever the algorithm around it is",
+	"Security tooling I can read the source of: a WAF built on Coraza and the OWASP core rule set",
+];
+
+const howIWork = [
+	"Start from a question, not a spec",
+	"Profile before I optimize, then profile again after",
+	"Write it up, including the parts that failed",
+	"No deadlines except my own curiosity",
+];
+
+const tools = ["C++20", "Go", "CMake", "RocksDB", "io_uring", "SIMD", "lock-free", "NUMA", "LaTeX"];
+---
+
+<NotebookPage id="about">
+	<div class="heading-row">
+		<h2 class={styles.heading}>
+			<span class="hl" style="--hl: var(--marker-mint-wash)">about me</span>
+		</h2>
+		<div class="doodle-icon" style="--doodle-w: 56px; --doodle-rot: 3deg" set:html={capacitorSvg} />
+	</div>
+
+	<div class={styles.columns}>
+		<div class={styles.col}>
+			<h3>what I work on</h3>
+			<ul>
+				{workingOn.map((item) => <li>{item}</li>)}
+			</ul>
+		</div>
+		<div class={styles.col}>
+			<h3>how I work</h3>
+			<ul>
+				{howIWork.map((item) => <li>{item}</li>)}
+			</ul>
+		</div>
+	</div>
+
+	<div class={styles.toolbox}>
+		<div class="heading-row">
+			<h3>toolbox</h3>
+			<div class="doodle-icon" style="--doodle-w: 48px; --doodle-rot: -4deg" set:html={transistorSvg} />
+		</div>
+		<ul class={styles.badges}>
+			{tools.map((tool) => <li data-sketch-badge>{tool}</li>)}
+		</ul>
+	</div>
+
+	<div class="diagram-figure" set:html={cpuSvg} />
+</NotebookPage>

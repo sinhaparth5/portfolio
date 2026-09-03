@@ -1,0 +1,67 @@
+.heading {
+  font-size: clamp(2rem, 4vw, 2.6rem);
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-3);
+}
+
+.col h3 {
+  font-size: 1.35rem;
+  color: var(--marker-pink);
+}
+
+.col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.col li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.col li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--marker-mint);
+}
+
+.toolbox {
+  margin-top: var(--space-4);
+}
+
+.toolbox h3 {
+  font-size: 1.35rem;
+  color: var(--marker-peach);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-2);
+  margin-top: var(--space-2);
+  list-style: none;
+  padding: 0;
+}
+
+.badges li {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  padding: 0.3rem 0.65rem;
+}
+
+@media (max-width: 640px) {
+  .columns {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+  }
+}

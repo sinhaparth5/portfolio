@@ -1,0 +1,37 @@
+---
+import styles from "./ProjectCard.module.css";
+import CopyButton from "./CopyButton.astro";
+
+interface Props {
+	title: string;
+	summary: string;
+	tags: string[];
+	href: string;
+	titleColor?: string;
+	doi?: string;
+	doodle?: string;
+	doodleRot?: string;
+}
+
+const { title, summary, tags, href, titleColor = "var(--marker-purple)", doi, doodle, doodleRot = "-3deg" } = Astro.props;
+---
+
+<article class={styles.card}>
+	<div class={styles.body}>
+		<h3 class={styles.title} style={`--title-color: ${titleColor}`}>{title}</h3>
+		<p class={styles.summary}>{summary}</p>
+		<ul class={styles.tags}>
+			{tags.map((tag) => <li data-sketch-badge>{tag}</li>)}
+		</ul>
+		{doi && (
+			<div class={styles.doiRow}>
+				<a class={styles.doi} href={`https://doi.org/${doi}`} target="_blank" rel="noopener noreferrer">
+					doi:{doi}
+				</a>
+				<CopyButton value={doi} label={`Copy DOI for ${title}`} />
+			</div>
+		)}
+		<a class={styles.link} href={href} target="_blank" rel="noopener noreferrer" data-sketch-underline>read more →</a>
+	</div>
+	{doodle && <div class={styles.doodle} style={`--doodle-rot: ${doodleRot}`} set:html={doodle} />}
+</article>

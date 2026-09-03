@@ -1,0 +1,72 @@
+.introRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.chipIcon {
+  flex: none;
+  width: clamp(90px, 11vw, 130px);
+  color: var(--ink-faint);
+  transform: rotate(-2deg);
+}
+
+@media (max-width: 640px) {
+  .introRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+  .chipIcon {
+    width: 70px;
+    opacity: 0.8;
+  }
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-hand);
+  font-size: 1rem;
+  color: var(--marker-pink);
+  transform: rotate(-1.5deg);
+  margin: 0 0 0.35rem;
+}
+
+.name {
+  font-size: clamp(2.6rem, 6vw, 3.6rem);
+  margin-bottom: 0.4rem;
+}
+
+.tagline {
+  font-size: 1.35rem;
+  color: var(--ink-soft);
+  max-width: 34ch;
+}
+
+.lede {
+  color: var(--ink-soft);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.ctaRow button {
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.heroDiagram {
+  max-width: 44rem;
+}
+
+@media (max-width: 640px) {
+  .heroDiagram {
+    max-width: 100%;
+  }
+}

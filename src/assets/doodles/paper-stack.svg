@@ -1,0 +1,17 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  <title>Hand-drawn 3D sketch of a stack of written pages</title>
+
+  <rect x="30" y="12" width="50" height="64" rx="3" fill="currentColor" opacity="0.05" stroke="currentColor" stroke-width="1.6" />
+  <rect x="24" y="18" width="50" height="64" rx="3" fill="currentColor" opacity="0.09" stroke="currentColor" stroke-width="1.8" />
+
+  <rect x="18" y="24" width="50" height="64" rx="3" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" />
+  <rect x="19.5" y="25.5" width="47" height="61" rx="3" fill="none" stroke="currentColor" stroke-width="1" opacity="0.35" stroke-linejoin="round" />
+
+  <g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" opacity="0.8">
+    <path d="M26 36 H60" />
+    <path d="M26 44 H60" />
+    <path d="M26 52 H52" />
+    <path d="M26 64 H60" />
+    <path d="M26 72 H48" />
+  </g>
+</svg>

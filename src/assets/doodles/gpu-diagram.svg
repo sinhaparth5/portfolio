@@ -1,0 +1,81 @@
+<svg viewBox="0 0 660 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="gpuDiagramTitle">
+  <title id="gpuDiagramTitle">Hand-drawn labeled diagram of a GPU die floorplan: an array of cores (streaming multiprocessors), per-cluster L1 cache, shared L2 cache, an L3/shared-cache ring, and memory controllers</title>
+  <defs>
+    <marker id="gpu-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 L3,5 Z" fill="#2b2a28" />
+    </marker>
+  </defs>
+
+  <text x="24" y="46" font-family="Kalam, cursive" font-weight="700" font-size="34" fill="#b8305f">GPU</text>
+  <text x="24" y="66" font-family="Patrick Hand, cursive" font-style="italic" font-size="13" fill="#6e6a5e">die floorplan, simplified: not any one real chip</text>
+
+  <!-- L3 / shared cache ring -->
+  <rect x="120" y="70" width="400" height="280" rx="16" fill="#f7e2c6" stroke="#985613" stroke-width="3" />
+  <rect x="121" y="71" width="398" height="278" rx="16" fill="none" stroke="#985613" stroke-width="1.2" opacity="0.35" />
+  <path d="M138,330 L152,344 M146,326 L160,340 M154,322 L168,336" stroke="#985613" stroke-width="1.4" opacity="0.5" />
+
+  <!-- memory controllers, straddling the die edge -->
+  <g fill="#cfe0f5" stroke="#3d72c9" stroke-width="2">
+    <rect x="105" y="140" width="30" height="50" rx="4" />
+    <rect x="105" y="230" width="30" height="50" rx="4" />
+    <rect x="505" y="140" width="30" height="50" rx="4" />
+    <rect x="505" y="230" width="30" height="50" rx="4" />
+  </g>
+
+  <!-- die substrate -->
+  <rect x="160" y="110" width="320" height="200" rx="10" fill="#dde1e4" stroke="#8a8f94" stroke-width="3" />
+  <rect x="161" y="111" width="318" height="198" rx="10" fill="none" stroke="#8a8f94" stroke-width="1.2" opacity="0.4" />
+
+  <!-- cores (SMs), two clusters of rows above and below the L2 slab -->
+  <g fill="#f6d3e0" stroke="#b8305f" stroke-width="1.8">
+    <rect x="175" y="125" width="40" height="26" rx="4" />
+    <rect x="221" y="125" width="40" height="26" rx="4" />
+    <rect x="267" y="125" width="40" height="26" rx="4" />
+    <rect x="313" y="125" width="40" height="26" rx="4" />
+    <rect x="359" y="125" width="40" height="26" rx="4" />
+    <rect x="405" y="125" width="40" height="26" rx="4" />
+
+    <rect x="175" y="155" width="40" height="26" rx="4" />
+    <rect x="221" y="155" width="40" height="26" rx="4" />
+    <rect x="267" y="155" width="40" height="26" rx="4" />
+    <rect x="313" y="155" width="40" height="26" rx="4" />
+    <rect x="359" y="155" width="40" height="26" rx="4" />
+    <rect x="405" y="155" width="40" height="26" rx="4" />
+
+    <rect x="175" y="213" width="40" height="26" rx="4" />
+    <rect x="221" y="213" width="40" height="26" rx="4" />
+    <rect x="267" y="213" width="40" height="26" rx="4" />
+    <rect x="313" y="213" width="40" height="26" rx="4" />
+    <rect x="359" y="213" width="40" height="26" rx="4" />
+    <rect x="405" y="213" width="40" height="26" rx="4" />
+
+    <rect x="175" y="243" width="40" height="26" rx="4" />
+    <rect x="221" y="243" width="40" height="26" rx="4" />
+    <rect x="267" y="243" width="40" height="26" rx="4" />
+    <rect x="313" y="243" width="40" height="26" rx="4" />
+    <rect x="359" y="243" width="40" height="26" rx="4" />
+    <rect x="405" y="243" width="40" height="26" rx="4" />
+  </g>
+  <path d="M183,131 L191,139 M189,131 L197,139" stroke="#b8305f" stroke-width="1.2" opacity="0.55" />
+
+  <!-- shared L2 slab, straight through the middle of the die -->
+  <rect x="175" y="185" width="270" height="24" rx="4" fill="#d3ecdd" stroke="#2f7d57" stroke-width="2" />
+  <text x="310" y="201" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="13" fill="#2f7d57">L2</text>
+
+  <!-- labels -->
+  <text x="546" y="135" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">cores (SMs)</text>
+  <path d="M540,131 C 510,132 470,145 448,158" stroke="#2b2a28" stroke-width="1.6" fill="none" marker-end="url(#gpu-arrow)" />
+
+  <text x="546" y="205" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">L2 cache</text>
+  <path d="M540,201 C 520,200 500,199 468,198" stroke="#2b2a28" stroke-width="1.6" fill="none" marker-end="url(#gpu-arrow)" />
+
+  <text x="546" y="270" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">L1 cache</text>
+  <path d="M540,266 C 505,262 470,258 448,256" stroke="#2b2a28" stroke-width="1.6" fill="none" marker-end="url(#gpu-arrow)" />
+
+  <text x="14" y="95" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">L3 cache</text>
+  <path d="M66,90 C 90,92 108,96 118,101" stroke="#2b2a28" stroke-width="1.6" fill="none" marker-end="url(#gpu-arrow)" />
+
+  <text x="14" y="172" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">memory</text>
+  <text x="14" y="190" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">ctrl</text>
+  <path d="M58,180 C 75,177 92,171 103,166" stroke="#2b2a28" stroke-width="1.6" fill="none" marker-end="url(#gpu-arrow)" />
+</svg>

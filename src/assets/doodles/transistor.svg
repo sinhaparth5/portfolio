@@ -1,0 +1,19 @@
+<svg viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  <title>Hand-drawn 3D sketch of a TO-92 transistor</title>
+
+  <!-- rounded shading sliver, right side of the can -->
+  <path d="M60 40 A22 22 0 0 1 72 40 V70 H60 Z" fill="currentColor" opacity="0.14" />
+
+  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M28 70 V40 A22 22 0 0 1 72 40 V70 Z" stroke-width="2.6" />
+    <!-- sketchy boil -->
+    <path d="M29.5 69 V40.5 A20.5 20.5 0 0 1 70.5 40.5 V69" stroke-width="1.1" opacity="0.35" />
+  </g>
+
+  <!-- three legs, fanned out like a real TO-92 -->
+  <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+    <path d="M38 70 V84 M38 84 L30 92 M30 92 V100" />
+    <path d="M50 70 V100" />
+    <path d="M62 70 V84 M62 84 L70 92 M70 92 V100" />
+  </g>
+</svg>

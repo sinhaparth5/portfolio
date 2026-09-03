@@ -1,0 +1,8 @@
+<svg viewBox="0 0 140 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img">
+  <title>Hand-drawn 3D sketch of a storage bucket with an upload arrow</title>
+  <ellipse cx="70" cy="40" rx="42" ry="14" fill="none" stroke="currentColor" stroke-width="2.4" />
+  <path d="M28 40 L34 108 C34 118 106 118 106 108 L112 40" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" />
+  <path d="M29.5 41 L35 106" stroke="currentColor" stroke-width="1" opacity="0.3" />
+  <path d="M70 88 L70 53" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+  <path d="M58 65 L70 51 L82 65" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

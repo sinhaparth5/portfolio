@@ -1,0 +1,277 @@
+/* Design tokens — notebook palette pulled from design-idea/ references */
+:root {
+  /* paper — one continuous white sheet of graph paper, not stacked cards */
+  --paper: #ffffff;
+  --paper-grid: rgb(180 195 220 / 35%);
+  --grid-size: 2.5rem;
+
+  /* ink */
+  --ink: #2b2a28;
+  --ink-soft: #55524a;
+  --ink-faint: #6e6a5e;
+
+  /* highlighter accents — darkened off the marker/wash pairs so accent text
+     still clears 4.5:1 on paper; the *-wash tones stay pale for backgrounds */
+  --marker-purple: #6a4fc0;
+  --marker-purple-wash: #e3d9f7;
+  --marker-pink: #b8305f;
+  --marker-pink-wash: #f6d3e0;
+  --marker-mint: #2f7d57;
+  --marker-mint-wash: #d3ecdd;
+  --marker-peach: #985613;
+  --marker-peach-wash: #f7e2c6;
+
+  /* type */
+  --font-hand: "Kalam", "Comic Sans MS", cursive;
+  --font-body: "Patrick Hand", "Kalam", cursive;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+
+  /* rhythm */
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+  --page-w: 46rem;
+  --radius: 3px;
+
+  color-scheme: light;
+
+  /* drawably palette hook */
+  --drawably-stroke: var(--ink);
+  --drawably-fill: var(--ink);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--paper);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-hand);
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 var(--space-2);
+  color: var(--ink);
+}
+
+p {
+  margin: 0 0 var(--space-2);
+  max-width: 62ch;
+}
+
+a {
+  color: var(--marker-purple);
+}
+
+::selection {
+  background: var(--marker-purple-wash);
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* shared "highlighter" utility — a crooked marker stroke behind text */
+.hl {
+  background: linear-gradient(105deg, transparent 0%, var(--hl, var(--marker-purple-wash)) 4% 92%, transparent 100%);
+  padding: 0.05em 0.15em;
+  border-radius: 2px 8px 3px 6px / 4px 3px 6px 3px;
+}
+
+/* a hand-drawn diagram dropped into a section as supporting art — no card,
+   no border, just the sketch sitting on the page like a pasted-in clipping */
+.diagram-figure {
+  max-width: 32rem;
+  margin: var(--space-3) auto;
+}
+
+.diagram-figure svg {
+  width: 100%;
+  height: auto;
+}
+
+/* a heading with a small hand-drawn component doodle sitting next to it */
+.heading-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.doodle-icon {
+  flex: none;
+  width: var(--doodle-w, 64px);
+  color: var(--ink-faint);
+  transform: rotate(var(--doodle-rot, -2deg));
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* jump straight to content, past the nav, for keyboard/AT users */
+.skip-link {
+  position: absolute;
+  top: -3rem;
+  left: var(--space-2);
+  z-index: 1000;
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-body);
+  text-decoration: none;
+  transition: top 150ms ease;
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+#main-content:focus {
+  outline: none;
+}
+
+/* thin scroll-progress line pinned under the nav */
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 30;
+  background: var(--marker-purple-wash);
+  transform-origin: left;
+  transform: scaleX(var(--scroll-progress, 0));
+}
+
+/* sections fade/lift into place on first scroll into view; visible by
+   default so no-JS or slow-JS visitors never see hidden content */
+.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.reveal.pending {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+/* small inline "copy" affordance next to an email or DOI */
+.copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid var(--ink-faint);
+  border-radius: var(--radius);
+  background: none;
+  color: var(--ink-soft);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.2rem 0.5rem;
+  cursor: pointer;
+  transition: color 150ms ease, border-color 150ms ease;
+}
+
+.copy-btn:hover,
+.copy-btn:focus-visible {
+  color: var(--marker-purple);
+  border-color: var(--marker-purple);
+}
+
+.copy-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+.copy-btn.copied {
+  color: var(--marker-mint);
+  border-color: var(--marker-mint);
+}
+
+/* back-to-top, tucked in the corner, only once you've scrolled past the hero */
+.back-to-top {
+  position: fixed;
+  right: var(--space-2);
+  bottom: var(--space-2);
+  z-index: 40;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 640px) {
+  .back-to-top {
+    right: var(--space-1);
+    bottom: var(--space-1);
+  }
+}

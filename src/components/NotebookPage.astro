@@ -1,0 +1,14 @@
+---
+import styles from "./NotebookPage.module.css";
+
+interface Props {
+	id: string;
+	reveal?: boolean;
+}
+
+const { id, reveal = true } = Astro.props;
+---
+
+<section id={id} class={`${styles.section} ${reveal ? "reveal" : ""}`}>
+	<slot />
+</section>
