@@ -1,0 +1,131 @@
+<div class="clutter" aria-hidden="true">
+	<div class="tool pencil">
+		<svg viewBox="0 0 46 250" xmlns="http://www.w3.org/2000/svg">
+			<path d="M10 42 22 7l14 35-1 174-13 25-12-25Z" fill="#f3bf54" stroke="#2b2a28" stroke-width="2.4" stroke-linejoin="round" />
+			<path d="m22 7 3 28-15 7m26 0-11-7M22 241v-25M10 58h26M11 202h24" fill="none" stroke="#2b2a28" stroke-width="2" />
+			<path d="M11 203h24v15l-13 23-12-23Z" fill="#ead1b1" stroke="#2b2a28" stroke-width="2" />
+			<path d="m19 235 3 6 4-7" fill="#2b2a28" />
+		</svg>
+	</div>
+
+	<div class="tool highlighter">
+		<svg viewBox="0 0 74 230" xmlns="http://www.w3.org/2000/svg">
+			<path d="M15 35 28 9h25l8 26-7 171-10 14-25-1-10-15Z" fill="#c9eccf" stroke="#2b2a28" stroke-width="2.5" stroke-linejoin="round" />
+			<path d="M14 47h46M12 176h44M20 188h33" fill="none" stroke="#2b2a28" stroke-width="2" stroke-linecap="round" />
+			<path d="m28 9 25 1 8 25-47-1Z" fill="#70c990" stroke="#2b2a28" stroke-width="2" />
+			<path d="M25 67c10 3 20 3 30-1" fill="none" stroke="#5cab79" stroke-width="5" stroke-linecap="round" opacity=".65" />
+		</svg>
+	</div>
+
+	<div class="tool crayon">
+		<svg viewBox="0 0 54 205" xmlns="http://www.w3.org/2000/svg">
+			<path d="m13 39 14-30 15 30-2 147-12 12-16-13Z" fill="#ef8eaa" stroke="#2b2a28" stroke-width="2.5" stroke-linejoin="round" />
+			<path d="m27 9 1 29m-15 4h29M12 64h29M12 161h28" fill="none" stroke="#2b2a28" stroke-width="2" />
+			<path d="M17 79c7-4 12 4 20 0m-20 16c7-4 12 4 20 0m-20 16c7-4 12 4 20 0" fill="none" stroke="#b8305f" stroke-width="2" opacity=".75" />
+		</svg>
+	</div>
+
+	<div class="tool ruler">
+		<svg viewBox="0 0 70 280" xmlns="http://www.w3.org/2000/svg">
+			<path d="M12 7h45l2 265H9Z" fill="#dce8ff" fill-opacity=".72" stroke="#2b2a28" stroke-width="2.5" stroke-linejoin="round" />
+			<path d="M12 34h20m-20 18h11m-11 18h20m-20 18h11m-11 18h20m-20 18h11m-11 18h20m-20 18h11m-11 18h20m-20 18h11m-11 18h20m-20 18h11" fill="none" stroke="#506b91" stroke-width="2" stroke-linecap="round" />
+			<path d="M46 20v239" stroke="#91acd2" stroke-width="2" stroke-dasharray="3 7" />
+		</svg>
+	</div>
+
+	<div class="tool eraser">
+		<svg viewBox="0 0 128 72" xmlns="http://www.w3.org/2000/svg">
+			<path d="m10 45 28-35 79 16-30 36Z" fill="#f3b5c5" stroke="#2b2a28" stroke-width="2.5" stroke-linejoin="round" />
+			<path d="m75 18 42 8-30 36-42-9Z" fill="#8a74d6" fill-opacity=".72" stroke="#2b2a28" stroke-width="2" />
+			<path d="M19 47c18 4 36 8 54 10" fill="none" stroke="#d27b92" stroke-width="2" />
+		</svg>
+	</div>
+
+	<div class="tool clip">
+		<svg viewBox="0 0 90 170" xmlns="http://www.w3.org/2000/svg">
+			<path d="M58 17c20 12 17 37 5 58l-30 53c-8 14-25 7-17-7l34-60c6-10 16-3 11 7l-30 52" fill="none" stroke="#697784" stroke-width="5" stroke-linecap="round" />
+		</svg>
+	</div>
+
+	<span class="stroke strokeOne"></span>
+	<span class="stroke strokeTwo"></span>
+	<span class="stroke strokeThree"></span>
+	<span class="scribble scribbleOne">× × ×</span>
+	<span class="scribble scribbleTwo">///</span>
+</div>
+
+<style>
+	.clutter {
+		position: absolute;
+		inset: 0;
+		z-index: 0;
+		pointer-events: none;
+		overflow: hidden;
+	}
+
+	.tool,
+	.stroke,
+	.scribble {
+		position: absolute;
+		filter: drop-shadow(3px 5px 0 rgb(43 42 40 / 7%));
+	}
+
+	.tool svg {
+		width: 100%;
+		height: auto;
+	}
+
+	.pencil { top: 3.5%; left: max(0.8rem, calc(50% - 37rem)); width: 2.45rem; transform: rotate(17deg); }
+	.highlighter { top: 20%; right: max(0.7rem, calc(50% - 38rem)); width: 3.7rem; transform: rotate(-16deg); }
+	.crayon { top: 41%; left: max(1rem, calc(50% - 38rem)); width: 2.8rem; transform: rotate(-12deg); }
+	.ruler { top: 60%; right: max(0.4rem, calc(50% - 39rem)); width: 3.2rem; transform: rotate(11deg); }
+	.eraser { top: 77%; left: max(0.6rem, calc(50% - 39rem)); width: 6rem; transform: rotate(9deg); }
+	.clip { top: 91%; right: max(1rem, calc(50% - 37rem)); width: 3.6rem; transform: rotate(21deg); }
+
+	.stroke {
+		height: 1rem;
+		border-radius: 48% 32% 44% 39%;
+		opacity: 0.44;
+	}
+
+	.strokeOne { top: 13%; right: 4%; width: 7rem; background: var(--marker-purple-wash); transform: rotate(8deg); }
+	.strokeTwo { top: 50%; left: 2%; width: 8.5rem; background: var(--marker-peach-wash); transform: rotate(-5deg); }
+	.strokeThree { top: 84%; right: 3%; width: 6.5rem; background: var(--marker-mint-wash); transform: rotate(4deg); }
+
+	.scribble {
+		color: var(--marker-pink);
+		font-family: var(--font-display);
+		font-size: 1.6rem;
+		font-weight: 700;
+		letter-spacing: 0.2em;
+		filter: none;
+		opacity: 0.65;
+	}
+
+	.scribbleOne { top: 30%; left: 2%; transform: rotate(-8deg); }
+	.scribbleTwo { top: 69%; right: 3%; color: var(--marker-purple); transform: rotate(11deg); }
+
+	@media (max-width: 1180px) {
+		.pencil,
+		.highlighter,
+		.crayon,
+		.ruler,
+		.eraser,
+		.clip {
+			opacity: 0.34;
+		}
+		.pencil, .crayon, .eraser { transform: translateX(-45%) rotate(14deg); }
+		.highlighter, .ruler, .clip { transform: translateX(45%) rotate(-12deg); }
+	}
+
+	@media (max-width: 760px) {
+		.tool { opacity: 0.18; }
+		.pencil { top: 4%; }
+		.highlighter { top: 25%; }
+		.crayon { top: 47%; }
+		.ruler { top: 68%; }
+		.eraser, .clip { display: none; }
+		.stroke { opacity: 0.25; }
+		.scribble { opacity: 0.32; }
+	}
+</style>

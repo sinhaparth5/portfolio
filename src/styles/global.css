@@ -1,9 +1,5 @@
 :root {
-  --desk: #d8cbb9;
-  --paper: #fbf7ed;
-  --paper-rule: rgb(102 150 191 / 16%);
-  --margin-rule: rgb(205 102 115 / 34%);
-  --rule-size: 1.72rem;
+  --paper: #ffffff;
 
   /* ink */
   --ink: #2b2a28;
@@ -72,10 +68,7 @@ body {
   font-size: 1.14rem;
   line-height: 1.64;
   -webkit-font-smoothing: antialiased;
-  background:
-    radial-gradient(circle at 16% 8%, rgb(255 255 255 / 28%), transparent 22rem),
-    linear-gradient(115deg, rgb(111 88 57 / 5%), transparent 35%, rgb(255 255 255 / 12%)),
-    var(--desk);
+  background: var(--paper);
 }
 
 h1,
