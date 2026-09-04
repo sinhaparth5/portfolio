@@ -1,17 +1,41 @@
 .heading {
-  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-size: clamp(3rem, 7vw, 5rem);
+}
+
+.marginNote {
+  width: fit-content;
+  margin: -1.5rem 0 1rem auto;
+  color: var(--pencil);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  transform: rotate(2deg);
 }
 
 .columns {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
+  align-items: start;
+  gap: clamp(1.5rem, 5vw, 4rem);
   margin-top: var(--space-3);
 }
 
 .col h3 {
-  font-size: 1.35rem;
+  width: fit-content;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
   color: var(--marker-pink);
+}
+
+.working {
+  padding: 1.4rem 1.5rem;
+  background: rgb(255 250 182 / 55%);
+  box-shadow: 0.35rem 0.45rem 0 rgb(64 51 36 / 7%);
+  transform: rotate(-1.2deg);
+}
+
+.method {
+  margin-top: 2.5rem;
+  transform: rotate(0.65deg);
 }
 
 .col ul {
@@ -29,18 +53,25 @@
 }
 
 .col li::before {
-  content: "→";
+  content: "×";
   position: absolute;
   left: 0;
   color: var(--marker-mint);
 }
 
 .toolbox {
-  margin-top: var(--space-4);
+  position: relative;
+  width: min(92%, 43rem);
+  margin: 4.5rem 0 1rem auto;
+  padding: 1.3rem 1.5rem;
+  border: 2px solid rgb(43 42 40 / 65%);
+  border-radius: 47% 53% 49% 51% / 8% 7% 9% 6%;
+  transform: rotate(-0.45deg);
 }
 
 .toolbox h3 {
-  font-size: 1.35rem;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
   color: var(--marker-peach);
 }
 
@@ -59,9 +90,35 @@
   padding: 0.3rem 0.65rem;
 }
 
+.cpuWrap {
+  display: grid;
+  grid-template-columns: 0.35fr 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem 0 0 -3rem;
+}
+
+.cpuWrap > p {
+  color: var(--pencil);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1.05;
+  text-align: right;
+  transform: rotate(-7deg);
+}
+
+.cpuWrap :global(.diagram-figure) {
+  margin: 0;
+  transform: rotate(1.6deg);
+}
+
 @media (max-width: 640px) {
   .columns {
     grid-template-columns: 1fr;
     gap: var(--space-3);
   }
+  .method { margin-top: 0; }
+  .toolbox { width: 100%; margin-top: 3rem; }
+  .cpuWrap { grid-template-columns: 1fr; margin-left: 0; }
+  .cpuWrap > p { text-align: left; }
 }

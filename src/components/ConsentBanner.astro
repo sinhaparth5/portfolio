@@ -1,7 +1,7 @@
 <div id="consent-banner" class="banner" data-sketch-card>
 	<p>
-		This site uses Google Analytics to see what's actually being read. Essential cookies keep the
-		notebook running either way, that part's not optional.
+		Google Analytics tells me what gets read. Essential cookies keep the notebook working even if
+		you say no.
 	</p>
 	<div class="row">
 		<button type="button" data-sketch-button="outline" id="consent-essential">essential only</button>
@@ -19,18 +19,19 @@
 		max-width: 30rem;
 		margin: 0 auto;
 		padding: var(--space-2);
-		background: var(--paper);
+		background: #fff6a9;
 		z-index: 100;
 		opacity: 0;
 		pointer-events: none;
-		transform: translateY(12px);
+		transform: translateY(12px) rotate(-0.6deg);
+		box-shadow: 0.55rem 0.7rem 0 rgb(66 52 37 / 12%);
 		transition: opacity 150ms ease, transform 150ms ease;
 	}
 
 	.banner.show {
 		opacity: 1;
 		pointer-events: auto;
-		transform: translateY(0);
+		transform: translateY(0) rotate(-0.6deg);
 	}
 
 	.banner p {

@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import chipSvg from "../assets/doodles/chip.svg?raw";
 ---
 
-<Layout title="Page not found — Parth" description="This page doesn't exist. Head back to the notebook.">
+<Layout title="Page not found | Parth Sinha" description="This page doesn't exist. Head back to the notebook." noindex>
 	<main id="main-content" tabindex="-1" class="notFound">
 		<p class="eyebrow">404</p>
 		<h1>Wrong pin, nothing's here</h1>
@@ -16,10 +16,13 @@ import chipSvg from "../assets/doodles/chip.svg?raw";
 
 <style>
 	.notFound {
+		position: relative;
 		max-width: var(--page-w);
-		margin: 0 auto;
+		margin: 2rem auto;
 		padding: var(--space-5) var(--space-2);
 		text-align: center;
+		background: var(--paper);
+		transform: rotate(-0.35deg);
 	}
 
 	.eyebrow {

@@ -1,32 +1,57 @@
 .heading {
-  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-size: clamp(3rem, 7vw, 5rem);
 }
 
 .intro {
   color: var(--ink-soft);
+  max-width: 40ch;
+  margin-left: 1.25rem;
+  font-size: 1.2rem;
+}
+
+.marginNote {
+  width: fit-content;
+  margin: -1rem 1rem 0 auto;
+  color: var(--pencil);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  transform: rotate(3deg);
 }
 
 .list {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
-  margin-top: var(--space-3);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5rem 1.5rem;
+  margin-top: 3rem;
   list-style: none;
   padding: 0;
 }
 
 .item {
+  position: relative;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   gap: var(--space-2);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px dashed var(--ink-faint);
+  min-height: 100%;
+  padding: 1.65rem 1.5rem 1.35rem;
+  background: rgb(255 252 244 / 90%);
+  border: 1px solid rgb(80 68 52 / 13%);
+  box-shadow: 0.35rem 0.45rem 0 rgb(66 52 37 / 7%);
+  transform: rotate(0.65deg);
 }
 
-.item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
+.item:nth-child(even) { transform: rotate(-0.8deg); }
+
+.paperclip {
+  position: absolute;
+  top: -0.85rem;
+  right: 1.4rem;
+  width: 0.75rem;
+  height: 2.4rem;
+  border: 2px solid var(--pencil);
+  border-radius: 999px;
+  transform: rotate(9deg);
 }
 
 .body {
@@ -38,24 +63,27 @@
 }
 
 .doodle {
-  flex: none;
-  width: clamp(64px, 9vw, 96px);
+  align-self: flex-end;
+  width: clamp(58px, 8vw, 82px);
   color: var(--ink-faint);
   transform: rotate(var(--doodle-rot, -3deg));
 }
 
 .item h3 {
-  font-size: 1.3rem;
+  font-family: var(--font-display);
+  font-size: 2rem;
   color: var(--marker-mint);
 }
 
 .item p {
   color: var(--ink-soft);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.58;
   margin: 0;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
+  .list { grid-template-columns: 1fr; }
   .doodle {
     width: 56px;
   }

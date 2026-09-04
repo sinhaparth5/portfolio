@@ -6,23 +6,24 @@ import capacitorSvg from "../assets/doodles/capacitor.svg?raw";
 import transistorSvg from "../assets/doodles/transistor.svg?raw";
 
 const workingOn = [
-	"Storage engines and I/O paths: bridging lock-free ring buffers straight into io_uring instead of trusting a syscall per request",
-	"NUMA-aware concurrent data structures, profiled until a fix is a measured multiple, not a guess",
-	"SIMD-aligned data layouts, because a cache-line invalidation doesn't care how clever the algorithm around it is",
-	"Security tooling I can read the source of: a WAF built on Coraza and the OWASP core rule set",
+	"Storage engines and I/O paths. Lately, that means wiring a lock-free ring straight into io_uring.",
+	"NUMA-aware queues. I trust the profiler more than the neat idea.",
+	"SIMD-friendly layouts, because a cache-line invalidation does not care how clever the algorithm is.",
+	"Security tools I can read all the way through, including a WAF built on Coraza and the OWASP core rule set.",
 ];
 
 const howIWork = [
-	"Start from a question, not a spec",
-	"Profile before I optimize, then profile again after",
-	"Write it up, including the parts that failed",
-	"No deadlines except my own curiosity",
+	"Start with a question",
+	"Measure it before and after",
+	"Keep the failed version in the write-up",
+	"Follow whatever I cannot stop thinking about",
 ];
 
 const tools = ["C++20", "Go", "CMake", "RocksDB", "io_uring", "SIMD", "lock-free", "NUMA", "LaTeX"];
 ---
 
 <NotebookPage id="about">
+	<p class={styles.marginNote} aria-hidden="true">page 02 / things I keep returning to</p>
 	<div class="heading-row">
 		<h2 class={styles.heading}>
 			<span class="hl" style="--hl: var(--marker-mint-wash)">about me</span>
@@ -31,13 +32,13 @@ const tools = ["C++20", "Go", "CMake", "RocksDB", "io_uring", "SIMD", "lock-free
 	</div>
 
 	<div class={styles.columns}>
-		<div class={styles.col}>
+		<div class={`${styles.col} ${styles.working}`}>
 			<h3>what I work on</h3>
 			<ul>
 				{workingOn.map((item) => <li>{item}</li>)}
 			</ul>
 		</div>
-		<div class={styles.col}>
+		<div class={`${styles.col} ${styles.method}`}>
 			<h3>how I work</h3>
 			<ul>
 				{howIWork.map((item) => <li>{item}</li>)}
@@ -55,5 +56,8 @@ const tools = ["C++20", "Go", "CMake", "RocksDB", "io_uring", "SIMD", "lock-free
 		</ul>
 	</div>
 
-	<div class="diagram-figure" set:html={cpuSvg} />
+	<div class={styles.cpuWrap}>
+		<p aria-hidden="true">still thinking about this one</p>
+		<div class="diagram-figure" set:html={cpuSvg} />
+	</div>
 </NotebookPage>

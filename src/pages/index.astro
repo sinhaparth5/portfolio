@@ -9,24 +9,28 @@ import Contact from "../components/Contact.astro";
 import ConsentBanner from "../components/ConsentBanner.astro";
 import BackToTop from "../components/BackToTop.astro";
 import DeskPet from "../components/DeskPet.astro";
+import NotebookClutter from "../components/NotebookClutter.astro";
 ---
 
 <Layout
-	title="Parth — independent researcher"
-	description="Independent researcher working close to the metal: storage engines, lock-free concurrency, io_uring, NUMA-aware systems, and the papers written along the way."
+	title="Parth Sinha | Independent Systems Researcher"
+	description="Independent systems research on C++ storage engines, lock-free queues, io_uring, NUMA, and SIMD. Explore Parth Sinha's projects, benchmarks, and papers."
 >
-	<Nav />
-	<main id="main-content" tabindex="-1">
-		<Hero />
-		<hr class="divider" data-sketch-divider />
-		<About />
-		<hr class="divider" data-sketch-divider />
-		<Projects />
-		<hr class="divider" data-sketch-divider />
-		<Papers />
-		<hr class="divider" data-sketch-divider />
-		<Contact />
-	</main>
+	<div class="notebook">
+		<NotebookClutter />
+		<Nav />
+		<main id="main-content" tabindex="-1">
+			<Hero />
+			<hr class="divider dividerOne" data-sketch-divider />
+			<About />
+			<hr class="divider dividerTwo" data-sketch-divider />
+			<Projects />
+			<hr class="divider dividerThree" data-sketch-divider />
+			<Papers />
+			<hr class="divider dividerFour" data-sketch-divider />
+			<Contact />
+		</main>
+	</div>
 	<ConsentBanner />
 	<BackToTop />
 	<DeskPet />
@@ -36,19 +40,53 @@ import DeskPet from "../components/DeskPet.astro";
 </Layout>
 
 <style>
+	.notebook {
+		position: relative;
+		width: 100%;
+		margin: 0;
+		background: var(--paper);
+		isolation: isolate;
+	}
+
+	.notebook::before {
+		display: none;
+	}
+
 	main {
-		padding: var(--space-4) var(--space-2) var(--space-5);
+		position: relative;
+		z-index: 1;
+		padding: var(--space-4) 1.25rem var(--space-5);
 	}
 
 	.divider {
-		max-width: var(--page-w);
-		margin: var(--space-2) auto;
+		width: min(72%, 42rem);
+		margin: 1.25rem auto;
 		color: var(--ink-faint);
+		border: 0;
+	}
+
+	.dividerOne,
+	.dividerThree {
+		transform: rotate(-0.6deg) translateX(-3%);
+	}
+
+	.dividerTwo,
+	.dividerFour {
+		transform: rotate(0.75deg) translateX(4%);
 	}
 
 	@media (max-width: 640px) {
+		.notebook {
+			width: 100%;
+			margin: 0;
+		}
+
+		.notebook::before {
+			display: none;
+		}
+
 		main {
-			padding: var(--space-3) 0.6rem var(--space-4);
+			padding: var(--space-3) 0.5rem var(--space-4);
 		}
 	}
 </style>

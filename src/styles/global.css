@@ -1,14 +1,11 @@
-/* Design tokens — notebook palette pulled from design-idea/ references */
 :root {
-  /* paper — one continuous white sheet of graph paper, not stacked cards */
   --paper: #ffffff;
-  --paper-grid: rgb(180 195 220 / 35%);
-  --grid-size: 2.5rem;
 
   /* ink */
   --ink: #2b2a28;
-  --ink-soft: #55524a;
-  --ink-faint: #6e6a5e;
+  --ink-soft: #4f4c45;
+  --ink-faint: #6d685d;
+  --pencil: #777066;
 
   /* highlighter accents — darkened off the marker/wash pairs so accent text
      still clears 4.5:1 on paper; the *-wash tones stay pale for backgrounds */
@@ -21,7 +18,7 @@
   --marker-peach: #985613;
   --marker-peach-wash: #f7e2c6;
 
-  /* type */
+  --font-display: "Caveat", "Kalam", "Comic Sans MS", cursive;
   --font-hand: "Kalam", "Comic Sans MS", cursive;
   --font-body: "Patrick Hand", "Kalam", cursive;
   --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
@@ -32,8 +29,8 @@
   --space-3: 1.5rem;
   --space-4: 2.5rem;
   --space-5: 4rem;
-  --page-w: 46rem;
-  --radius: 3px;
+  --page-w: 58rem;
+  --radius: 5px;
 
   color-scheme: light;
 
@@ -68,10 +65,10 @@ body {
   min-height: 100dvh;
   color: var(--ink);
   font-family: var(--font-body);
-  font-size: 1.125rem;
-  line-height: 1.6;
+  font-size: 1.14rem;
+  line-height: 1.64;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--paper);
+  background: var(--paper);
 }
 
 h1,
@@ -84,6 +81,11 @@ h3 {
   color: var(--ink);
 }
 
+h1,
+h2 {
+  font-family: var(--font-display);
+}
+
 p {
   margin: 0 0 var(--space-2);
   max-width: 62ch;
@@ -91,6 +93,19 @@ p {
 
 a {
   color: var(--marker-purple);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.16em;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid var(--marker-purple);
+  outline-offset: 4px;
 }
 
 ::selection {
@@ -105,9 +120,11 @@ svg {
 
 /* shared "highlighter" utility — a crooked marker stroke behind text */
 .hl {
-  background: linear-gradient(105deg, transparent 0%, var(--hl, var(--marker-purple-wash)) 4% 92%, transparent 100%);
+  background: linear-gradient(103deg, transparent 0%, var(--hl, var(--marker-purple-wash)) 3% 94%, transparent 100%);
   padding: 0.05em 0.15em;
-  border-radius: 2px 8px 3px 6px / 4px 3px 6px 3px;
+  border-radius: 8px 2px 7px 3px / 3px 8px 2px 7px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
 }
 
 /* a hand-drawn diagram dropped into a section as supporting art — no card,
@@ -115,6 +132,7 @@ svg {
 .diagram-figure {
   max-width: 32rem;
   margin: var(--space-3) auto;
+  filter: drop-shadow(0.25rem 0.35rem 0 rgb(65 53 42 / 6%));
 }
 
 .diagram-figure svg {
@@ -128,6 +146,14 @@ svg {
   align-items: center;
   justify-content: space-between;
   gap: var(--space-2);
+}
+
+.heading-row h2 {
+  position: relative;
+  width: fit-content;
+  font-size: clamp(3rem, 7vw, 5rem);
+  letter-spacing: -0.025em;
+  transform: rotate(-1.2deg);
 }
 
 .doodle-icon {
@@ -195,7 +221,7 @@ svg {
 
 .reveal.pending {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(12px) rotate(0.25deg);
 }
 
 .reveal.visible {
@@ -211,7 +237,8 @@ svg {
   gap: 0.3rem;
   border: 1px solid var(--ink-faint);
   border-radius: var(--radius);
-  background: none;
+  min-height: 32px;
+  background: rgb(255 255 255 / 32%);
   color: var(--ink-soft);
   font-family: var(--font-mono);
   font-size: 0.75rem;
@@ -247,7 +274,7 @@ svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--paper);
+  background: #fff6a9;
   color: var(--ink);
   border: 2px solid var(--ink);
   border-radius: 50%;
@@ -256,6 +283,16 @@ svg {
   pointer-events: none;
   transform: translateY(8px);
   transition: opacity 200ms ease, transform 200ms ease;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 1.08rem;
+  }
+
+  .heading-row h2 {
+    font-size: clamp(2.8rem, 14vw, 4.2rem);
+  }
 }
 
 .back-to-top.show {

@@ -1,24 +1,68 @@
 .heading {
-  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-size: clamp(3rem, 7vw, 5rem);
 }
 
 .intro {
   color: var(--ink-soft);
+  max-width: 38ch;
+  margin: -0.4rem 0 2rem 1.5rem;
+  font-size: 1.25rem;
+  transform: rotate(-0.5deg);
+}
+
+.diagramWrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  width: min(82%, 40rem);
+  margin: 0 0 3rem auto;
+  transform: rotate(1.2deg);
+}
+
+.diagramWrap :global(.diagram-figure) {
+  margin: 0;
+}
+
+.diagramWrap p {
+  flex: none;
+  width: 8.5rem;
+  color: var(--pencil);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  line-height: 1.05;
+  transform: rotate(5deg);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-3);
-  margin-top: var(--space-3);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2.4rem 1.5rem;
+  margin-top: 2rem;
 }
 
 .grid > :global(article) {
-  padding-bottom: var(--space-3);
-  border-bottom: 1px dashed var(--ink-faint);
+  grid-column: span 6;
 }
 
-.grid > :global(article:last-child) {
-  border-bottom: none;
-  padding-bottom: 0;
+.grid > :global(article:nth-child(1)),
+.grid > :global(article:nth-child(4)) {
+  grid-column: span 7;
+}
+
+.grid > :global(article:nth-child(2)),
+.grid > :global(article:nth-child(3)) {
+  grid-column: span 5;
+}
+
+.grid > :global(article:nth-child(7)) {
+  grid-column: 3 / span 8;
+}
+
+@media (max-width: 760px) {
+  .diagramWrap { width: 100%; }
+  .grid > :global(article) { grid-column: 1 / -1 !important; }
+}
+
+@media (max-width: 520px) {
+  .diagramWrap p { display: none; }
 }
