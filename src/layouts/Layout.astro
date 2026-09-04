@@ -5,11 +5,67 @@ import "drawably/style.css";
 interface Props {
 	title: string;
 	description: string;
+	noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, noindex = false } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImageURL = new URL("/og-image.png", Astro.site);
+const siteURL = new URL("/", Astro.site);
+const ogImageURL = new URL("/og-image-v2.png", Astro.site);
+const imageAlt = "Parth, independent researcher in storage engines, lock-free systems, and io_uring";
+const structuredData = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "WebSite",
+			"@id": `${siteURL}#website`,
+			url: siteURL.toString(),
+			name: "Parth Sinha",
+			alternateName: "Parth's systems notebook",
+			inLanguage: "en-GB",
+		},
+		{
+			"@type": "ProfilePage",
+			"@id": `${canonicalURL}#webpage`,
+			url: canonicalURL.toString(),
+			name: title,
+			description,
+			inLanguage: "en-GB",
+			isPartOf: { "@id": `${siteURL}#website` },
+			about: { "@id": `${siteURL}#person` },
+			primaryImageOfPage: { "@id": `${siteURL}#primaryimage` },
+		},
+		{
+			"@type": "ImageObject",
+			"@id": `${siteURL}#primaryimage`,
+			url: ogImageURL.toString(),
+			contentUrl: ogImageURL.toString(),
+			caption: imageAlt,
+			width: 1200,
+			height: 630,
+		},
+		{
+			"@type": "Person",
+			"@id": `${siteURL}#person`,
+			name: "Parth Sinha",
+			alternateName: "Parth",
+			url: siteURL.toString(),
+			image: { "@id": `${siteURL}#primaryimage` },
+			jobTitle: "Independent Systems Researcher",
+			email: "mailto:sinhaparth555@gmail.com",
+			sameAs: ["https://github.com/sinhaparth5", "https://x.com/parth_sinha18"],
+			knowsAbout: [
+				"C++ systems programming",
+				"Storage engines",
+				"Lock-free data structures",
+				"io_uring",
+				"NUMA-aware systems",
+				"SIMD",
+				"Web application firewalls",
+			],
+		},
+	],
+};
 ---
 
 <!doctype html>
@@ -18,22 +74,27 @@ const ogImageURL = new URL("/og-image.png", Astro.site);
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}/favicon.svg`.replace(/\/+/g, "/")} />
+		<link rel="apple-touch-icon" sizes="180x180" href={`${import.meta.env.BASE_URL}/apple-touch-icon.png`.replace(/\/+/g, "/")} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
-		<meta name="author" content="Parth" />
-		<meta name="theme-color" content="#ffffff" />
+		<meta name="author" content="Parth Sinha" />
+		<meta name="robots" content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
+		<meta name="theme-color" content="#d8cbb9" />
 		<link rel="canonical" href={canonicalURL} />
 		<title>{title}</title>
 
 		<!-- Open Graph -->
 		<meta property="og:type" content="website" />
-		<meta property="og:site_name" content="Parth — independent researcher" />
+		<meta property="og:locale" content="en_GB" />
+		<meta property="og:site_name" content="Parth Sinha" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:image" content={ogImageURL} />
+		<meta property="og:image:type" content="image/png" />
 		<meta property="og:image:width" content="1200" />
 		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content={imageAlt} />
 
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary_large_image" />
@@ -42,29 +103,14 @@ const ogImageURL = new URL("/og-image.png", Astro.site);
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImageURL} />
+		<meta name="twitter:image:alt" content={imageAlt} />
 
-		<script type="application/ld+json" set:html={JSON.stringify({
-			"@context": "https://schema.org",
-			"@type": "Person",
-			name: "Parth",
-			url: canonicalURL.toString(),
-			jobTitle: "Independent Researcher",
-			email: "mailto:sinhaparth555@gmail.com",
-			sameAs: ["https://github.com/sinhaparth5", "https://x.com/parth_sinha18"],
-			knowsAbout: [
-				"Storage engines",
-				"Lock-free data structures",
-				"io_uring",
-				"NUMA-aware systems",
-				"SIMD",
-				"Web application firewalls",
-			],
-		})} />
+		{!noindex && <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />}
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Patrick+Hand&family=JetBrains+Mono:wght@400;600&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Kalam:wght@400;700&family=Patrick+Hand&family=JetBrains+Mono:wght@400;600&display=swap"
 			rel="stylesheet"
 		/>
 	</head>
