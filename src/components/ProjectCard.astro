@@ -17,6 +17,7 @@ const { title, summary, tags, href, titleColor = "var(--marker-purple)", doi, do
 ---
 
 <article class={styles.card}>
+	<span class={styles.tape} aria-hidden="true"></span>
 	<div class={styles.body}>
 		<h3 class={styles.title} style={`--title-color: ${titleColor}`}>{title}</h3>
 		<p class={styles.summary}>{summary}</p>

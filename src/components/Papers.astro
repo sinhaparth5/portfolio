@@ -12,7 +12,7 @@ const papers = [
 	{
 		title: "vphilox",
 		tagline:
-			"A counter-based RNG built so the sequence is the contract, not the implementation: seed it once, and the same numbers come back on another compiler, another OS, another CPU, single-threaded or spread across sixty-four. The paper covers the counter-state format and why that portability was worth designing for in the first place.",
+			"The sequence is the contract. This paper explains the counter-state format and how one seed stays reproducible across compilers, operating systems, CPUs, and thread counts.",
 		href: "https://github.com/sinhaparth5/vphilox/blob/master/paper/vphilox.pdf",
 		doi: "10.5281/zenodo.22103483",
 		doodle: diceSvg,
@@ -21,7 +21,7 @@ const papers = [
 	{
 		title: "NumaRing",
 		tagline:
-			"Why a single MPMC queue loses to one ring buffer per NUMA node once core counts climb, and the two profiling-driven fixes that turned that theory into a 61x cut in routing lookups and a 202x cut in median latency. Also covers the backoff optimization that looked promising on paper and got reverted once the benchmarks disagreed.",
+			"Why one shared MPMC queue starts to hurt as core counts climb, and what changed when each NUMA node got its own ring. The write-up includes the 61x routing and 202x median-latency gains, plus the backoff idea the benchmarks rejected.",
 		href: "https://github.com/sinhaparth5/NumaRing/blob/master/paper/main.pdf",
 		doi: "10.5281/zenodo.22232854",
 		doodle: ringBufferSvg,
@@ -30,7 +30,7 @@ const papers = [
 	{
 		title: "ringio",
 		tagline:
-			"How a lock-free ring buffer gets wired directly into io_uring's SQPOLL submission queues so that issuing I/O becomes a memory write instead of a syscall, plus pre-registered buffers and fixed file descriptors to keep the kernel out of the hot path. The write-up doesn't stop at the win: it covers the tail-latency cost that only showed up once the design moved from a dev laptop to a wider multi-socket machine.",
+			"A walk through the ring buffer, SQPOLL submission path, registered buffers, and fixed file descriptors. It also covers the tail-latency problem that only appeared on a wider multi-socket machine.",
 		href: "https://github.com/sinhaparth5/ringio/blob/master/docs/paper/ringio-paper.pdf",
 		doodle: nvmeSvg,
 		doodleRot: "-1deg",
@@ -38,7 +38,7 @@ const papers = [
 	{
 		title: "aparajita-memtable",
 		tagline:
-			"RocksDB's default memtable is a skip list, which means pointer-chasing across scattered heap allocations and a cache miss on nearly every comparison. This paper packs fifteen order-preserving key surrogates into a single 64-byte cache line and replaces the pointer chase with one branchless SIMD compare, then measures what that actually buys in cache-line invalidations and branch mispredictions.",
+			"RocksDB's skip list scatters comparisons across the heap. This paper puts fifteen key surrogates in one cache line, searches them with a branchless SIMD compare, and measures the result in invalidations and branch misses.",
 		href: "https://github.com/sinhaparth5/aparajita-memtable/blob/master/paper/main.pdf",
 		doi: "10.5281/zenodo.22180368",
 		doodle: vectorLanesSvg,
@@ -48,18 +48,20 @@ const papers = [
 ---
 
 <NotebookPage id="papers">
+	<p class={styles.marginNote} aria-hidden="true">longer notes, fewer crossed-out bits</p>
 	<div class="heading-row">
 		<h2 class={styles.heading}>
 			<span class="hl" style="--hl: var(--marker-mint-wash)">write-ups</span>
 		</h2>
 		<div class="doodle-icon" style="--doodle-w: 52px; --doodle-rot: 2deg" set:html={paperSvg} />
 	</div>
-	<p class={styles.intro}>A few of the projects above came with enough evidence behind them to write up properly.</p>
+	<p class={styles.intro}>Some projects left enough questions behind that I wrote the long version.</p>
 
 	<ul class={styles.list}>
 		{
 			papers.map((p) => (
 				<li class={styles.item}>
+					<span class={styles.paperclip} aria-hidden="true"></span>
 					<div class={styles.body}>
 						<h3>{p.title}</h3>
 						<p>{p.tagline}</p>

@@ -12,21 +12,23 @@ import DeskPet from "../components/DeskPet.astro";
 ---
 
 <Layout
-	title="Parth — independent researcher"
-	description="Independent researcher working close to the metal: storage engines, lock-free concurrency, io_uring, NUMA-aware systems, and the papers written along the way."
+	title="Parth Sinha | Independent Systems Researcher"
+	description="Independent systems research on C++ storage engines, lock-free queues, io_uring, NUMA, and SIMD. Explore Parth Sinha's projects, benchmarks, and papers."
 >
-	<Nav />
-	<main id="main-content" tabindex="-1">
-		<Hero />
-		<hr class="divider" data-sketch-divider />
-		<About />
-		<hr class="divider" data-sketch-divider />
-		<Projects />
-		<hr class="divider" data-sketch-divider />
-		<Papers />
-		<hr class="divider" data-sketch-divider />
-		<Contact />
-	</main>
+	<div class="notebook">
+		<Nav />
+		<main id="main-content" tabindex="-1">
+			<Hero />
+			<hr class="divider dividerOne" data-sketch-divider />
+			<About />
+			<hr class="divider dividerTwo" data-sketch-divider />
+			<Projects />
+			<hr class="divider dividerThree" data-sketch-divider />
+			<Papers />
+			<hr class="divider dividerFour" data-sketch-divider />
+			<Contact />
+		</main>
+	</div>
 	<ConsentBanner />
 	<BackToTop />
 	<DeskPet />
@@ -36,19 +38,68 @@ import DeskPet from "../components/DeskPet.astro";
 </Layout>
 
 <style>
+	.notebook {
+		position: relative;
+		width: min(1120px, calc(100% - 2rem));
+		margin: 1.25rem auto 3rem;
+		background-color: var(--paper);
+		background-image:
+			linear-gradient(90deg, transparent 5.4rem, var(--margin-rule) 5.4rem, var(--margin-rule) calc(5.4rem + 1px), transparent calc(5.4rem + 1px)),
+			repeating-linear-gradient(0deg, transparent 0, transparent calc(var(--rule-size) - 1px), var(--paper-rule) calc(var(--rule-size) - 1px), var(--paper-rule) var(--rule-size)),
+			url("/paper-texture.webp");
+		background-size: auto, auto, 768px 768px;
+		box-shadow: 0 2rem 5rem rgb(68 53 35 / 18%), 0 0 0 1px rgb(74 61 45 / 9%);
+		isolation: isolate;
+	}
+
+	.notebook::before {
+		content: "";
+		position: absolute;
+		inset: 0 auto 0 1.15rem;
+		width: 1.05rem;
+		z-index: 5;
+		pointer-events: none;
+		background: radial-gradient(circle, var(--desk) 0 4px, rgb(64 52 39 / 28%) 4.5px 5.5px, transparent 6px) center 1.25rem / 1rem 5.4rem repeat-y;
+	}
+
 	main {
-		padding: var(--space-4) var(--space-2) var(--space-5);
+		position: relative;
+		padding: var(--space-4) 2rem var(--space-5) 6.2rem;
 	}
 
 	.divider {
-		max-width: var(--page-w);
-		margin: var(--space-2) auto;
+		width: min(72%, 42rem);
+		margin: 1.25rem auto;
 		color: var(--ink-faint);
+		border: 0;
+	}
+
+	.dividerOne,
+	.dividerThree {
+		transform: rotate(-0.6deg) translateX(-3%);
+	}
+
+	.dividerTwo,
+	.dividerFour {
+		transform: rotate(0.75deg) translateX(4%);
 	}
 
 	@media (max-width: 640px) {
+		.notebook {
+			width: calc(100% - 0.7rem);
+			margin-top: 0.35rem;
+			background-image:
+				linear-gradient(90deg, transparent 2rem, var(--margin-rule) 2rem, var(--margin-rule) calc(2rem + 1px), transparent calc(2rem + 1px)),
+				repeating-linear-gradient(0deg, transparent 0, transparent calc(var(--rule-size) - 1px), var(--paper-rule) calc(var(--rule-size) - 1px), var(--paper-rule) var(--rule-size)),
+				url("/paper-texture.webp");
+		}
+
+		.notebook::before {
+			display: none;
+		}
+
 		main {
-			padding: var(--space-3) 0.6rem var(--space-4);
+			padding: var(--space-3) 0.5rem var(--space-4) 2.15rem;
 		}
 	}
 </style>

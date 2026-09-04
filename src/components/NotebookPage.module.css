@@ -1,13 +1,50 @@
 .section {
+  position: relative;
+  z-index: 0;
   max-width: var(--page-w);
   margin: 0 auto;
   width: 100%;
-  padding: var(--space-2) var(--space-3);
-  scroll-margin-top: 4rem;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 4vw, 3.5rem);
+  scroll-margin-top: 6rem;
+}
+
+@media (min-width: 880px) {
+  .section:nth-of-type(even) {
+    padding-left: clamp(3.5rem, 7vw, 6rem);
+    padding-right: 1.25rem;
+  }
+
+  .section:nth-of-type(3n) {
+    padding-left: 1.5rem;
+    padding-right: clamp(3.5rem, 7vw, 6rem);
+  }
+}
+
+.section::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+  width: 5rem;
+  height: 1.1rem;
+  background: rgb(224 199 155 / 34%);
+  border: 1px solid rgb(124 102 67 / 7%);
+}
+
+.section:nth-of-type(4n + 1)::after {
+  top: 2rem;
+  right: 4%;
+  transform: rotate(5deg);
+}
+
+.section:nth-of-type(4n + 3)::after {
+  bottom: 1.5rem;
+  left: 2%;
+  transform: rotate(-6deg);
 }
 
 @media (max-width: 640px) {
   .section {
-    padding: var(--space-2) 1.1rem;
+    padding: 2.75rem 0.85rem 3.25rem;
   }
 }

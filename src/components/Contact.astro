@@ -10,14 +10,15 @@ const email = "sinhaparth555@gmail.com";
 
 <NotebookPage id="contact">
 	<div class={styles.layout}>
-		<div>
+		<div class={styles.noteCard}>
+			<span class={styles.tape} aria-hidden="true"></span>
 			<h2 class={styles.heading}>
 				<span class="hl" style="--hl: var(--marker-peach-wash)">say hi</span>
 			</h2>
 			<div class={styles.wave} set:html={waveformSvg} />
 			<p class={styles.note}>
-				I read everything that lands in this inbox, eventually: questions, corrections, and the
-				occasional "you got this register wrong" email are all welcome.
+				Questions, corrections, and the occasional "you got this register wrong" email are all
+				welcome. I read everything, though sometimes the reply takes a minute.
 			</p>
 
 			<div class={styles.row}>

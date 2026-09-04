@@ -1,51 +1,111 @@
 .introRow {
-  display: flex;
-  align-items: center;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(150px, 0.38fr);
+  align-items: start;
   justify-content: space-between;
-  gap: var(--space-3);
+  gap: clamp(2rem, 6vw, 5rem);
+}
+
+.copy {
+  position: relative;
+  z-index: 2;
+}
+
+.marginNote {
+  width: fit-content;
+  margin: -1rem 0 1.8rem auto;
+  color: var(--pencil);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  transform: rotate(1.5deg);
+}
+
+.chipWrap {
+  position: relative;
+  align-self: center;
+  margin-top: 2rem;
+  padding: 2rem 1.5rem 1rem;
+  background: rgb(255 250 240 / 70%);
+  box-shadow: 0.3rem 0.45rem 0 rgb(71 57 43 / 8%);
+  transform: rotate(3.5deg);
+}
+
+.chipWrap p {
+  margin: 0.75rem 0 0;
+  color: var(--pencil);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.tape {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  width: 4.8rem;
+  height: 1.4rem;
+  background: rgb(224 199 155 / 55%);
+  transform: translateX(-50%) rotate(-3deg);
 }
 
 .chipIcon {
-  flex: none;
-  width: clamp(90px, 11vw, 130px);
+  width: clamp(100px, 13vw, 150px);
+  margin: auto;
   color: var(--ink-faint);
-  transform: rotate(-2deg);
+}
+
+.name {
+  width: fit-content;
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 12vw, 8.5rem);
+  font-weight: 700;
+  line-height: 0.76;
+  letter-spacing: -0.035em;
+  margin: 0.15rem 0 1.3rem -0.08em;
+  transform: rotate(-1.5deg);
+}
+
+.name::after {
+  content: "";
+  display: block;
+  width: 105%;
+  height: 0.55rem;
+  margin-top: 0.45rem;
+  border-radius: 60% 40% 55% 35%;
+  background: var(--marker-purple);
+  opacity: 0.78;
+  transform: rotate(-1deg);
 }
 
 @media (max-width: 640px) {
-  .introRow {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
-  }
-  .chipIcon {
-    width: 70px;
-    opacity: 0.8;
-  }
+  .introRow { grid-template-columns: 1fr; gap: 1rem; }
+  .chipWrap { width: 10rem; margin: 0 0 0 auto; }
+  .chipIcon { width: 90px; }
+  .marginNote { margin-right: 0; }
 }
 
 .eyebrow {
   display: inline-block;
   font-family: var(--font-hand);
-  font-size: 1rem;
+  font-size: 1.15rem;
   color: var(--marker-pink);
-  transform: rotate(-1.5deg);
+  transform: rotate(-2deg);
   margin: 0 0 0.35rem;
 }
 
-.name {
-  font-size: clamp(2.6rem, 6vw, 3.6rem);
-  margin-bottom: 0.4rem;
-}
-
 .tagline {
-  font-size: 1.35rem;
-  color: var(--ink-soft);
-  max-width: 34ch;
+  font-family: var(--font-hand);
+  font-size: clamp(1.35rem, 2.8vw, 1.8rem);
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 37ch;
 }
 
 .lede {
+  max-width: 49ch;
   color: var(--ink-soft);
+  font-size: 1.08rem;
 }
 
 .ctaRow {
@@ -57,16 +117,35 @@
 
 .ctaRow button {
   font-family: var(--font-hand);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   font-weight: 700;
 }
 
+.diagramRow {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.3fr) 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem -1.5rem -1rem 2rem;
+}
+
+.diagramNote {
+  color: var(--pencil);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  line-height: 1.1;
+  text-align: right;
+  transform: rotate(-5deg);
+}
+
 .heroDiagram {
-  max-width: 44rem;
+  width: min(100%, 46rem);
+  margin: 0;
+  transform: rotate(1.2deg);
 }
 
 @media (max-width: 640px) {
-  .heroDiagram {
-    max-width: 100%;
-  }
+  .diagramRow { grid-template-columns: 1fr; margin: 1.5rem 0 0; }
+  .diagramNote { max-width: 15rem; text-align: left; }
+  .heroDiagram { max-width: 100%; }
 }
