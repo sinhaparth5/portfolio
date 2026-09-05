@@ -1,9 +1,10 @@
 ---
+import DiagramSheet from "./DiagramSheet.astro";
 import NotebookPage from "./NotebookPage.astro";
 import CopyButton from "./CopyButton.astro";
 import styles from "./Contact.module.css";
 import waveformSvg from "../assets/doodles/waveform.svg?raw";
-import signalSvg from "../assets/doodles/signal-doodle.svg?raw";
+
 
 const email = "sinhaparth555@gmail.com";
 ---
@@ -34,6 +35,10 @@ const email = "sinhaparth555@gmail.com";
 				<li><a href="https://x.com/parth_sinha18" target="_blank" rel="noopener noreferrer" data-sketch-underline>x / twitter</a></li>
 			</ul>
 		</div>
-		<div class={styles.signal} set:html={signalSvg} />
+
 	</div>
+  <DiagramSheet id="05" title="The Wi-Fi card" subtitle="A closer look at the little board inside."
+    image="/illustrations/wifi-card-labeled.webp" imageWidth={1536} imageHeight={1024}
+    alt="Blue pen drawing of an internal M.2 Wi-Fi card, labeled with antenna connectors, RF shield, retaining screw, gold edge contacts, and circuit board."
+    notes={[]} />
 </NotebookPage>

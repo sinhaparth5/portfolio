@@ -1,4 +1,5 @@
 ---
+import DiagramSheet from "./DiagramSheet.astro";
 import NotebookPage from "./NotebookPage.astro";
 import styles from "./About.module.css";
 import cpuSvg from "../assets/doodles/cpu-diagram.svg?raw";
@@ -56,8 +57,10 @@ const tools = ["C++20", "Go", "CMake", "RocksDB", "io_uring", "SIMD", "lock-free
 		</ul>
 	</div>
 
-	<div class={styles.cpuWrap}>
-		<p aria-hidden="true">still thinking about this one</p>
-		<div class="diagram-figure" set:html={cpuSvg} />
-	</div>
+	<DiagramSheet id="02" title="Under the lid" subtitle="A CPU package, then a closer look at the work inside."
+    svg={cpuSvg} notes={[
+      "The heat spreader sits over the silicon die; the substrate connects it to the socket.",
+      "Cores keep nearby data in caches. The exact cache layout depends on the processor.",
+      "Follow the arrows: instructions go through a core, data moves through the memory hierarchy."
+    ]} />
 </NotebookPage>

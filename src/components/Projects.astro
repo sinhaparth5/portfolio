@@ -1,4 +1,5 @@
 ---
+import DiagramSheet from "./DiagramSheet.astro";
 import NotebookPage from "./NotebookPage.astro";
 import ProjectCard from "./ProjectCard.astro";
 import styles from "./Projects.module.css";
@@ -96,14 +97,38 @@ const projects = [
 		</h2>
 		<div class="doodle-icon" style="--doodle-w: 52px; --doodle-rot: 4deg" set:html={transistorSvg} />
 	</div>
-		<p class={styles.intro}>These began as notes in the margin. Somewhere along the way they became repos.</p>
+		<p class={styles.intro}>Some finished tools, some ongoing questions. The code and the rough edges are all here.</p>
 
-	<div class={styles.diagramWrap}>
-		<div class="diagram-figure" set:html={gpuSvg} />
-		<p aria-hidden="true">yes, I drew the arrows first</p>
-	</div>
+	<DiagramSheet id="03" title="Lots of work, side by side" subtitle="A CUDA-style GPU sketch. Follow one multiprocessor into the inset."
+    svg={gpuSvg} notes={[
+      "An SM is a streaming multiprocessor, with schedulers, registers and execution units inside.",
+      "Shared memory and L1 sit near the work. L2 is shared across the multiprocessors.",
+      "Memory controllers connect the chip to device memory. This is a conceptual layout, not a particular GPU."
+    ]} />
 
-	<div class={styles.grid}>
+	<div class="project-filters" role="group" aria-label="Filter projects"><span>pull a thread:</span>{["everything", "C++", "Go", "SIMD", "storage"].map((filter) => <button type="button" data-project-filter={filter} aria-pressed={filter === "everything" ? "true" : "false"}>{filter}</button>)}</div>
+<p class="sr-only" id="filter-status" role="status"></p>
+<div class={styles.grid}>
 		{projects.map((p) => <ProjectCard {...p} />)}
 	</div>
 </NotebookPage>
+
+<script>
+ const filters = document.querySelectorAll<HTMLButtonElement>('[data-project-filter]');
+ const cards = document.querySelectorAll<HTMLElement>('[data-project]');
+ filters.forEach(button => button.addEventListener('click', () => {
+   const filter = button.dataset.projectFilter!;
+   filters.forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+   let count=0;
+   cards.forEach(card => {
+     const tags=card.dataset.tags || '';
+     const matches=filter==='everything' || (filter==='storage' ? /RocksDB|io_uring|S3/.test(tags) : tags.includes(filter));
+     card.hidden=!matches;
+     if(matches) { count++; if(!matchMedia('(prefers-reduced-motion: reduce)').matches) card.animate([{opacity:.3,transform:'translateY(8px)'},{opacity:1,transform:'translateY(0)'}],{duration:220}); }
+   });
+   document.querySelector('#filter-status')!.textContent=`${count} projects shown`;
+ }));
+</script>
+<style>
+.project-filters{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:1rem 0 2rem}.project-filters span{font-family:var(--font-display);font-size:1.5rem;margin-right:.5rem;color:var(--blue)}.project-filters button{font:inherit;color:var(--ink-soft);background:white;border:1px solid #bcc4d6;border-radius:45% 8% 40% 8% / 12% 35% 10% 35%;padding:.35rem .9rem;min-height:44px;cursor:pointer;transition:background .2s,transform .2s}.project-filters button[aria-pressed=true]{background:#fbef9b;color:var(--ink);border-color:var(--ink)}.project-filters button:hover{transform:rotate(-3deg)}
+</style>

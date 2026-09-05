@@ -37,14 +37,14 @@ const poses: Record<string, string> = {
 };
 ---
 
-<div id="desk-pet" class="pet" data-pose="idle" aria-hidden="true">
-	<span class="pet-bubble"></span>
+<button id="desk-pet" class="pet" type="button" data-pose="idle" aria-label="Pet Mochi Mochi the cat" title="Pet Mochi · double-click to play">
+	<span class="pet-bubble" aria-hidden="true"></span>
 	{
 		Object.entries(poses).map(([name, svg]) => (
-			<div class="pet-pose" data-pose-frame={name} hidden={name !== "idle"} set:html={svg} />
+			<span class="pet-pose" data-pose-frame={name} hidden={name !== "idle"} set:html={svg} />
 		))
 	}
-</div>
+</button>
 <script src="../scripts/pet.ts"></script>
 
 <style>
@@ -57,6 +57,11 @@ const poses: Record<string, string> = {
 		z-index: 30;
 		cursor: pointer;
 		user-select: none;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		touch-action: manipulation;
+		border-radius: 40%;
 	}
 
 	.pet-pose {
@@ -67,15 +72,14 @@ const poses: Record<string, string> = {
 		justify-content: center;
 	}
 
-	/* poses don't all share one viewBox aspect ratio (eating/loving/stretching
-	   frames are a little wider or taller), so scale to fit rather than
-	   stretching to fill and distorting the art */
+	/* Every pose shares the same canvas and baseline. */
 	.pet-pose :global(svg) {
-		width: auto;
-		height: auto;
+		width: 100%;
+		height: 100%;
 		max-width: 100%;
 		max-height: 100%;
 		display: block;
+		transform: scaleX(var(--pet-facing, 1));
 	}
 
 	.pet-pose[hidden] {
@@ -103,14 +107,29 @@ const poses: Record<string, string> = {
 		opacity: 1;
 	}
 
-	.pet[data-pose="angry"] {
-		animation: pet-shake 0.3s ease-in-out 2;
-	}
-	@keyframes pet-shake {
-		0%, 100% { transform: translateX(0); }
-		25% { transform: translateX(-3px); }
-		75% { transform: translateX(3px); }
-	}
+
+  .pet-pose { transform-origin: 50% 90%; }
+  @media (prefers-reduced-motion: no-preference) {
+    .pet[data-pose="idle"] .pet-pose:not([hidden]),
+    .pet[data-pose="sleep"] .pet-pose:not([hidden]) { animation: mochi-breathe 2.6s ease-in-out infinite; }
+    .pet[data-pose="happy"] .pet-pose:not([hidden]),
+    .pet[data-pose="love"] .pet-pose:not([hidden]) { animation: mochi-bounce .55s ease-in-out infinite; }
+    .pet[data-pose="eat"] .pet-pose:not([hidden]) { animation: mochi-nibble .3s ease-in-out infinite; }
+    .pet[data-pose="play"] .pet-pose:not([hidden]) { animation: mochi-wiggle .45s ease-in-out infinite; }
+    .pet[data-pose="angry"] .pet-pose:not([hidden]) { animation: mochi-wiggle .15s ease-in-out 4; }
+    .pet[data-pose="stretch"] .pet-pose:not([hidden]) { animation: mochi-stretch .9s ease-in-out; }
+    .pet[data-pose="surprised"] .pet-pose:not([hidden]) { animation: mochi-startle .35s ease-out; }
+    .pet :global(.mochi-hearts), .pet :global(.mochi-zzz) { animation: mochi-float 1.4s ease-in-out infinite; }
+    .pet :global(.mochi-ball) { animation: mochi-ball .6s ease-in-out infinite alternate; }
+  }
+  @keyframes mochi-breathe { 50% { transform: scale(1.025, .975); } }
+  @keyframes mochi-bounce { 50% { transform: translateY(-4px) scale(.98, 1.03); } }
+  @keyframes mochi-nibble { 50% { transform: translateY(1px) scale(1.025, .98); } }
+  @keyframes mochi-wiggle { 25% { transform: rotate(-4deg); } 75% { transform: rotate(4deg); } }
+  @keyframes mochi-stretch { 50% { transform: scale(1.12, .86); } }
+  @keyframes mochi-startle { 45% { transform: translateY(-7px) scale(.94, 1.08); } }
+  @keyframes mochi-float { 50% { transform: translateY(-3px); opacity: .6; } }
+  @keyframes mochi-ball { to { transform: translateX(7px); } }
 
 	@media (max-width: 640px) {
 		.pet {

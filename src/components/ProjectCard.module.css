@@ -4,18 +4,18 @@
   flex-direction: column;
   align-items: stretch;
   gap: var(--space-2);
-  min-height: 100%;
+  min-height: 0;
   padding: 1.6rem 1.5rem 1.4rem;
-  background: rgb(255 252 244 / 84%);
+  background: white;
   border: 1px solid rgb(80 68 52 / 13%);
-  box-shadow: 0.45rem 0.55rem 0 rgb(66 52 37 / 8%);
-  transform: rotate(-0.55deg);
+  box-shadow: 3px 5px 12px rgb(30 40 60 / 5%);
+  transform: rotate(-1.6deg);
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.card:nth-child(even) { transform: rotate(0.75deg); }
-.card:nth-child(3n) { background: rgb(249 244 255 / 84%); }
-.card:nth-child(4n) { background: rgb(244 252 247 / 86%); }
+.card:nth-child(even) { transform: rotate(1.8deg); }
+.card:nth-child(3n) { background: #f9faff; }
+.card:nth-child(4n) { background: white; }
 
 .card:hover,
 .card:focus-within {
@@ -64,7 +64,7 @@
 
 .summary {
   color: var(--ink-soft);
-  font-size: 1.02rem;
+  font-size: 1.15rem;
   line-height: 1.58;
   margin: 0;
 }
@@ -112,3 +112,12 @@
   .card { padding: 1.45rem 1.15rem 1.2rem; }
   .doodle { width: 56px; }
 }
+
+.card[hidden]{display:none}
+.card:nth-child(3n+2){margin-top:2rem}
+.title{overflow-wrap:anywhere}
+.doiRow{flex-wrap:wrap}
+.doodle{opacity:.9;transition:transform .25s}
+.card:hover .doodle{transform:rotate(-9deg) scale(1.1)}
+@media(max-width:760px){.card:nth-child(3n+2){margin-top:0}}
+.doi { overflow-wrap: anywhere; }

@@ -25,30 +25,35 @@ if (root) {
 		frames.set(el.dataset.poseFrame ?? "", el);
 	});
 
-	let bond = Number(localStorage.getItem(BOND_KEY) ?? 0);
+	let bond = 0;
+	try { bond = Math.max(0, Math.min(20, Number(localStorage.getItem(BOND_KEY)) || 0)); } catch {}
 	let mode: Mode = "idle";
-	let idleSince = Date.now();
 	let cycleTimer = 0;
+	let reactionTimer = 0;
+	let speechTimer = 0;
+	let lastActivity = Date.now();
 
 	function showPose(pose: Pose) {
 		frames.forEach((el, name) => el.toggleAttribute("hidden", name !== pose));
 		root.dataset.pose = pose;
+		if (!pose.startsWith("walk") && !pose.startsWith("run")) root.style.setProperty("--pet-facing", "1");
 	}
 
 	function say(text: string, ms = 1400) {
 		if (!bubble) return;
 		bubble.textContent = text;
 		bubble.classList.add("show");
-		window.setTimeout(() => bubble.classList.remove("show"), ms);
+		window.clearTimeout(speechTimer);
+		speechTimer = window.setTimeout(() => bubble.classList.remove("show"), ms);
 	}
 
 	function place(px: number, py: number) {
-		const x = Math.max(8, Math.min(window.innerWidth - SPRITE_W - 8, px));
-		const y = Math.max(8, Math.min(window.innerHeight - SPRITE_H - 8, py));
+		const x = Math.max(8, Math.min(document.documentElement.clientWidth - root.offsetWidth - 8, px));
+		const y = Math.max(8, Math.min(document.documentElement.clientHeight - root.offsetHeight - 8, py));
 		root.style.left = `${x}px`;
 		root.style.top = `${y}px`;
 	}
-	place(window.innerWidth - 130, window.innerHeight - 130);
+	place(document.documentElement.clientWidth - 130, document.documentElement.clientHeight - 130);
 	window.addEventListener(
 		"resize",
 		() => {
@@ -62,12 +67,11 @@ if (root) {
 
 	function bump(by = 1) {
 		bond = Math.min(20, bond + by);
-		localStorage.setItem(BOND_KEY, String(bond));
+		try { localStorage.setItem(BOND_KEY, String(bond)); } catch {}
 	}
 
 	function enterIdle() {
 		mode = "idle";
-		idleSince = Date.now();
 		showPose("idle");
 	}
 
@@ -77,7 +81,8 @@ if (root) {
 		window.clearInterval(cycleTimer);
 		mode = "busy";
 		showPose(pose);
-		window.setTimeout(() => {
+		window.clearTimeout(reactionTimer);
+		reactionTimer = window.setTimeout(() => {
 			if (mode === "busy") enterIdle();
 		}, ms);
 	}
@@ -90,8 +95,8 @@ if (root) {
 		const speed = kind === "walk" ? 70 : 220; // px/s
 		const frameStep = kind === "walk" ? 260 : 150;
 		mode = kind;
-		const targetX = Math.random() * (window.innerWidth - SPRITE_W - 16) + 8;
-		const targetY = Math.random() * (window.innerHeight - SPRITE_H - 16) + 8;
+		let targetX = Math.random() * (document.documentElement.clientWidth - SPRITE_W - 16) + 8;
+		let targetY = Math.random() * (document.documentElement.clientHeight - SPRITE_H - 16) + 8;
 		let i = 0;
 		window.clearInterval(cycleTimer);
 		cycleTimer = window.setInterval(() => {
@@ -102,11 +107,14 @@ if (root) {
 		let last = performance.now();
 		function step(now: number) {
 			if (mode !== kind) return; // interrupted by a click/hover/sleep
-			const dt = (now - last) / 1000;
+			const dt = Math.min((now - last) / 1000, 0.05);
 			last = now;
+			targetX = Math.max(8, Math.min(document.documentElement.clientWidth - root.offsetWidth - 8, targetX));
+			targetY = Math.max(8, Math.min(document.documentElement.clientHeight - root.offsetHeight - 8, targetY));
 			const rect = root.getBoundingClientRect();
 			const dx = targetX - rect.left;
 			const dy = targetY - rect.top;
+			root.style.setProperty("--pet-facing", dx > 0 ? "-1" : "1");
 			const dist = Math.hypot(dx, dy);
 			const moveBy = speed * dt;
 			if (dist <= moveBy) {
@@ -125,7 +133,7 @@ if (root) {
 	}
 
 	function wake() {
-		idleSince = Date.now();
+		lastActivity = Date.now();
 		if (mode === "sleep") react("stretch", 900);
 	}
 	(["mousemove", "scroll", "keydown"] as const).forEach((evt) =>
@@ -145,6 +153,12 @@ if (root) {
 		}, 220);
 	});
 
+	root.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    if (!event.repeat) root.click();
+  });
+
 	root.addEventListener("dblclick", () => {
 		window.clearTimeout(clickTimer);
 		wake();
@@ -157,6 +171,7 @@ if (root) {
 	root.addEventListener("mouseenter", () => {
 		hoverTimer = window.setTimeout(() => {
 			bump(1);
+			window.clearTimeout(reactionTimer);
 			window.clearInterval(cycleTimer);
 			mode = "busy";
 			showPose(bond >= 10 ? "love" : "happy");
@@ -167,12 +182,16 @@ if (root) {
 		if (mode === "busy" && (root.dataset.pose === "happy" || root.dataset.pose === "love")) enterIdle();
 	});
 
-	showPose("idle");
+	root.addEventListener("focus", () => {
+    window.clearInterval(cycleTimer);
+    if (mode === "walk" || mode === "run") enterIdle();
+  });
+  showPose("idle");
 
 	if (!prefersReducedMotion) {
 		window.setInterval(() => {
-			if (mode !== "idle") return;
-			if (Date.now() - idleSince > SLEEP_AFTER_MS) {
+			if (mode !== "idle" || document.hidden || document.activeElement === root) return;
+			if (Date.now() - lastActivity > SLEEP_AFTER_MS) {
 				mode = "sleep";
 				showPose("sleep");
 				return;

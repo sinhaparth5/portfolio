@@ -111,3 +111,6 @@
   font-size: 0.75rem;
   color: var(--ink-faint);
 }
+.item { min-width: 0; }
+.doi, .item h3 { overflow-wrap: anywhere; }
+@media (max-width: 760px) { .list { grid-template-columns: minmax(0, 1fr); } }

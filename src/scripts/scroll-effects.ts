@@ -19,7 +19,7 @@ function updateActiveNav() {
 	// near the very bottom, the last section's top may sit past however far
 	// the page can actually scroll, so the offset check alone never reaches it
 	const nearBottom = window.scrollY + window.innerHeight >= doc.scrollHeight - 2;
-	let current = sections[0].id;
+	let current = "";
 	for (const s of sections) {
 		if (s.el.offsetTop <= line) current = s.id;
 	}
@@ -43,7 +43,7 @@ if (revealEls.length && !prefersReducedMotion) {
 				revealObserver.unobserve(entry.target);
 			});
 		},
-		{ threshold: 0.1 },
+		{ threshold: 0, rootMargin: "0px 0px -40px 0px" },
 	);
 	revealEls.forEach((el) => revealObserver.observe(el));
 }

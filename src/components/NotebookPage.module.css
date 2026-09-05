@@ -48,3 +48,5 @@
     padding: 2.75rem 0.85rem 3.25rem;
   }
 }
+.section:first-of-type{padding-top:2rem}
+@media(max-width:640px){.section:first-of-type{padding-top:1rem}}

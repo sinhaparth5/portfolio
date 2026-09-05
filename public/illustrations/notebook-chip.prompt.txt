@@ -1,0 +1,4 @@
+Generated with the built-in Imagegen tool.
+Final asset: public/illustrations/notebook-chip.webp
+
+Use case: illustration-story. Asset type: illustration for a personal systems programmer notebook website. Draw a charming imperfect blue ballpoint pen doodle of a tiny computer chip with two little legs sitting on a stack of notebooks, holding a pencil, with loose circuit traces and three small yellow pencil stars around it. White background, monochrome cobalt blue ink with very sparse yellow colored-pencil accents. Looks genuinely scribbled by a curious child in the margin of a school exercise book, uneven overlapping pen strokes, airy composition, no border, no lettering, no text, no watermark. Square image, subject centered with generous white space.

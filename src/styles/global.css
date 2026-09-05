@@ -1,5 +1,7 @@
 :root {
   --paper: #ffffff;
+  --blue: #244bb0;
+  --coral: #b54238;
 
   /* ink */
   --ink: #2b2a28;
@@ -29,7 +31,7 @@
   --space-3: 1.5rem;
   --space-4: 2.5rem;
   --space-5: 4rem;
-  --page-w: 58rem;
+  --page-w: 68rem;
   --radius: 5px;
 
   color-scheme: light;
@@ -312,3 +314,8 @@ svg {
     bottom: var(--space-1);
   }
 }
+
+button, summary { touch-action: manipulation; }
+summary:focus-visible {outline:3px solid var(--blue);outline-offset:4px}
+.copy-btn {min-height:44px;min-width:44px}
+html:has(dialog[open]) { overflow: hidden; }

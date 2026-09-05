@@ -1,0 +1,17 @@
+<section class="queue-note" aria-labelledby="queue-title">
+  <div><p class="note-index">A SMALL DETOUR</p><h2 id="queue-title">Where does the work go?</h2><p>A simplified queue sketch. Add a request, then let the worker pick it up.</p><div class="queue-actions"><button id="queue-add" type="button">+ add a request</button><button id="queue-work" type="button">process one ↗</button></div><p id="queue-status" role="status">The queue is empty. Give it something to do.</p></div>
+  <div class="queue-drawing"><span class="queue-label">producer → queue → worker</span><svg viewBox="0 0 420 150" role="img" aria-label="Four queue slots leading to a worker"><g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 55q-2-10 10-9l275 2 2 70-287-3zM83 48l-2 67m74-67 1 67m71-67-2 68M302 81l48 1m-11-10 12 10-13 9"/><path d="m360 49 43-2 3 66-45 2zM373 66h17m-17 15h19m-18 14h12"/></g>{[0,1,2,3].map(i=><circle data-queue-slot={i} cx={46+i*72} cy="82" r="16" fill="currentColor" opacity="0.08" />)}</svg><span class="queue-caption">a little room between “sent” and “done”</span></div>
+</section>
+<script>
+ let queued=0; let completed=0;
+ const status=document.querySelector<HTMLElement>('#queue-status')!;
+ const add=document.querySelector<HTMLButtonElement>('#queue-add')!;
+ const work=document.querySelector<HTMLButtonElement>('#queue-work')!;
+ function update(){document.querySelectorAll<SVGCircleElement>('[data-queue-slot]').forEach((slot,i)=>{slot.style.opacity=i<queued?'1':'.08'});work.disabled=queued===0;add.disabled=queued===4;status.textContent=`${queued} waiting · ${completed} processed${queued===4?' · full! Process one to make room.':''}`;}
+ add.addEventListener('click',()=>{if(queued<4){queued++;update();}});
+ work.addEventListener('click',()=>{if(queued>0){queued--;completed++;update();}});
+ work.disabled=true;
+</script>
+<style>
+.queue-note{max-width:960px;margin:2rem auto 4rem;padding:2rem;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;align-items:center;position:relative}.queue-note:before{content:'';position:absolute;inset:0;border-block:1px dashed #adb9d2;transform:rotate(-1deg);pointer-events:none}.note-index{font-family:var(--font-mono);font-size:.65rem;letter-spacing:.12em;color:var(--coral)}h2{font-size:2.3rem;color:var(--blue)}p{font-size:1.1rem}.queue-actions{display:flex;flex-wrap:wrap;gap:.7rem}button{min-height:44px;border:1.5px solid var(--blue);border-radius:4px 2px 6px 3px;background:white;color:var(--blue);font:inherit;padding:.3rem .8rem;cursor:pointer;transition:transform .2s,background .2s}button:hover:enabled{background:#eef2ff;transform:rotate(-2deg)}button:disabled{opacity:.45;cursor:default}#queue-status{font-size:.95rem;margin:1rem 0 0;min-height:3em;color:var(--ink-soft)}.queue-drawing{color:var(--blue);transform:rotate(3deg)}.queue-label,.queue-caption{display:block;text-align:center;font-family:var(--font-display);font-size:1.6rem}.queue-caption{font-size:1.2rem;color:var(--ink-soft)}circle{transition:opacity .2s}@media(max-width:700px){.queue-note{grid-template-columns:minmax(0,1fr);padding:1.5rem;gap:1rem}}
+</style>

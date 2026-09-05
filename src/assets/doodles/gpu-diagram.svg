@@ -1,81 +1,174 @@
-<svg viewBox="0 0 660 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="gpuDiagramTitle">
-  <title id="gpuDiagramTitle">Hand-drawn labeled diagram of a GPU die floorplan: an array of cores (streaming multiprocessors), per-cluster L1 cache, shared L2 cache, an L3/shared-cache ring, and memory controllers</title>
-  <defs>
-    <marker id="gpu-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 L3,5 Z" fill="#2b2a28" />
-    </marker>
-  </defs>
-
-  <text x="24" y="46" font-family="Kalam, cursive" font-weight="700" font-size="34" fill="#b8305f">GPU</text>
-  <text x="24" y="66" font-family="Patrick Hand, cursive" font-style="italic" font-size="13" fill="#6e6a5e">die floorplan, simplified: not any one real chip</text>
-
-  <!-- L3 / shared cache ring -->
-  <rect x="120" y="70" width="400" height="280" rx="16" fill="#f7e2c6" stroke="#985613" stroke-width="3" />
-  <rect x="121" y="71" width="398" height="278" rx="16" fill="none" stroke="#985613" stroke-width="1.2" opacity="0.35" />
-  <path d="M138,330 L152,344 M146,326 L160,340 M154,322 L168,336" stroke="#985613" stroke-width="1.4" opacity="0.5" />
-
-  <!-- memory controllers, straddling the die edge -->
-  <g fill="#cfe0f5" stroke="#3d72c9" stroke-width="2">
-    <rect x="105" y="140" width="30" height="50" rx="4" />
-    <rect x="105" y="230" width="30" height="50" rx="4" />
-    <rect x="505" y="140" width="30" height="50" rx="4" />
-    <rect x="505" y="230" width="30" height="50" rx="4" />
-  </g>
-
-  <!-- die substrate -->
-  <rect x="160" y="110" width="320" height="200" rx="10" fill="#dde1e4" stroke="#8a8f94" stroke-width="3" />
-  <rect x="161" y="111" width="318" height="198" rx="10" fill="none" stroke="#8a8f94" stroke-width="1.2" opacity="0.4" />
-
-  <!-- cores (SMs), two clusters of rows above and below the L2 slab -->
-  <g fill="#f6d3e0" stroke="#b8305f" stroke-width="1.8">
-    <rect x="175" y="125" width="40" height="26" rx="4" />
-    <rect x="221" y="125" width="40" height="26" rx="4" />
-    <rect x="267" y="125" width="40" height="26" rx="4" />
-    <rect x="313" y="125" width="40" height="26" rx="4" />
-    <rect x="359" y="125" width="40" height="26" rx="4" />
-    <rect x="405" y="125" width="40" height="26" rx="4" />
-
-    <rect x="175" y="155" width="40" height="26" rx="4" />
-    <rect x="221" y="155" width="40" height="26" rx="4" />
-    <rect x="267" y="155" width="40" height="26" rx="4" />
-    <rect x="313" y="155" width="40" height="26" rx="4" />
-    <rect x="359" y="155" width="40" height="26" rx="4" />
-    <rect x="405" y="155" width="40" height="26" rx="4" />
-
-    <rect x="175" y="213" width="40" height="26" rx="4" />
-    <rect x="221" y="213" width="40" height="26" rx="4" />
-    <rect x="267" y="213" width="40" height="26" rx="4" />
-    <rect x="313" y="213" width="40" height="26" rx="4" />
-    <rect x="359" y="213" width="40" height="26" rx="4" />
-    <rect x="405" y="213" width="40" height="26" rx="4" />
-
-    <rect x="175" y="243" width="40" height="26" rx="4" />
-    <rect x="221" y="243" width="40" height="26" rx="4" />
-    <rect x="267" y="243" width="40" height="26" rx="4" />
-    <rect x="313" y="243" width="40" height="26" rx="4" />
-    <rect x="359" y="243" width="40" height="26" rx="4" />
-    <rect x="405" y="243" width="40" height="26" rx="4" />
-  </g>
-  <path d="M183,131 L191,139 M189,131 L197,139" stroke="#b8305f" stroke-width="1.2" opacity="0.55" />
-
-  <!-- shared L2 slab, straight through the middle of the die -->
-  <rect x="175" y="185" width="270" height="24" rx="4" fill="#d3ecdd" stroke="#2f7d57" stroke-width="2" />
-  <text x="310" y="201" text-anchor="middle" font-family="Patrick Hand, cursive" font-size="13" fill="#2f7d57">L2</text>
-
-  <!-- labels -->
-  <text x="546" y="135" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">cores (SMs)</text>
-  <path d="M540,131 C 510,132 470,145 448,158" stroke="#2b2a28" stroke-width="1.6" fill="none" marker-end="url(#gpu-arrow)" />
-
-  <text x="546" y="205" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">L2 cache</text>
-  <path d="M540,201 C 520,200 500,199 468,198" stroke="#2b2a28" stroke-width="1.6" fill="none" marker-end="url(#gpu-arrow)" />
-
-  <text x="546" y="270" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">L1 cache</text>
-  <path d="M540,266 C 505,262 470,258 448,256" stroke="#2b2a28" stroke-width="1.6" fill="none" marker-end="url(#gpu-arrow)" />
-
-  <text x="14" y="95" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">L3 cache</text>
-  <path d="M66,90 C 90,92 108,96 118,101" stroke="#2b2a28" stroke-width="1.6" fill="none" marker-end="url(#gpu-arrow)" />
-
-  <text x="14" y="172" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">memory</text>
-  <text x="14" y="190" font-family="Patrick Hand, cursive" font-size="16" fill="#2b2a28">ctrl</text>
-  <path d="M58,180 C 75,177 92,171 103,166" stroke="#2b2a28" stroke-width="1.6" fill="none" marker-end="url(#gpu-arrow)" />
+<svg viewBox="0 0 1000 550" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="gpu-title"><title id="gpu-title">Annotated conceptual CUDA GPU: SM array, shared L2 cache, memory controllers, device memory, and an enlarged SM with scheduler, registers, execution units and shared memory or L1</title><defs><marker id="gpu-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M1 1 9 5 1 9" fill="none" stroke="#244bb0" stroke-width="1.6"/></marker><pattern id="gpu-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#e5eaf4" stroke-width=".6"/></pattern></defs><path d="M8 8H992V542H8Z" fill="url(#gpu-grid)"/>
+<text x="20" y="34" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="22" fill="#244bb0" transform="rotate(-1 20 34)">01 / MANY MULTIPROCESSORS</text>
+<rect x="28" y="57" width="536" height="341" rx="5" fill="#fff" stroke="#244bb0" stroke-width="2"/>
+<text x="47" y="81" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="18" fill="#303844" transform="rotate(0 47 81)">GPU die · conceptual layout</text>
+<rect x="48" y="98" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="58" y="122" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 58 122)">SM 00</text>
+<rect x="57" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="72" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="87" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="102" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="117" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="132" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="173" y="98" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="183" y="122" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 183 122)">SM 01</text>
+<rect x="182" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="197" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="212" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="227" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="242" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="257" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="298" y="98" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="308" y="122" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 308 122)">SM 02</text>
+<rect x="307" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="322" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="337" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="352" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="367" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="382" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="423" y="98" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="433" y="122" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 433 122)">SM 03</text>
+<rect x="432" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="447" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="462" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="477" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="492" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="507" y="132" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="48" y="169" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="58" y="193" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 58 193)">SM 04</text>
+<rect x="57" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="72" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="87" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="102" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="117" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="132" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="173" y="169" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="183" y="193" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 183 193)">SM 05</text>
+<rect x="182" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="197" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="212" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="227" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="242" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="257" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="298" y="169" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="308" y="193" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 308 193)">SM 06</text>
+<rect x="307" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="322" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="337" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="352" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="367" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="382" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="423" y="169" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="433" y="193" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 433 193)">SM 07</text>
+<rect x="432" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="447" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="462" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="477" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="492" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="507" y="203" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="48" y="240" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="58" y="264" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 58 264)">SM 08</text>
+<rect x="57" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="72" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="87" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="102" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="117" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="132" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="173" y="240" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="183" y="264" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 183 264)">SM 09</text>
+<rect x="182" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="197" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="212" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="227" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="242" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="257" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="298" y="240" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="308" y="264" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 308 264)">SM 10</text>
+<rect x="307" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="322" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="337" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="352" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="367" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="382" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="423" y="240" width="107" height="58" rx="5" fill="#fff0f0" stroke="#b54238" stroke-width="2"/>
+<text x="433" y="264" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#b54238" transform="rotate(0 433 264)">SM 11</text>
+<rect x="432" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="447" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="462" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="477" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="492" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="507" y="274" width="10" height="13" rx="5" fill="#f2c6ca" stroke="#b54238" stroke-width="2"/>
+<rect x="49" y="319" width="492" height="37" rx="5" fill="#e1f0e6" stroke="#2f7d57" stroke-width="2"/>
+<text x="207" y="344" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="22" fill="#2f7d57" transform="rotate(0 207 344)">shared L2 cache</text>
+<path d="M86 301v15" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<rect x="51" y="369" width="82" height="44" rx="5" fill="#e7eefb" stroke="#244bb0" stroke-width="2"/>
+<text x="60" y="388" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="15" fill="#244bb0" transform="rotate(0 60 388)">memory</text>
+<text x="58" y="404" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="15" fill="#244bb0" transform="rotate(0 58 404)">controller</text>
+<path d="M86 357v9" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<path d="M211 301v15" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<rect x="176" y="369" width="82" height="44" rx="5" fill="#e7eefb" stroke="#244bb0" stroke-width="2"/>
+<text x="185" y="388" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="15" fill="#244bb0" transform="rotate(0 185 388)">memory</text>
+<text x="183" y="404" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="15" fill="#244bb0" transform="rotate(0 183 404)">controller</text>
+<path d="M211 357v9" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<path d="M336 301v15" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<rect x="301" y="369" width="82" height="44" rx="5" fill="#e7eefb" stroke="#244bb0" stroke-width="2"/>
+<text x="310" y="388" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="15" fill="#244bb0" transform="rotate(0 310 388)">memory</text>
+<text x="308" y="404" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="15" fill="#244bb0" transform="rotate(0 308 404)">controller</text>
+<path d="M336 357v9" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<path d="M461 301v15" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<rect x="426" y="369" width="82" height="44" rx="5" fill="#e7eefb" stroke="#244bb0" stroke-width="2"/>
+<text x="435" y="388" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="15" fill="#244bb0" transform="rotate(0 435 388)">memory</text>
+<text x="433" y="404" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="15" fill="#244bb0" transform="rotate(0 433 404)">controller</text>
+<path d="M461 357v9" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<text x="25" y="452" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="19" fill="#b54238" transform="rotate(-4 25 452)">off-chip</text>
+<rect x="108" y="432" width="91" height="53" rx="5" fill="#fff5c6" stroke="#91712a" stroke-width="2"/>
+<text x="121" y="464" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#303844" transform="rotate(0 121 464)">VRAM</text>
+<path d="M124 415v14" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<rect x="218" y="432" width="91" height="53" rx="5" fill="#fff5c6" stroke="#91712a" stroke-width="2"/>
+<text x="231" y="464" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#303844" transform="rotate(0 231 464)">VRAM</text>
+<path d="M234 415v14" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<rect x="328" y="432" width="91" height="53" rx="5" fill="#fff5c6" stroke="#91712a" stroke-width="2"/>
+<text x="341" y="464" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#303844" transform="rotate(0 341 464)">VRAM</text>
+<path d="M344 415v14" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<rect x="438" y="432" width="91" height="53" rx="5" fill="#fff5c6" stroke="#91712a" stroke-width="2"/>
+<text x="451" y="464" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="20" fill="#303844" transform="rotate(0 451 464)">VRAM</text>
+<path d="M454 415v14" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<text x="28" y="524" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="21" fill="#b54238" transform="rotate(-1 28 524)">more parallel work → more data to keep moving</text>
+<text x="613" y="34" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="22" fill="#244bb0" transform="rotate(1 613 34)">02 / ZOOM INTO ONE SM</text>
+<path d="M530 103 591 67M529 146 591 440" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" stroke-dasharray="5 5"/>
+<rect x="596" y="59" width="378" height="391" rx="5" fill="#fff" stroke="#244bb0" stroke-width="2"/>
+<text x="615" y="87" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="21" fill="#b54238" transform="rotate(0 615 87)">streaming multiprocessor</text>
+<rect x="618" y="102" width="333" height="45" rx="5" fill="#eef1fc" stroke="#244bb0" stroke-width="2"/>
+<text x="660" y="132" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="21" fill="#244bb0" transform="rotate(0 660 132)">warp scheduler / dispatch</text>
+<path d="M785 150v20" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<rect x="618" y="174" width="333" height="43" rx="5" fill="#fff4bd" stroke="#244bb0" stroke-width="2"/>
+<text x="728" y="202" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="21" fill="#303844" transform="rotate(0 728 202)">register file</text>
+<path d="M646 218v23" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<path d="M729 218v23" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<path d="M812 218v23" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<path d="M895 218v23" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<rect x="620" y="249" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="662" y="249" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="704" y="249" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="746" y="249" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="788" y="249" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="830" y="249" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="872" y="249" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="914" y="249" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="620" y="286" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="662" y="286" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="704" y="286" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="746" y="286" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="788" y="286" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="830" y="286" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="872" y="286" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<rect x="914" y="286" width="34" height="28" rx="5" fill="#fae0e2" stroke="#b54238" stroke-width="2"/>
+<text x="667" y="338" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="19" fill="#b54238" transform="rotate(0 667 338)">execution units / parallel lanes</text>
+<rect x="618" y="360" width="333" height="63" rx="5" fill="#e1f0e6" stroke="#2f7d57" stroke-width="2"/>
+<text x="670" y="387" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="21" fill="#2f7d57" transform="rotate(0 670 387)">shared memory + L1 cache</text>
+<text x="660" y="411" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="17" fill="#2f7d57" transform="rotate(0 660 411)">near the threads doing the work</text>
+<path d="M786 342v15" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" marker-end="url(#gpu-arrow)"/>
+<path d="M595 395q-26 0-28-52" fill="none" stroke="#244bb0" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 4" marker-end="url(#gpu-arrow)"/>
+<text x="610" y="480" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="22" fill="#b54238" transform="rotate(-2 610 480)">SM ≠ a single arithmetic core</text>
+<text x="613" y="512" font-family="Patrick Hand, Segoe Print, sans-serif" font-size="17" fill="#303844" transform="rotate(0 613 512)">actual counts and layouts vary by GPU</text>
 </svg>

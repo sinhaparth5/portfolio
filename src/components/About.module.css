@@ -62,7 +62,7 @@
 .toolbox {
   position: relative;
   width: min(92%, 43rem);
-  margin: 4.5rem 0 1rem auto;
+  margin: 2rem 0 1rem auto;
   padding: 1.3rem 1.5rem;
   border: 2px solid rgb(43 42 40 / 65%);
   border-radius: 47% 53% 49% 51% / 8% 7% 9% 6%;
@@ -90,28 +90,6 @@
   padding: 0.3rem 0.65rem;
 }
 
-.cpuWrap {
-  display: grid;
-  grid-template-columns: 0.35fr 1fr;
-  align-items: center;
-  gap: 1rem;
-  margin: 2.5rem 0 0 -3rem;
-}
-
-.cpuWrap > p {
-  color: var(--pencil);
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  line-height: 1.05;
-  text-align: right;
-  transform: rotate(-7deg);
-}
-
-.cpuWrap :global(.diagram-figure) {
-  margin: 0;
-  transform: rotate(1.6deg);
-}
-
 @media (max-width: 640px) {
   .columns {
     grid-template-columns: 1fr;
@@ -119,6 +97,4 @@
   }
   .method { margin-top: 0; }
   .toolbox { width: 100%; margin-top: 3rem; }
-  .cpuWrap { grid-template-columns: 1fr; margin-left: 0; }
-  .cpuWrap > p { text-align: left; }
 }

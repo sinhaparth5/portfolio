@@ -1,8 +1,8 @@
 .layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: clamp(2rem, 6vw, 5rem);
+  gap: 1rem;
 }
 
 .noteCard {
@@ -34,26 +34,10 @@
   margin: var(--space-2) 0 var(--space-3);
 }
 
-.signal {
-  width: 100%;
-  max-width: 20rem;
-  margin: 0 auto;
-  color: var(--ink-faint);
-  transform: rotate(4deg);
-}
-
-.signal svg {
-  width: 100%;
-  height: auto;
-}
-
 @media (max-width: 640px) {
   .layout {
     grid-template-columns: 1fr;
     gap: var(--space-3);
-  }
-  .signal {
-    max-width: 14rem;
   }
   .noteCard {
     padding-inline: 1.2rem;
@@ -99,3 +83,20 @@
 .social a:hover {
   color: var(--marker-purple);
 }
+
+@media (min-width: 761px) {
+  .noteCard {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    column-gap: 2.5rem;
+    align-items: start;
+    padding: 1.4rem 1.75rem;
+  }
+  .heading { grid-column: 1; grid-row: 1; margin-bottom: .6rem; }
+  .wave { display: none; }
+  .note { grid-column: 1; grid-row: 2 / span 2; margin: 0; }
+  .row { grid-column: 2; grid-row: 2; margin: 0; gap: .75rem; }
+  .social { grid-column: 2; grid-row: 3; }
+}
+
+.row a { overflow-wrap: anywhere; min-width: 0; }

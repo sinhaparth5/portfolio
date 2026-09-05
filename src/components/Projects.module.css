@@ -10,33 +10,10 @@
   transform: rotate(-0.5deg);
 }
 
-.diagramWrap {
-  display: flex;
-  align-items: flex-end;
-  gap: 1rem;
-  width: min(82%, 40rem);
-  margin: 0 0 3rem auto;
-  transform: rotate(1.2deg);
-}
-
-.diagramWrap :global(.diagram-figure) {
-  margin: 0;
-}
-
-.diagramWrap p {
-  flex: none;
-  width: 8.5rem;
-  color: var(--pencil);
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  line-height: 1.05;
-  transform: rotate(5deg);
-}
-
 .grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 2.4rem 1.5rem;
+  gap: 3.5rem 2.5rem;
   margin-top: 2rem;
 }
 
@@ -59,10 +36,8 @@
 }
 
 @media (max-width: 760px) {
-  .diagramWrap { width: 100%; }
   .grid > :global(article) { grid-column: 1 / -1 !important; }
 }
 
-@media (max-width: 520px) {
-  .diagramWrap p { display: none; }
-}
+
+@media(max-width:760px){.grid{grid-template-columns:minmax(0,1fr);gap:2rem}.grid>:global(article){min-width:0}}

@@ -1,0 +1,186 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  subtitle: string;
+  svg?: string;
+  image?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  alt?: string;
+  notes: string[];
+}
+const {id, title, subtitle, svg, image, imageWidth = 1536, imageHeight = 1024, alt = title, notes} = Astro.props;
+const enlargedSvg = svg?.replace(/id="([^"]+)"/g, 'id="zoom-$1"').replace(/url\(#([^)]*)\)/g, 'url(#zoom-$1)').replace(/aria-labelledby="([^"]+)"/g, 'aria-labelledby="zoom-$1"');
+---
+<figure class="diagram-sheet">
+  <figcaption><div><span class="sheet-number">{id} / MARGIN STUDY</span><h3>{title}</h3><p>{subtitle}</p></div><button type="button" class="inspect-diagram" data-diagram-open={id}>inspect drawing ↗</button></figcaption>
+  <div class="diagram-art">
+    {svg ? <Fragment set:html={svg} /> : <img src={image} width={imageWidth} height={imageHeight} alt={alt} loading="lazy" decoding="async" />}
+  </div>
+  {notes.length > 0 && <ol class="diagram-notes">{notes.map(note => <li>{note}</li>)}</ol>}
+  <dialog id={`diagram-${id}`} aria-label={`${title}, enlarged diagram`}>
+    <div class="dialog-bar"><strong>{title}</strong><span>scroll to explore the details</span><button type="button" data-diagram-close>close ×</button></div>
+    <div class="diagram-zoom" tabindex="0" role="region" aria-label="Enlarged drawing, scroll horizontally to explore">
+      {svg ? <div class="zoom-art" set:html={enlargedSvg} /> : <img class="zoom-art" src={image} width={imageWidth} height={imageHeight} alt={alt} loading="lazy" />}
+    </div>
+  </dialog>
+</figure>
+<script>
+ document.querySelectorAll<HTMLButtonElement>('[data-diagram-open]').forEach(button => {
+   const dialog = document.getElementById(`diagram-${button.dataset.diagramOpen}`) as HTMLDialogElement;
+   button.addEventListener('click', () => dialog.showModal());
+   dialog.addEventListener('close', () => button.focus({preventScroll:true}));
+   dialog.querySelector('[data-diagram-close]')?.addEventListener('click', () => dialog.close());
+   dialog.addEventListener('click', event => {if(event.target === dialog) {const bounds=dialog.getBoundingClientRect();if(event.clientX<bounds.left||event.clientX>bounds.right||event.clientY<bounds.top||event.clientY>bounds.bottom)dialog.close();}});
+ });
+</script>
+<style>
+.diagram-sheet {
+  margin:1.5rem 0 2rem;
+  width:100%;
+  min-width:0;
+  position:relative;
+  border-block:1px dashed #afbad0;
+  padding:1rem 0 .75rem
+}
+figcaption {
+  display:flex;
+  justify-content:space-between;
+  gap:1rem;
+  align-items:center;
+  padding-inline:.5rem
+}
+.sheet-number {
+  font: .65rem var(--font-mono);
+  letter-spacing:.09em;
+  color:var(--coral)
+}
+h3 {
+  font:700 2rem var(--font-display);
+  color:var(--blue);
+  margin:.2rem 0
+}
+figcaption p {
+  font-size:1rem;
+  margin:0;
+  color:var(--ink-soft)
+}
+button {
+  flex:none;
+  font:inherit;
+  font-size:1.05rem;
+  min-height:44px;
+  padding:.4rem .8rem;
+  border:1.5px solid var(--blue);
+  border-radius:3px 7px 4px 6px;
+  color:var(--blue);
+  background:white;
+  cursor:pointer;
+  transition:background .2s,transform .2s
+}
+button:hover {
+  background:#edf2ff;
+  transform:rotate(-1deg)
+}
+.diagram-art {
+  width:100%;
+  margin:.4rem 0
+}
+.diagram-art :global(svg),.diagram-art img {
+  width:100%;
+  height:auto;
+  display:block
+}
+.diagram-notes {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:1.2rem;
+  list-style:none;
+  counter-reset:note;
+  padding:0 .5rem;
+  margin:.2rem 0
+}
+.diagram-notes li {
+  counter-increment:note;
+  border-top:2px solid #dfe5f3;
+  padding:.6rem 0 0;
+  font-size:1.05rem;
+  line-height:1.4
+}
+.diagram-notes li:before {
+  content:'0' counter(note) ' / ';
+  font: .75rem var(--font-mono);
+  color:var(--blue)
+}
+dialog {
+  width:min(96vw,1440px);
+  max-width:96vw;
+  max-height:94dvh;
+  padding:1rem;
+  border:2px solid var(--blue);
+  background:white;
+  color:var(--ink);
+  border-radius:6px
+}
+dialog::backdrop {
+  background:rgb(18 29 56 / 65%)
+}
+.dialog-bar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+  margin-bottom:1rem
+}
+.dialog-bar strong {
+  font:700 1.8rem var(--font-display);
+  color:var(--blue)
+}
+.dialog-bar span {
+  font-size:1rem;
+  color:var(--ink-soft)
+}
+.diagram-zoom {
+  overflow:auto;
+  max-height:calc(90dvh - 6rem)
+}
+.diagram-zoom:focus-visible {
+  outline:2px solid var(--blue);
+  outline-offset:2px
+}
+.zoom-art {
+  display:block;
+  width:100%;
+  min-width:1000px;
+  max-width:none;
+  height:auto
+}
+.zoom-art :global(svg) {
+  width:100%;
+  height:auto
+}
+@media(max-width:640px) {
+  figcaption {
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:.5rem
+  }
+  .diagram-notes {
+    grid-template-columns:1fr;
+    gap:.4rem
+  }
+  .diagram-notes li {
+    padding-top:.4rem
+  }
+  .dialog-bar span {
+    display:none
+  }
+  .dialog-bar strong {
+    font-size:1.4rem
+  }
+  .diagram-sheet {
+    margin:1rem 0 1.5rem
+  }
+}
+</style>

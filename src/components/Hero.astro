@@ -1,43 +1,27 @@
 ---
-import NotebookPage from "./NotebookPage.astro";
-import styles from "./Hero.module.css";
-import smSvg from "../assets/doodles/sm-core-diagram.svg?raw";
-import chipSvg from "../assets/doodles/chip.svg?raw";
+import NotebookPage from './NotebookPage.astro';
+import styles from './Hero.module.css';
 ---
-
 <NotebookPage id="hero" reveal={false}>
-	<p class={styles.marginNote} aria-hidden="true">notes from somewhere below the abstraction layer</p>
-	<div class={styles.introRow}>
-		<div class={styles.copy}>
-			<p class={styles.eyebrow}>independent researcher</p>
-			<h1 class={styles.name}>Parth</h1>
-			<p class={styles.tagline}>
-				I like the parts of a system you only notice when they go wrong:
-				<span class="hl" style="--hl: var(--marker-mint-wash)"
-					>storage engines, lock-free queues, cache lines, and the awkward bits around I/O</span
-				>.
-			</p>
-			<p class={styles.lede}>
-				Most days are a loop of reading papers, writing C++ or Go, staring at a profiler, and
-				crossing out the idea I was sure would work.
-			</p>
-			<div class={styles.ctaRow}>
-				<button type="button" data-sketch-button="solid" onclick="document.getElementById('projects')?.scrollIntoView({behavior: 'smooth'})">
-					browse the projects
-				</button>
-				<button type="button" data-sketch-button="outline" onclick="document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})">
-					say hello
-				</button>
-			</div>
-		</div>
-		<div class={styles.chipWrap}>
-			<span class={styles.tape} aria-hidden="true"></span>
-			<div class={styles.chipIcon} set:html={chipSvg} />
-			<p aria-hidden="true">probably a cache miss</p>
-		</div>
-	</div>
-	<div class={styles.diagramRow}>
-		<p class={styles.diagramNote} aria-hidden="true">the kind of diagram that starts simple<br />and ends with six arrows</p>
-		<div class={`diagram-figure ${styles.heroDiagram}`} set:html={smSvg} />
-	</div>
+  <div class={styles.topline}><span>FIELD NOTES / PARTH SINHA</span><span>always a work in progress ↗</span></div>
+  <div class={styles.spread}>
+    <div class={styles.copy}>
+      <p class={styles.hello}>oh, hello. I'm</p>
+      <h1 class={styles.name}>Parth<span aria-hidden="true">.</span></h1>
+      <p class={styles.eyebrow}>independent systems researcher</p>
+      <p class={styles.tagline}>I get curious about<br />what happens <span class={styles.underneath}>underneath.</span></p>
+      <p class={styles.lede}>Storage engines, lock-free queues, cache lines, and the awkward bits around I/O. The parts you tend to notice when something goes wrong.</p>
+      <div class={styles.ctaRow}><a href="#projects" class={styles.primary}>look through my projects <span>↗</span></a><a href="#contact">say hello ↗</a></div>
+      <p class={styles.afterthought}>C++ / Go / a lot of crossed-out ideas</p>
+    </div>
+    <aside class={styles.margin} aria-label="Notebook margin">
+      <div class={styles.annotation}>inside my head, more or less ↓</div>
+      <div class={styles.loop}>
+        <span>read a paper</span><b>↘</b><span>have an idea</span><b>↓</b><span><s>it works!</s> measure it</span><b>↙</b><span>try again ↺</span>
+      </div>
+      <div class={styles.mascot}><img src="/illustrations/notebook-chip.webp" width="600" height="600" alt="A blue pen doodle of a little chip holding a pencil on a stack of notebooks" /><p>small chip.<br />many questions.</p></div>
+      <p class={styles.sidenote}>Most days: reading papers,<br />writing code, staring at a profiler.</p>
+    </aside>
+  </div>
+  <div class={styles.bottomline}><span>↓ follow the loose threads</span><span>01 / the introduction</span></div>
 </NotebookPage>
