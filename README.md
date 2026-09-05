@@ -1,5 +1,7 @@
 # Astro Starter Kit: Basics
 
+[![Build Status](https://drone-ci.astrareconslabs.com/api/badges/sinhaparth5/portfolio/status.svg)](https://drone-ci.astrareconslabs.com/sinhaparth5/portfolio)
+
 ```sh
 npm create astro@latest -- --template basics
 ```
