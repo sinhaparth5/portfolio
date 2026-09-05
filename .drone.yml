@@ -3,4 +3,4 @@ load: deploy-production.star
 data:
   app_name: portfolio
   port: "18087"
-  container_port: "80"
+  container_port: "8080"

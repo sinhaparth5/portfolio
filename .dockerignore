@@ -1,0 +1,13 @@
+# Only inputs needed for the static site build enter the build context.
+**
+!package.json
+!package-lock.json
+!astro.config.mjs
+!tsconfig.json
+!src/
+!src/**
+!public/
+!public/**
+!nginx.conf
+!Dockerfile
+!.dockerignore
