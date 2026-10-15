@@ -30,7 +30,7 @@ docker run --rm --name portfolio -p 18087:8080 \
   portfolio:local
 ```
 
-Open `http://localhost:18087`. The container listens on **8080**; the Drone deployment maps external port **18087** to it.
+Open `http://localhost:18087`. The container listens on **8080**; the GitHub Actions deployment maps external port **18087** to it.
 
 The build stage installs dependencies from `package-lock.json` and caches npm downloads. The final image contains the static output and the official Nginx Alpine slim runtime. `.dockerignore` limits the build context to the files needed to build and serve the site.
 
