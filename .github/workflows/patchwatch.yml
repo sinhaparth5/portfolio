@@ -1,0 +1,30 @@
+name: Patchwatch
+
+# Static site: nothing runs Node in production, so report from CI after each
+# successful deploy and daily so the service doesn't go Stale between releases.
+on:
+  workflow_run:
+    workflows: [Deploy Production]
+    types: [completed]
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  heartbeat:
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - run: node scripts/patchwatch.mjs
+        env:
+          PATCHWATCH_URL: ${{ secrets.PATCHWATCH_URL }}
+          PATCHWATCH_TOKEN: ${{ secrets.PATCHWATCH_TOKEN }}
