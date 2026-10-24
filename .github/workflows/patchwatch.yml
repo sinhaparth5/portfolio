@@ -22,7 +22,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          # Keep in step with NODE_IMAGE in the Dockerfile: this is the version Patchwatch reports.
+          node-version: 24.22.1
 
       - run: node scripts/patchwatch.mjs
         env:
